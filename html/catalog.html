@@ -10,140 +10,185 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/search.css">
   <link rel="stylesheet" href="../css/blocks.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <link rel="stylesheet" href="../css/picker.css">
   <link rel="stylesheet" href="../css/catalog.css">
+  <script src="../js/picker.js" defer></script>
+  <script src="../js/header.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
-    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"></path></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path></symbol>
     <symbol id="i-compare" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"></path></symbol>
-    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.5M21 4l-3.5 16-8.5-6.5M21 4 9 13.5V19l3-3.5"></path></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
-    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
-    <symbol id="i-user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20a8 8 0 0 1 16 0"></path></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
-    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></symbol>
-    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"></path></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12l14 0M13 18l6 -6M13 6l6 6"></path></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M5 12l14 0M5 12l6 6M5 12l6 -6"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6l16 0M4 12l16 0M4 18l16 0"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6l-12 12M6 6l12 12"></path></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M12 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 6l8 0M16 6l4 0M6 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 12l2 0M10 12l10 0M15 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 18l11 0M19 18l1 0"></path></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6"></path></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M21 21l-6 -6"></path></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5l0 14M5 12l14 0"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10"></path></symbol>
+    <symbol id="i-world" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18"></path></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21l18 0M5 21v-14l8 -4v18M19 21v-10l-6 -4M9 9l0 .01M9 12l0 .01M9 15l0 .01M9 18l0 .01"></path></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
   </svg>
 
-  <header class="header">
+  <div class="header-slot">
+  <header class="header" data-header>
     <div class="container header__inner">
       <a class="header__logo" href="index.html">
-        <img class="header__logo-image" src="../img/logo.webp" alt="" width="44" height="44">
+        <img class="header__logo-image" src="../img/logo.webp" alt="" width="48" height="48">
         <span class="header__logo-text">УКРИС<span class="header__logo-caption">Новостройки мира</span></span>
       </a>
       <nav class="header__nav" id="menu" aria-label="Основное меню">
-        <a class="header__close" href="#" aria-label="Закрыть меню"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        <div class="header__nav-head">
+          <span class="header__nav-title">Меню</span>
+          <a class="icon-button" href="#" aria-label="Закрыть меню"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        </div>
         <a class="header__link header__link--active" href="catalog.html" aria-current="page">Каталог</a>
         <a class="header__link" href="about.html">О проекте</a>
         <a class="header__link" href="about.html#kontakty">Контакты</a>
       </nav>
       <div class="header__tools">
-        <a class="header__tool header__telegram" href="https://t.me/davydova_ps">
-          <svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg><span class="header__tool-label">Telegram</span>
-        </a>
-        <a class="header__tool" href="compare.html">
-          <svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="header__tool-label">Сравнение</span><span class="header__count" aria-label="объектов в сравнении: 2">2</span>
-        </a>
-        <a class="header__tool" href="cabinet.html#izbrannoe">
-          <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="header__tool-label">Избранное</span><span class="header__count" aria-label="объектов в избранном: 1">1</span>
-        </a>
-        <a class="header__tool" href="cabinet.html">
-          <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg><span class="header__tool-label">Войти</span>
-        </a>
-        <a class="header__burger" href="#menu" aria-label="Открыть меню"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></a>
+        <a class="icon-button header__tool header__telegram" href="https://t.me/davydova_ps" aria-label="Написать в Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg></a>
+        <a class="icon-button header__tool" href="compare.html" aria-label="Сравнение, объектов: 2"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="header__badge" aria-hidden="true">2</span></a>
+        <a class="icon-button header__tool" href="cabinet.html#izbrannoe" aria-label="Избранное, объектов: 1"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="header__badge" aria-hidden="true">1</span></a>
+        <a class="button button--outline header__login" href="cabinet.html" aria-label="Войти"><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg><span class="header__login-text">Войти</span></a>
+        <a class="icon-button header__burger" href="#menu" aria-label="Открыть меню"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></a>
       </div>
     </div>
   </header>
+  </div>
 
   <main class="catalog">
     <div class="container">
-      <p class="eyebrow">Каталог</p>
-      <h1 class="catalog__title">Новостройки в ОАЭ</h1>
-
-      <div class="catalog__layout">
-        <aside class="catalog__filters" id="filters" aria-label="Фильтры">
-          <form class="filters" action="catalog.html" method="get">
-            <div class="filters__head">
-              <h2 class="filters__title">Фильтры</h2>
-              <a class="filters__close" href="#" aria-label="Закрыть фильтры"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      <div class="catalog__head" data-first-screen>
+        <h1 class="catalog__title">Новостройки в ОАЭ</h1>
+        <form class="finder finder--bordered catalog__search" id="filters" action="catalog.html" method="get" aria-label="Фильтры">
+            <div class="catalog__search-head">
+              <h2 class="catalog__search-title">Фильтры</h2>
+              <a class="icon-button" href="#" aria-label="Закрыть фильтры"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
             </div>
-            <div class="field">
-              <label class="field__label" for="filter-country">Страна</label>
-              <select class="field__control" id="filter-country" name="country">
-                <option value="">Все страны</option>
-                <option value="oae" selected>ОАЭ</option>
-                <option value="turkey">Турция</option>
-                <option value="thailand">Таиланд</option>
-              </select>
-            </div>
-            <div class="field">
-              <label class="field__label" for="filter-city">Город</label>
-              <select class="field__control" id="filter-city" name="city">
-                <option value="" selected>Все города</option>
-                <option value="dubai">Дубай</option>
-                <option value="abu-dhabi">Абу-Даби</option>
-              </select>
-              <p class="field__hint">Список городов зависит от страны</p>
-            </div>
-            <fieldset class="field">
-              <legend class="field__label">Бюджет, $</legend>
-              <div class="filters__range">
-                <label class="visually-hidden" for="filter-budget-min">Бюджет от, $</label>
-                <input class="field__control" id="filter-budget-min" type="number" name="budget_min" min="0" step="10000" inputmode="numeric" placeholder="от">
-                <label class="visually-hidden" for="filter-budget-max">Бюджет до, $</label>
-                <input class="field__control" id="filter-budget-max" type="number" name="budget_max" min="0" step="10000" inputmode="numeric" placeholder="до">
+            <label class="finder__query"><svg class="icon finder__query-icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="finder__query-input" type="search" name="q" placeholder="Проект, город или застройщик"></label>
+            <div class="search search--plain catalog__filters-row">
+            <details class="picker picker--flat search__part">
+              <summary class="picker__button">
+                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-world"></use></svg>
+                <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">ОАЭ</span></span>
+                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+              </summary>
+              <div class="picker__panel">
+                <ul class="picker__list">
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value=""><span class="picker__option-text">Любая страна</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae" checked><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                </ul>
               </div>
-              <p class="field__hint">Цены в других валютах пересчитаны в доллары</p>
-            </fieldset>
-            <div class="field">
-              <label class="field__label" for="filter-type">Тип недвижимости</label>
-              <select class="field__control" id="filter-type" name="type">
-                <option value="" selected>Любой</option>
-                <option value="apartments">Апартаменты</option>
-                <option value="flats">Квартиры</option>
-                <option value="villas">Виллы</option>
-                <option value="townhouses">Таунхаусы</option>
-              </select>
+            </details>
+            <span class="search__divider" aria-hidden="true"></span>
+            <details class="picker picker--flat search__part">
+              <summary class="picker__button">
+                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-building"></use></svg>
+                <span class="picker__text"><span class="picker__label">Город</span><span class="picker__value">Любой город</span></span>
+                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+              </summary>
+              <div class="picker__panel">
+                <ul class="picker__list">
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="" checked><span class="picker__option-text">Любой город</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="dubai"><span class="picker__option-text">Дубай</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="abu-dhabi"><span class="picker__option-text">Абу-Даби</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                </ul>
+              </div>
+            </details>
+            <span class="search__divider" aria-hidden="true"></span>
+            <label class="field-box field-box--flat search__part">
+              <span class="field-box__label">Бюджет от, $</span>
+              <input class="field-box__input" type="number" name="budget_min" min="0" step="10000" inputmode="numeric" placeholder="Любой">
+            </label>
+            <span class="search__divider" aria-hidden="true"></span>
+            <label class="field-box field-box--flat search__part">
+              <span class="field-box__label">Бюджет до, $</span>
+              <input class="field-box__input" type="number" name="budget_max" min="0" step="10000" inputmode="numeric" placeholder="Любой">
+            </label>
+            <span class="search__divider" aria-hidden="true"></span>
+            <details class="picker picker--flat search__part">
+              <summary class="picker__button">
+                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-home"></use></svg>
+                <span class="picker__text"><span class="picker__label">Тип</span><span class="picker__value">Любой тип</span></span>
+                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+              </summary>
+              <div class="picker__panel">
+                <ul class="picker__list">
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="" checked><span class="picker__option-text">Любой тип</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="apartments"><span class="picker__option-text">Апартаменты</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="flats"><span class="picker__option-text">Квартиры</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="villas"><span class="picker__option-text">Виллы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="townhouses"><span class="picker__option-text">Таунхаусы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                </ul>
+              </div>
+            </details>
+            <span class="search__divider" aria-hidden="true"></span>
+            <details class="picker picker--flat search__part">
+              <summary class="picker__button">
+                <span class="picker__text"><span class="picker__label">Срок ключей</span><span class="picker__value">Любой срок</span></span>
+                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+              </summary>
+              <div class="picker__panel">
+                <ul class="picker__list">
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="" checked><span class="picker__option-text">Любой срок</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="done"><span class="picker__option-text">Сдан</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2026"><span class="picker__option-text">2026</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2027"><span class="picker__option-text">2027</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2028"><span class="picker__option-text">2028</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2029"><span class="picker__option-text">2029</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                </ul>
+              </div>
+            </details>
+            <button class="button button--primary search__submit" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>Показать</button>
             </div>
-            <div class="field">
-              <label class="field__label" for="filter-keys">Срок передачи ключей</label>
-              <select class="field__control" id="filter-keys" name="keys">
-                <option value="" selected>Любой</option>
-                <option value="done">Сдан</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-                <option value="2029">2029</option>
-              </select>
-            </div>
-            <div class="filters__actions">
-              <button class="button button--primary button--block" type="submit">Показать объекты</button>
-              <a class="button button--outline button--block" href="catalog.html">Сбросить фильтры</a>
-            </div>
+            <a class="button button--outline catalog__search-reset" href="catalog.html">Сбросить фильтры</a>
           </form>
-        </aside>
+      </div>
 
-        <div class="catalog__content">
-          <div class="catalog__toolbar">
+      <div class="catalog__content">
+        <div class="catalog__toolbar">
             <p class="catalog__count">Найдено 14 объектов</p>
-            <a class="button button--outline catalog__filters-toggle" href="#filters"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg>Фильтры · 1</a>
+            <div class="catalog__tools">
+              <a class="button button--outline catalog__filters-toggle" href="#filters"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg>Фильтры · 1</a>
+              <details class="picker picker--inline">
+                <summary class="picker__button">
+                  <span class="picker__text"><span class="picker__label">Сортировка:</span><span class="picker__value">Сначала новые</span></span>
+                  <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                  <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+                </summary>
+                <div class="picker__panel">
+                  <ul class="picker__list">
+                    <li><a class="picker__option picker__option--current" href="catalog.html?country=oae" aria-current="true"><span class="picker__option-text">Сначала новые</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></a></li>
+                    <li><a class="picker__option" href="catalog.html?country=oae&amp;sort=price_asc"><span class="picker__option-text">Сначала дешевле</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></a></li>
+                    <li><a class="picker__option" href="catalog.html?country=oae&amp;sort=price_desc"><span class="picker__option-text">Сначала дороже</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></a></li>
+                    <li><a class="picker__option" href="catalog.html?country=oae&amp;sort=keys"><span class="picker__option-text">По сроку ключей</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></a></li>
+                  </ul>
+                </div>
+              </details>
+            </div>
           </div>
 
           <div class="chips">
-            <a class="chips__item" href="catalog.html" aria-label="Убрать фильтр: ОАЭ">ОАЭ<svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            <a class="chips__item" href="catalog.html" aria-label="Убрать фильтр: ОАЭ">ОАЭ<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
             <a class="chips__reset" href="catalog.html">Сбросить все</a>
           </div>
-
-          <nav class="sort" aria-label="Сортировка">
-            <span class="sort__label">Сортировка:</span>
-            <ul class="sort__list">
-              <li><a class="sort__link sort__link--active" href="catalog.html?country=oae" aria-current="true">Сначала новые</a></li>
-              <li><a class="sort__link" href="catalog.html?country=oae&amp;sort=price_asc">Дешевле</a></li>
-              <li><a class="sort__link" href="catalog.html?country=oae&amp;sort=price_desc">Дороже</a></li>
-              <li><a class="sort__link" href="catalog.html?country=oae&amp;sort=keys">По сроку ключей</a></li>
-            </ul>
-          </nav>
 
           <div class="projects projects--narrow">
             <article class="project-card">
@@ -157,7 +202,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Marina Crest Residence</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Marina Crest Residence</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -165,7 +210,7 @@
                 </dl>
                 <div class="project-card__footer">
                   <p class="project-card__price"><span class="project-card__price-value">от 410 000 $</span><span class="project-card__price-note">Цена застройщика в долларах</span></p>
-                  <button class="button button--outline project-card__compare" type="button" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg>В сравнении</button>
+                  <button class="button button--outline project-card__compare" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg>К сравнению</button>
                 </div>
               </div>
             </article>
@@ -181,7 +226,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Palm Garden Villas</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Palm Garden Villas</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -205,7 +250,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Harbour View</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Harbour View</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -229,7 +274,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Creek Point Tower</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Creek Point Tower</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -253,7 +298,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Saadiyat Shore</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Saadiyat Shore</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -277,7 +322,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Oasis Lane Townhouses</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Oasis Lane Townhouses</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -301,7 +346,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Azure Heights</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Azure Heights</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -325,7 +370,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Yas Bay Lofts</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Yas Bay Lofts</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -349,7 +394,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Palm Vista Villas</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Palm Vista Villas</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -373,7 +418,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Business Bay One</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Business Bay One</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -397,7 +442,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Reem Island Gardens</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Reem Island Gardens</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -421,7 +466,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Jumeirah Park Residences</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="#">Jumeirah Park Residences</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -441,7 +486,6 @@
             <a class="pagination__link" href="catalog.html?country=oae&amp;page=2">2</a>
             <a class="pagination__link" href="catalog.html?country=oae&amp;page=2">Вперёд<svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
           </nav>
-        </div>
       </div>
     </div>
   </main>
@@ -453,30 +497,20 @@
           <a class="footer__logo" href="index.html"><img class="footer__logo-image" src="../img/logo.webp" alt="" width="44" height="44">УКРИС</a>
           <p>Каталог международных новостроек для инвесторов. Проекты отбирает и описывает редакция портала.</p>
         </div>
-        <nav class="footer__column" aria-label="Разделы">
-          <p class="footer__heading">Разделы</p>
-          <a class="footer__link" href="catalog.html">Каталог</a>
-          <a class="footer__link" href="about.html">О проекте</a>
-          <a class="footer__link" href="about.html#kontakty">Контакты</a>
-        </nav>
-        <nav class="footer__column" aria-label="Направления">
-          <p class="footer__heading">Направления</p>
-          <a class="footer__link" href="catalog.html?country=oae">ОАЭ</a>
-          <a class="footer__link" href="catalog.html?country=turkey">Турция</a>
-          <a class="footer__link" href="catalog.html?country=thailand">Таиланд</a>
-        </nav>
-        <nav class="footer__column" aria-label="Документы">
-          <p class="footer__heading">Документы</p>
-          <a class="footer__link" href="privacy.html">Политика конфиденциальности</a>
-          <a class="footer__link" href="consent.html">Согласие на обработку данных</a>
-          <a class="footer__link" href="disclaimer.html">Справочная оговорка</a>
-        </nav>
-        <div class="footer__column">
-          <p class="footer__heading">Контакты</p>
-          <a class="footer__link" href="https://t.me/davydova_ps">Telegram: @davydova_ps</a>
-          <a class="footer__link" href="tel:+79252980416">+7 (925) 298-04-16</a>
-          <a class="footer__link" href="mailto:ukris@ukris.online">ukris@ukris.online</a>
-          <p>г. Москва, Цветной бульвар, 15</p>
+        <div class="footer__columns">
+          <nav class="footer__column" aria-label="Документы">
+            <p class="footer__heading">Документы</p>
+            <a class="footer__link" href="privacy.html">Политика конфиденциальности</a>
+            <a class="footer__link" href="consent.html">Согласие на обработку данных</a>
+            <a class="footer__link" href="disclaimer.html">Справочная оговорка</a>
+          </nav>
+          <div class="footer__column" id="kontakty">
+            <p class="footer__heading">Контакты</p>
+            <a class="footer__link" href="https://t.me/davydova_ps">Telegram: @davydova_ps</a>
+            <a class="footer__link" href="tel:+79252980416">+7 (925) 298-04-16</a>
+            <a class="footer__link" href="mailto:ukris@ukris.online">ukris@ukris.online</a>
+            <p>г. Москва, Цветной бульвар, 15</p>
+          </div>
         </div>
       </div>
       <div class="footer__bottom">
