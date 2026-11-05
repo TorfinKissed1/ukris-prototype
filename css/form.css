@@ -1,0 +1,289 @@
+/* ============ lead-form ============ */
+.lead-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl) var(--space-2xl);
+  padding: var(--space-2xl);
+  color: var(--color-text-on-dark);
+  background: var(--color-ink);
+  border-radius: var(--radius-l);
+}
+
+.lead-form__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  flex: 1 1 340px;
+}
+
+.lead-form__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.lead-form__lead {
+  color: var(--color-text-on-dark-muted);
+}
+
+.lead-form__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-top: auto;
+  padding-top: var(--space-l);
+}
+
+.lead-form__form {
+  flex: 999 1 520px;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .lead-form {
+    padding: var(--space-l);
+    border-radius: var(--radius-m);
+  }
+}
+
+/* ============ form (раскладка полей заявки) ============ */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-m);
+}
+
+.form__field {
+  flex: 1 1 220px;
+}
+
+.form__field--wide {
+  flex-basis: 100%;
+}
+
+.form__submit {
+  flex: none;
+  min-width: 240px;
+}
+
+/* ============ field ============ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.field__label {
+  padding: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.field__optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.field__control {
+  width: 100%;
+  min-height: var(--control-height);
+  padding: 0 var(--space-m);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  transition: border-color var(--transition);
+}
+
+.field__control:hover,
+.field__control:focus {
+  border-color: var(--color-brand);
+}
+
+.field__control:focus {
+  outline: none;
+}
+
+.field__control--textarea {
+  min-height: 96px;
+  padding: 12px var(--space-m);
+  resize: vertical;
+}
+
+.field__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.field__option {
+  position: relative;
+  display: inline-flex;
+}
+
+.field__option-input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+.field__option-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.field__option-input:checked + .field__option-label {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.field__option-input:focus-visible + .field__option-label {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.field__hint {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.field__error {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.field--error .field__control {
+  border-color: var(--color-error);
+}
+
+.field__check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+
+.field__check-input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--color-brand);
+}
+
+.field__check-link {
+  text-decoration: underline;
+}
+
+.field--dark .field__optional,
+.field--dark .field__hint {
+  color: var(--color-text-on-dark-muted);
+}
+
+.field--dark .field__control,
+.field--dark .field__option-label {
+  color: var(--color-text-on-dark);
+  background: var(--color-field-on-dark);
+  border-color: var(--color-border-on-dark);
+}
+
+.field--dark .field__control:hover,
+.field--dark .field__control:focus,
+.field--dark .field__option-label:hover {
+  border-color: var(--color-text-on-dark);
+}
+
+.field--dark .field__option-input:checked + .field__option-label {
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border-color: var(--color-bg);
+}
+
+.field--dark .field__check-input {
+  accent-color: var(--color-accent);
+}
+
+/* ============ field-box (подпись внутри рамки, как у выпадашки picker) ============ */
+.field-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: var(--control-height);
+  padding: 6px var(--space-m);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: text;
+  transition: border-color var(--transition);
+}
+
+.field-box:hover,
+.field-box:focus-within {
+  border-color: var(--color-brand);
+}
+
+.field-box__label {
+  font-size: var(--fs-xs);
+  line-height: 1.3;
+  color: var(--color-text-muted);
+}
+
+.field-box__input {
+  width: 100%;
+  padding: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.4;
+  background: transparent;
+  border: 0;
+}
+
+.field-box__input:focus {
+  outline: none;
+}
+
+.field-box--dark {
+  color: var(--color-text-on-dark);
+  background: var(--color-field-on-dark);
+  border-color: var(--color-border-on-dark);
+}
+
+.field-box--dark:hover,
+.field-box--dark:focus-within {
+  border-color: var(--color-text-on-dark);
+}
+
+.field-box--dark .field-box__label {
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Без рамки: часть панели поиска, как picker--flat. */
+.field-box--flat {
+  min-height: 64px;
+  background: transparent;
+  border-color: transparent;
+  border-radius: var(--radius-m);
+}
+
+.field-box--flat:hover,
+.field-box--flat:focus-within {
+  background: var(--color-paper);
+  border-color: transparent;
+}

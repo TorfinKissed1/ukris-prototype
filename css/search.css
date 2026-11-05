@@ -1,0 +1,258 @@
+/* ============ search (панель поиска и фильтров) ============ */
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-s);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border-radius: var(--radius-l);
+}
+
+.search__part {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.search__divider {
+  flex: none;
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+}
+
+.search__submit {
+  flex: none;
+  min-height: 64px;
+  padding: 0 var(--space-xl);
+  font-size: var(--fs-body);
+  border-radius: var(--radius-m);
+}
+
+/* С рамкой: на белом фоне каталога. */
+.search--bordered {
+  border: 1px solid var(--color-border);
+}
+
+/* Ужатая строка в закреплённой шапке. */
+.search--compact {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 760px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+}
+
+.search--compact .search__divider {
+  height: 24px;
+}
+
+.search--compact .search__submit {
+  min-height: 44px;
+  padding: 0 var(--space-l);
+  font-size: var(--fs-small);
+  border-radius: var(--radius-round);
+}
+
+.search__query {
+  display: flex;
+  align-items: center;
+  flex: 1.4 1 0;
+  gap: var(--space-s);
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: var(--radius-round);
+  cursor: text;
+  transition: background-color var(--transition);
+}
+
+.search__query:hover,
+.search__query:focus-within {
+  background: var(--color-paper);
+}
+
+.search__query-icon {
+  color: var(--color-brand);
+}
+
+.search__query-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font-size: var(--fs-small);
+  background: transparent;
+  border: 0;
+}
+
+.search__query-input:focus {
+  outline: none;
+}
+
+/* На планшете и телефоне в шапке остаются строка поиска и кнопка-лупа. */
+@media (max-width: 1024px) {
+  .search--compact {
+    flex-wrap: nowrap;
+  }
+
+  .search--compact .search__part,
+  .search--compact .search__divider,
+  .search--compact .search__submit-text {
+    display: none;
+  }
+
+  .search--compact .search__submit {
+    flex: none;
+    width: 44px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search {
+    flex-wrap: wrap;
+  }
+
+  .search__part {
+    flex: 1 1 calc(50% - var(--space-xs));
+  }
+
+  .search__divider {
+    display: none;
+  }
+
+  .search__submit {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search__part {
+    flex-basis: 100%;
+  }
+
+  .search__submit {
+    min-height: 52px;
+  }
+}
+
+/* Панель внутри finder: без своих отступов и фона. */
+.search--plain {
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ============ finder (вкладки, строка поиска и фильтры одной панелью) ============ */
+.finder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: var(--space-m);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border-radius: var(--radius-l);
+}
+
+.finder--bordered {
+  border: 1px solid var(--color-border);
+}
+
+.finder__tabs {
+  display: flex;
+  align-self: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--color-paper);
+  border-radius: var(--radius-round);
+}
+
+.finder__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  min-height: 40px;
+  padding: 0 var(--space-l);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-round);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.finder__tab:hover {
+  color: var(--color-brand);
+  background: var(--color-bg);
+}
+
+.finder__tab--active,
+.finder__tab--active:hover {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+}
+
+.finder__query {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 var(--space-m);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  cursor: text;
+  transition: border-color var(--transition);
+}
+
+.finder__query:hover,
+.finder__query:focus-within {
+  border-color: var(--color-brand);
+}
+
+.finder__query-icon {
+  color: var(--color-brand);
+}
+
+.finder__query-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font-size: var(--fs-body);
+  background: transparent;
+  border: 0;
+}
+
+.finder__query-input:focus {
+  outline: none;
+}
+
+.finder__query-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .finder {
+    padding: 12px;
+  }
+
+  /* На самых узких экранах вкладки листаются вбок внутри панели, страница не едет. */
+  .finder__tabs {
+    align-self: stretch;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .finder__tab {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 10px;
+    font-size: var(--fs-xs);
+    white-space: nowrap;
+  }
+
+  .finder__query-input {
+    font-size: var(--fs-small);
+  }
+}
+

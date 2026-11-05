@@ -1,0 +1,327 @@
+/* ============ header ============
+   Шапка стоит в начале страницы и уезжает вместе с ней. Когда первый экран пройден,
+   js/header.js ставит header--scrolled: шапка закрепляется и выезжает сверху. */
+.header {
+  position: relative;
+  z-index: var(--z-header);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  min-height: var(--header-height);
+}
+
+/* Держит место под шапкой, чтобы страница не прыгала, когда шапка становится fixed. */
+.header-slot {
+  min-height: var(--header-height);
+}
+
+.header--scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  animation: header-drop 0.3s ease;
+}
+
+@keyframes header-drop {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.header__logo-image {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-round);
+}
+
+.header__logo-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--color-brand);
+}
+
+.header__logo-caption {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--color-paper);
+  border-radius: var(--radius-round);
+}
+
+.header__nav-head {
+  display: none;
+}
+
+.header__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: var(--radius-round);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.header__link:hover {
+  color: var(--color-brand);
+  background: var(--color-bg);
+}
+
+.header__link--active {
+  font-weight: 600;
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+}
+
+.header__link--active:hover {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand-hover);
+}
+
+.header__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-s);
+  margin-left: auto;
+}
+
+.header__tool {
+  position: relative;
+}
+
+.header__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  color: var(--color-ink);
+  background: var(--color-accent);
+  border-radius: var(--radius-round);
+}
+
+.header__login {
+  min-height: 44px;
+  border-radius: var(--radius-round);
+}
+
+.header__burger {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header__inner {
+    gap: var(--space-m);
+  }
+}
+
+/* Меню на телефоне открывается через :target, без скриптов. */
+@media (max-width: 768px) {
+  .header__burger {
+    display: inline-flex;
+  }
+
+  .header__nav,
+  .header__telegram {
+    display: none;
+  }
+
+  .header__nav:target {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-s);
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    padding: 0 var(--gutter) var(--space-l);
+    background: var(--color-bg);
+    border-radius: 0;
+  }
+
+  .header__nav-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    margin-bottom: var(--space-s);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__nav-title {
+    font-size: var(--fs-h3);
+    font-weight: 700;
+  }
+
+  .header__nav:target .header__link {
+    min-height: 56px;
+    padding: 0 var(--space-m);
+    font-size: 18px;
+    background: var(--color-paper);
+    border-radius: var(--radius-m);
+  }
+
+  .header__nav:target .header__link--active {
+    background: var(--color-brand);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__logo-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header__logo-caption,
+  .header__login-text {
+    display: none;
+  }
+
+  .header__tools {
+    gap: 6px;
+  }
+
+  .header__login {
+    width: 44px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__inner {
+    gap: var(--space-s);
+  }
+
+  .header__tools {
+    gap: var(--space-xs);
+  }
+
+  .header__tool,
+  .header__login,
+  .header__burger {
+    width: 40px;
+    min-height: 40px;
+    height: 40px;
+  }
+}
+
+/* На узких экранах остаётся только знак логотипа, иначе кнопки не помещаются:
+   до 360 px всегда, до 480 px когда в закреплённой шапке появилась кнопка поиска. */
+@media (max-width: 480px) {
+  .header--scrolled .header__logo-text {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header__logo-text {
+    display: none;
+  }
+}
+
+/* ============ header--overlay (главная) ============
+   Над фото шапка прозрачная. В закреплённом виде у неё белый фон и ужатый поиск. */
+.header--overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header--overlay.header--scrolled {
+  position: fixed;
+}
+
+.header--overlay:not(.header--scrolled) {
+  color: var(--color-text-on-dark);
+  background: transparent;
+  border-bottom-color: var(--color-border-on-dark);
+}
+
+.header--overlay:not(.header--scrolled) .header__logo-text {
+  color: var(--color-text-on-dark);
+}
+
+.header--overlay:not(.header--scrolled) .header__logo-caption {
+  color: var(--color-text-on-dark-muted);
+}
+
+.header--overlay:not(.header--scrolled) .header__nav {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.header--overlay:not(.header--scrolled) .header__link:hover {
+  color: var(--color-ink);
+  background: var(--color-bg);
+}
+
+.header--overlay:not(.header--scrolled) .icon-button,
+.header--overlay:not(.header--scrolled) .header__login {
+  color: var(--color-text-on-dark);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-border-on-dark);
+}
+
+.header--overlay:not(.header--scrolled) .icon-button:hover,
+.header--overlay:not(.header--scrolled) .header__login:hover {
+  border-color: var(--color-text-on-dark);
+}
+
+/* Два класса в селекторе: иначе .search из search.css, подключённый позже, показал бы строку сразу. */
+.header--overlay .header__search {
+  display: none;
+}
+
+.header--overlay.header--scrolled .header__nav {
+  display: none;
+}
+
+.header--overlay.header--scrolled .header__search {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .header--overlay.header--scrolled .header__tool,
+  .header--overlay.header--scrolled .header__login {
+    display: none;
+  }
+}
