@@ -64,6 +64,7 @@
 
 html {
   scroll-behavior: smooth;
+  interpolate-size: allow-keywords;
 }
 
 /* Якорь не уезжает под закреплённую шапку. */

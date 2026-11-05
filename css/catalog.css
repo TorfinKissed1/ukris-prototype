@@ -2,7 +2,7 @@
    Фильтры стоят панелью над выдачей, как поиск на главной. На планшете и телефоне
    та же форма открывается на весь экран по ссылке #filters (через :target, без скриптов). */
 .catalog {
-  padding: var(--space-xl) 0 0;
+  padding: var(--space-xl) 0 var(--space-section);
 }
 
 .catalog__head {
