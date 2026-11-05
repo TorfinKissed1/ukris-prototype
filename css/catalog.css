@@ -1,0 +1,350 @@
+/* ============ catalog ============ */
+.catalog {
+  padding: var(--space-xl) 0 0;
+}
+
+.catalog__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.catalog__layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.catalog__filters {
+  flex: 1 1 300px;
+  max-width: 320px;
+}
+
+.catalog__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  flex: 999 1 600px;
+  min-width: 0;
+}
+
+.catalog__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.catalog__count {
+  font-weight: 600;
+}
+
+.catalog__filters-toggle {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .catalog__filters {
+    display: none;
+  }
+
+  .catalog__filters-toggle {
+    display: inline-flex;
+  }
+}
+
+/* ============ filters ============ */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  padding: var(--space-l);
+  background: var(--color-paper);
+  border-radius: var(--radius-l);
+}
+
+.filters__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.filters__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.filters__close {
+  display: none;
+}
+
+.filters__range {
+  display: flex;
+  gap: var(--space-s);
+}
+
+.filters__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+/* На планшете и телефоне фильтры открываются поверх страницы через :target, без скриптов. */
+@media (max-width: 1024px) {
+  .catalog__filters:target {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    max-width: none;
+    overflow-y: auto;
+    background: var(--color-paper);
+  }
+
+  .catalog__filters:target .filters {
+    min-height: 100%;
+    border-radius: 0;
+  }
+
+  .filters__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ============ sort ============ */
+.sort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-m);
+  font-size: var(--fs-small);
+}
+
+.sort__label {
+  color: var(--color-text-muted);
+}
+
+.sort__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.sort__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 var(--space-m);
+  font-weight: 500;
+  border-radius: var(--radius-round);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.sort__link:hover {
+  background: var(--color-paper);
+}
+
+.sort__link--active {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+}
+
+.sort__link--active:hover {
+  background: var(--color-brand-hover);
+}
+
+/* ============ chips (выбранные фильтры) ============ */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.chips__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 var(--space-s) 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+  transition: border-color var(--transition);
+}
+
+.chips__item:hover {
+  border-color: var(--color-brand);
+}
+
+.chips__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.chips__reset {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  text-decoration: underline;
+}
+
+/* ============ pagination ============ */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  padding-top: var(--space-l);
+}
+
+.pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  transition: border-color var(--transition);
+}
+
+.pagination__link:hover {
+  border-color: var(--color-brand);
+}
+
+.pagination__link--current {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.pagination__link--disabled {
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  opacity: 0.5;
+}
+
+/* ============ empty ============ */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-m);
+  padding: var(--space-2xl) var(--space-xl);
+  background: var(--color-paper);
+  border-radius: var(--radius-l);
+}
+
+.empty__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.empty__text {
+  max-width: 560px;
+  color: var(--color-text-muted);
+}
+
+.empty__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-top: var(--space-s);
+}
+
+@media (max-width: 768px) {
+  .empty {
+    padding: var(--space-xl) var(--space-l);
+  }
+}
+
+/* ============ modal (открывается через :target) ============ */
+.modal {
+  display: none;
+}
+
+.modal:target {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  padding: var(--space-xl) var(--gutter);
+  overflow-y: auto;
+  background: rgba(6, 43, 48, 0.6);
+}
+
+.modal__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  width: 100%;
+  max-width: 640px;
+  padding: var(--space-xl);
+  background: var(--color-bg);
+  border-radius: var(--radius-l);
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.modal__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.modal__text {
+  margin-top: var(--space-s);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.modal__close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-round);
+  transition: background-color var(--transition);
+}
+
+.modal__close:hover {
+  background: var(--color-paper);
+}
+
+@media (max-width: 480px) {
+  .modal:target {
+    padding: 0;
+  }
+
+  .modal__dialog {
+    min-height: 100%;
+    padding: var(--space-l) var(--gutter);
+    border-radius: 0;
+  }
+}

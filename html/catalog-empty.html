@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Объекты не найдены - каталог УКРИС</title>
+  <meta name="description" content="Новостройки в ОАЭ: цены от застройщиков, сроки сдачи, условия оплаты. Фильтры по городу, бюджету и типу недвижимости.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/blocks.css">
+  <link rel="stylesheet" href="../css/catalog.css">
+</head>
+<body>
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"></path></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"></path></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.5M21 4l-3.5 16-8.5-6.5M21 4 9 13.5V19l3-3.5"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20a8 8 0 0 1 16 0"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"></path></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-image" src="../img/logo.webp" alt="" width="44" height="44">
+        <span class="header__logo-text">УКРИС<span class="header__logo-caption">Новостройки мира</span></span>
+      </a>
+      <nav class="header__nav" id="menu" aria-label="Основное меню">
+        <a class="header__close" href="#" aria-label="Закрыть меню"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        <a class="header__link header__link--active" href="catalog.html" aria-current="page">Каталог</a>
+        <a class="header__link" href="about.html">О проекте</a>
+        <a class="header__link" href="about.html#kontakty">Контакты</a>
+      </nav>
+      <div class="header__tools">
+        <a class="header__tool header__telegram" href="https://t.me/davydova_ps">
+          <svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg><span class="header__tool-label">Telegram</span>
+        </a>
+        <a class="header__tool" href="compare.html">
+          <svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="header__tool-label">Сравнение</span><span class="header__count" aria-label="объектов в сравнении: 2">2</span>
+        </a>
+        <a class="header__tool" href="cabinet.html#izbrannoe">
+          <svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="header__tool-label">Избранное</span><span class="header__count" aria-label="объектов в избранном: 1">1</span>
+        </a>
+        <a class="header__tool" href="cabinet.html">
+          <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg><span class="header__tool-label">Войти</span>
+        </a>
+        <a class="header__burger" href="#menu" aria-label="Открыть меню"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="catalog">
+    <div class="container">
+      <p class="eyebrow">Каталог</p>
+      <h1 class="catalog__title">Новостройки в Таиланде</h1>
+
+      <div class="catalog__layout">
+        <aside class="catalog__filters" id="filters" aria-label="Фильтры">
+          <form class="filters" action="catalog.html" method="get">
+            <div class="filters__head">
+              <h2 class="filters__title">Фильтры</h2>
+              <a class="filters__close" href="#" aria-label="Закрыть фильтры"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            </div>
+            <div class="field">
+              <label class="field__label" for="filter-country">Страна</label>
+              <select class="field__control" id="filter-country" name="country">
+                <option value="">Все страны</option>
+                <option value="oae">ОАЭ</option>
+                <option value="turkey">Турция</option>
+                <option value="thailand" selected>Таиланд</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="filter-city">Город</label>
+              <select class="field__control" id="filter-city" name="city">
+                <option value="">Все города</option>
+                <option value="phuket" selected>Пхукет</option>
+                <option value="pattaya">Паттайя</option>
+              </select>
+              <p class="field__hint">Список городов зависит от страны</p>
+            </div>
+            <fieldset class="field">
+              <legend class="field__label">Бюджет, $</legend>
+              <div class="filters__range">
+                <label class="visually-hidden" for="filter-budget-min">Бюджет от, $</label>
+                <input class="field__control" id="filter-budget-min" type="number" name="budget_min" min="0" step="10000" inputmode="numeric" placeholder="от">
+                <label class="visually-hidden" for="filter-budget-max">Бюджет до, $</label>
+                <input class="field__control" id="filter-budget-max" type="number" name="budget_max" min="0" step="10000" inputmode="numeric" placeholder="до" value="100000">
+              </div>
+              <p class="field__hint">Цены в других валютах пересчитаны в доллары</p>
+            </fieldset>
+            <div class="field">
+              <label class="field__label" for="filter-type">Тип недвижимости</label>
+              <select class="field__control" id="filter-type" name="type">
+                <option value="">Любой</option>
+                <option value="apartments">Апартаменты</option>
+                <option value="flats">Квартиры</option>
+                <option value="villas" selected>Виллы</option>
+                <option value="townhouses">Таунхаусы</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="filter-keys">Срок передачи ключей</label>
+              <select class="field__control" id="filter-keys" name="keys">
+                <option value="" selected>Любой</option>
+                <option value="done">Сдан</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+              </select>
+            </div>
+            <div class="filters__actions">
+              <button class="button button--primary button--block" type="submit">Показать объекты</button>
+              <a class="button button--outline button--block" href="catalog.html">Сбросить фильтры</a>
+            </div>
+          </form>
+        </aside>
+
+        <div class="catalog__content">
+          <div class="catalog__toolbar">
+            <p class="catalog__count">Найдено 0 объектов</p>
+            <a class="button button--outline catalog__filters-toggle" href="#filters"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg>Фильтры · 4</a>
+          </div>
+
+          <div class="chips">
+            <a class="chips__item" href="catalog.html?city=phuket&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Таиланд">Таиланд<svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Пхукет">Пхукет<svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;type=villas" aria-label="Убрать фильтр: бюджет до 100 000 $">До 100 000 $<svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_max=100000" aria-label="Убрать фильтр: виллы">Виллы<svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+            <a class="chips__reset" href="catalog.html">Сбросить все</a>
+          </div>
+
+          <section class="empty" aria-labelledby="empty-title">
+            <h2 class="empty__title" id="empty-title">Объекты не найдены</h2>
+            <p class="empty__text">По этим условиям в каталоге пока нет проектов. Измените фильтры или оставьте заявку: подберём варианты под ваш бюджет вручную.</p>
+            <div class="empty__actions">
+              <a class="button button--primary" href="#podbor-modal">Оставить заявку на подбор</a>
+              <a class="button button--outline" href="catalog.html">Сбросить фильтры</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="podbor-modal" role="dialog" aria-modal="true" aria-labelledby="podbor-modal-title">
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <div>
+          <h2 class="modal__title" id="podbor-modal-title">Получить подборку</h2>
+          <p class="modal__text">Ответьте на несколько вопросов, и мы пришлём проекты, которые подходят по бюджету и цели.</p>
+        </div>
+        <a class="modal__close" href="#" aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <form class="form" action="#podbor-modal" method="post">
+        <div class="trap" aria-hidden="true">
+          <label for="modal-company-website">Сайт компании</label>
+          <input id="modal-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field form__field">
+          <label class="field__label" for="modal-country">Страна</label>
+          <select class="field__control" id="modal-country" name="country">
+            <option value="">Пока не определился</option>
+            <option value="oae">ОАЭ</option>
+            <option value="turkey">Турция</option>
+            <option value="thailand" selected>Таиланд</option>
+          </select>
+        </div>
+        <div class="field form__field">
+          <label class="field__label" for="modal-budget">Бюджет в $ <span class="field__optional">(необязательно)</span></label>
+          <input class="field__control" id="modal-budget" type="number" name="budget_usd" min="0" step="1000" inputmode="numeric" value="100000">
+        </div>
+        <div class="field form__field form__field--wide">
+          <label class="field__label" for="modal-goal">Цель покупки</label>
+          <select class="field__control" id="modal-goal" name="goal">
+            <option value="rent">Сдавать в аренду</option>
+            <option value="resale">Перепродать после сдачи</option>
+            <option value="living">Жить самому</option>
+            <option value="capital">Сохранить капитал</option>
+          </select>
+        </div>
+        <fieldset class="field form__field form__field--wide">
+          <legend class="field__label">Как с вами связаться</legend>
+          <div class="field__options">
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
+          </div>
+        </fieldset>
+        <div class="field field--error form__field form__field--wide">
+          <label class="field__label" for="modal-contact">Контакт</label>
+          <input class="field__control" id="modal-contact" type="text" name="contact" required aria-invalid="true" aria-describedby="modal-contact-error" placeholder="@username, номер или почта">
+          <p class="field__error" id="modal-contact-error">Укажите контакт для связи</p>
+        </div>
+        <div class="field form__field">
+          <label class="field__label" for="modal-name">Имя <span class="field__optional">(необязательно)</span></label>
+          <input class="field__control" id="modal-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field form__field form__field--wide">
+          <label class="field__label" for="modal-comment">Комментарий <span class="field__optional">(необязательно)</span></label>
+          <textarea class="field__control field__control--textarea" id="modal-comment" name="comment" rows="3"></textarea>
+        </div>
+        <div class="field form__field form__field--wide">
+          <label class="field__check">
+            <input class="field__check-input" type="checkbox" name="consent" required>
+            <span>Даю согласие на обработку персональных данных по <a class="field__check-link" href="privacy.html">политике конфиденциальности</a></span>
+          </label>
+        </div>
+        <button class="button button--primary form__submit" type="submit">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__about">
+          <a class="footer__logo" href="index.html"><img class="footer__logo-image" src="../img/logo.webp" alt="" width="44" height="44">УКРИС</a>
+          <p>Каталог международных новостроек для инвесторов. Проекты отбирает и описывает редакция портала.</p>
+        </div>
+        <nav class="footer__column" aria-label="Разделы">
+          <p class="footer__heading">Разделы</p>
+          <a class="footer__link" href="catalog.html">Каталог</a>
+          <a class="footer__link" href="about.html">О проекте</a>
+          <a class="footer__link" href="about.html#kontakty">Контакты</a>
+        </nav>
+        <nav class="footer__column" aria-label="Направления">
+          <p class="footer__heading">Направления</p>
+          <a class="footer__link" href="catalog.html?country=oae">ОАЭ</a>
+          <a class="footer__link" href="catalog.html?country=turkey">Турция</a>
+          <a class="footer__link" href="catalog.html?country=thailand">Таиланд</a>
+        </nav>
+        <nav class="footer__column" aria-label="Документы">
+          <p class="footer__heading">Документы</p>
+          <a class="footer__link" href="privacy.html">Политика конфиденциальности</a>
+          <a class="footer__link" href="consent.html">Согласие на обработку данных</a>
+          <a class="footer__link" href="disclaimer.html">Справочная оговорка</a>
+        </nav>
+        <div class="footer__column">
+          <p class="footer__heading">Контакты</p>
+          <a class="footer__link" href="https://t.me/davydova_ps">Telegram: @davydova_ps</a>
+          <a class="footer__link" href="tel:+79252980416">+7 (925) 298-04-16</a>
+          <a class="footer__link" href="mailto:ukris@ukris.online">ukris@ukris.online</a>
+          <p>г. Москва, Цветной бульвар, 15</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">Сведения об объектах носят справочный характер и не являются публичной офертой. Цены в других валютах пересчитаны в доллары по курсу на указанную дату и могут отличаться от цены застройщика.</p>
+        <p class="footer__legal">© 2026 УКРИС<br>ООО «Управление капитального ремонта и строительства»<br>ИНН 7720499594, ОГРН 1207700128624</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
