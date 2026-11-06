@@ -1,0 +1,73 @@
+// Панель «Страницы» для показа прототипа: ссылки на все страницы, текущая отмечена.
+// На сайт не переносится, поэтому строится скриптом из одного списка, а не копией в каждой странице.
+
+const PROTO_PAGES = [
+  ['index.html', 'Главная'],
+  ['catalog.html', 'Каталог'],
+  ['catalog-empty.html', 'Каталог: пусто'],
+  ['object.html', 'Объект'],
+  ['compare.html', 'Сравнение'],
+  ['compare-few.html', 'Сравнение: один объект'],
+  ['compare-empty.html', 'Сравнение: пусто'],
+  ['login.html', 'Вход'],
+  ['register.html', 'Регистрация'],
+  ['cabinet.html', 'Кабинет'],
+  ['about.html', 'О проекте'],
+  ['privacy.html', 'Политика'],
+  ['consent.html', 'Согласие'],
+  ['disclaimer.html', 'Оговорка'],
+  ['404.html', '404'],
+];
+
+function buildProtoNav() {
+  const currentFile = location.pathname.split('/').pop() || 'index.html';
+
+  const root = document.createElement('div');
+  root.className = 'proto-nav';
+
+  const toggle = document.createElement('button');
+  toggle.className = 'proto-nav__toggle';
+  toggle.type = 'button';
+  toggle.textContent = 'Страницы';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'proto-nav-panel');
+
+  const panel = document.createElement('nav');
+  panel.className = 'proto-nav__panel';
+  panel.id = 'proto-nav-panel';
+  panel.setAttribute('aria-label', 'Страницы прототипа');
+
+  for (const [file, title] of PROTO_PAGES) {
+    const link = document.createElement('a');
+    link.className = 'proto-nav__link';
+    link.href = file;
+    link.textContent = title;
+    if (file === currentFile) {
+      link.classList.add('proto-nav__link--current');
+      link.setAttribute('aria-current', 'page');
+    }
+    panel.append(link);
+  }
+
+  root.append(toggle, panel);
+  document.body.append(root);
+
+  const setOpen = (open) => {
+    root.classList.toggle('proto-nav--open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+
+  toggle.addEventListener('click', () => setOpen(!root.classList.contains('proto-nav--open')));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!root.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+}
+
+buildProtoNav();

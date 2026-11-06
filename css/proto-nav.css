@@ -1,0 +1,104 @@
+/* ============ proto-nav (переход между страницами прототипа) ============
+   Только для показа прототипа: панель строит js/proto-nav.js, на сайт она не переносится.
+   Закрытая панель уезжает за правый край, остаётся видна вкладка «Страницы». */
+.proto-nav {
+  --proto-nav-tab: 36px;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: calc(var(--z-header) + 1);
+  display: flex;
+  align-items: flex-start;
+  max-width: calc(100vw - var(--space-m));
+  transform: translate(calc(100% - var(--proto-nav-tab)), -50%);
+  transition: transform var(--transition);
+}
+
+.proto-nav--open {
+  transform: translate(0, -50%);
+}
+
+.proto-nav__toggle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--proto-nav-tab);
+  padding: var(--space-m) 0;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border: 0;
+  /* Текст читается снизу вверх за счёт поворота, поэтому скругления заданы справа: после поворота они слева. */
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: background-color var(--transition);
+}
+
+.proto-nav__toggle:hover {
+  background: var(--color-brand-hover);
+}
+
+.proto-nav__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-s);
+  width: 300px;
+  max-width: calc(100vw - var(--space-m) - var(--proto-nav-tab));
+  max-height: calc(100vh - var(--space-xl));
+  padding: var(--space-m);
+  overflow-y: auto;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-right: 0;
+  border-radius: 0 0 0 var(--radius-m);
+  /* Закрытая панель прячется после выезда: иначе она видна полоской в месте под полосу прокрутки
+     (scrollbar-gutter в base.css), и её ссылки ловят Tab. */
+  visibility: hidden;
+  transition: visibility var(--transition);
+}
+
+.proto-nav--open .proto-nav__panel {
+  visibility: visible;
+}
+
+.proto-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 var(--space-m);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+  transition: border-color var(--transition), color var(--transition), background-color var(--transition);
+}
+
+.proto-nav__link:hover {
+  border-color: var(--color-brand);
+}
+
+.proto-nav__link--current {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+@media (max-width: 768px) {
+  .proto-nav {
+    --proto-nav-tab: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-nav {
+    transition: none;
+  }
+}
