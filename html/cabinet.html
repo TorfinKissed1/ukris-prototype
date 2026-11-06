@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Личный кабинет - УКРИС</title>
+  <meta name="description" content="Избранное, сравнение, мои заявки и профиль.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/blocks.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <link rel="stylesheet" href="../css/picker.css">
+  <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/catalog.css">
+  <link rel="stylesheet" href="../css/cabinet.css">
+  <script src="../js/picker.js" defer></script>
+  <script src="../js/to-top.js" defer></script>
+  <script src="../js/sheets.js" defer></script>
+  <script src="../js/swipe.js" defer></script>
+</head>
+<body>
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"></path></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12l14 0M13 18l6 -6M13 6l6 6"></path></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M5 12l14 0M5 12l6 6M5 12l6 -6"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6l16 0M4 12l16 0M4 18l16 0"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6l-12 12M6 6l12 12"></path></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M12 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 6l8 0M16 6l4 0M6 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 12l2 0M10 12l10 0M15 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M4 18l11 0M19 18l1 0"></path></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6"></path></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M21 21l-6 -6"></path></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5l0 14M5 12l14 0"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10"></path></symbol>
+    <symbol id="i-world" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18"></path></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21l18 0M5 21v-14l8 -4v18M19 21v-10l-6 -4M9 9l0 .01M9 12l0 .01M9 15l0 .01M9 18l0 .01"></path></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14M18 11l-6 -6M6 11l6 -6"></path></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10zM3 7l9 6l9 -6"></path></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zM16 3v4M8 3v4M4 11h16"></path></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6l11 0M9 12l11 0M9 18l11 0M5 6l0 .01M5 12l0 .01M5 18l0 .01"></path></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2M9 12h12l-3 -3M18 15l3 -3"></path></symbol>
+  </svg>
+
+  <div class="header-slot">
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-image" src="../img/logo.webp" alt="" width="48" height="48">
+        <span class="header__logo-text">УКРИС<span class="header__logo-caption">Новостройки мира</span></span>
+      </a>
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="catalog.html">Каталог</a>
+        <a class="header__link" href="about.html">О проекте</a>
+        <a class="header__link" href="about.html#kontakty">Контакты</a>
+      </nav>
+      <div class="header__tools">
+        <a class="icon-button header__tool header__telegram" href="https://t.me/davydova_ps" aria-label="Написать в Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg></a>
+        <a class="icon-button header__tool" href="compare.html" aria-label="Сравнение, объектов: 3"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="header__badge" aria-hidden="true">3</span></a>
+        <a class="icon-button header__tool" href="cabinet.html#izbrannoe" aria-label="Избранное, объектов: 3"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="header__badge" aria-hidden="true">3</span></a>
+        <a class="button button--outline header__login" href="cabinet.html" aria-label="Кабинет" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg><span class="header__login-text">Кабинет</span></a>
+      </div>
+    </div>
+  </header>
+  </div>
+
+  <div class="quickbar quickbar--sticky" data-quickbar>
+    <form class="container quickbar__form" action="catalog.html" method="get" role="search" aria-label="Поиск объектов">
+      <label class="quickbar__field"><svg class="icon quickbar__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="quickbar__input" type="search" name="q" placeholder="Поиск объектов" enterkeyhint="search" autocomplete="off"><button class="quickbar__clear" type="button" aria-label="Очистить поиск"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></label>
+      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters" aria-label="Фильтры"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span></a>
+    </form>
+  </div>
+
+  <main class="page">
+    <div class="container">
+      <nav class="crumbs page__crumbs" aria-label="Вы здесь">
+        <ol class="crumbs__list">
+          <li class="crumbs__item"><a class="crumbs__link" href="index.html">Главная</a></li>
+          <li class="crumbs__item"><span class="crumbs__current" aria-current="page">Личный кабинет</span></li>
+        </ol>
+      </nav>
+
+      <div class="page__head">
+        <h1 class="page__title">Личный кабинет</h1>
+        <p class="page__lead">Вы вошли как anna.k@example.com</p>
+      </div>
+
+      <div class="cabinet">
+        <nav class="cabinet__nav" aria-label="Разделы кабинета">
+          <a class="cabinet__link" href="#izbrannoe"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-heart"></use></svg>Избранное<span class="cabinet__count">3</span></a>
+          <a class="cabinet__link" href="#sravnenie"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-compare"></use></svg>Сравнение<span class="cabinet__count">3</span></a>
+          <a class="cabinet__link" href="#zayavki"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-list"></use></svg>Мои заявки<span class="cabinet__count">3</span></a>
+          <a class="cabinet__link" href="#profil"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-user"></use></svg>Профиль</a>
+          <a class="cabinet__link cabinet__link--exit" href="login.html"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-logout"></use></svg>Выйти</a>
+        </nav>
+
+        <div class="cabinet__content">
+          <section class="cabinet__section" id="izbrannoe" aria-labelledby="izbrannoe-title">
+            <div class="cabinet__head">
+              <h2 class="cabinet__title" id="izbrannoe-title">Избранное</h2>
+              <a class="cabinet__more" href="catalog.html">Перейти в каталог</a>
+            </div>
+            <div class="projects projects--narrow">
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img class="project-card__image" src="../img/dubai-pool.webp" alt="Marina Crest Residence, Дубай" width="1200" height="750">
+                  <div class="project-card__badges">
+                    <span class="project-card__badge">Ключи: 2027</span>
+                    <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Убрать из избранного" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <div>
+                    <p class="project-card__place">ОАЭ, Дубай</p>
+                    <h3 class="project-card__title"><a class="project-card__link" href="object.html">Marina Crest Residence</a></h3>
+                  </div>
+                  <dl class="project-card__facts">
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value">Апартаменты</dd></div>
+                  </dl>
+                  <div class="project-card__footer">
+                    <p class="project-card__price"><span class="project-card__price-value">от 1 506 000 AED</span><span class="project-card__price-note">≈ 410 000 $</span></p>
+                    <button class="button button--outline cabinet__remove" type="button" aria-label="Убрать из избранного: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img class="project-card__image" src="../img/villa-palms.webp" alt="Palm Garden Villas, Абу-Даби" width="1200" height="750">
+                  <div class="project-card__badges">
+                    <span class="project-card__badge">Ключи: 2028</span>
+                    <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Убрать из избранного" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <div>
+                    <p class="project-card__place">ОАЭ, Абу-Даби</p>
+                    <h3 class="project-card__title"><a class="project-card__link" href="object.html">Palm Garden Villas</a></h3>
+                  </div>
+                  <dl class="project-card__facts">
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value">Виллы</dd></div>
+                  </dl>
+                  <div class="project-card__footer">
+                    <p class="project-card__price"><span class="project-card__price-value">от 4 200 000 AED</span><span class="project-card__price-note">≈ 1 144 000 $</span></p>
+                    <button class="button button--outline cabinet__remove" type="button" aria-label="Убрать из избранного: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img class="project-card__image" src="../img/interior-sea.webp" alt="Saadiyat Shore, Абу-Даби" width="1200" height="750">
+                  <div class="project-card__badges">
+                    <span class="project-card__badge">Ключи: 2027</span>
+                    <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Убрать из избранного" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <div>
+                    <p class="project-card__place">ОАЭ, Абу-Даби</p>
+                    <h3 class="project-card__title"><a class="project-card__link" href="object.html">Saadiyat Shore</a></h3>
+                  </div>
+                  <dl class="project-card__facts">
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value">Апартаменты</dd></div>
+                  </dl>
+                  <div class="project-card__footer">
+                    <p class="project-card__price"><span class="project-card__price-value">от 2 100 000 AED</span><span class="project-card__price-note">≈ 572 000 $</span></p>
+                    <button class="button button--outline cabinet__remove" type="button" aria-label="Убрать из избранного: Saadiyat Shore"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="cabinet__section" id="sravnenie" aria-labelledby="sravnenie-title">
+            <div class="cabinet__head">
+              <h2 class="cabinet__title" id="sravnenie-title">Сравнение</h2>
+              <a class="cabinet__more" href="compare.html">Открыть сравнение</a>
+            </div>
+            <ul class="saved">
+              <li class="saved__item">
+                <img class="saved__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
+                <div class="saved__text"><p class="saved__place">ОАЭ, Дубай</p><a class="saved__name" href="object.html">Marina Crest Residence</a></div>
+              </li>
+              <li class="saved__item">
+                <img class="saved__image" src="../img/villa-palms.webp" alt="" width="1200" height="750">
+                <div class="saved__text"><p class="saved__place">ОАЭ, Абу-Даби</p><a class="saved__name" href="object.html">Palm Garden Villas</a></div>
+              </li>
+              <li class="saved__item">
+                <img class="saved__image" src="../img/interior-city.webp" alt="" width="960" height="600">
+                <div class="saved__text"><p class="saved__place">ОАЭ, Дубай</p><a class="saved__name" href="object.html">Azure Heights</a></div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="cabinet__section" id="zayavki" aria-labelledby="zayavki-title">
+            <div class="cabinet__head">
+              <h2 class="cabinet__title" id="zayavki-title">Мои заявки</h2>
+            </div>
+            <table class="requests">
+              <thead class="requests__head">
+                <tr>
+                  <th class="requests__head-cell" scope="col">Номер</th>
+                  <th class="requests__head-cell" scope="col">Объект или подбор</th>
+                  <th class="requests__head-cell" scope="col">Дата</th>
+                  <th class="requests__head-cell" scope="col">Статус</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="requests__row">
+                  <td class="requests__cell requests__cell--number">№ 1052</td>
+                  <td class="requests__cell requests__cell--subject"><a class="requests__link" href="object.html">Azure Heights</a></td>
+                  <td class="requests__cell requests__cell--date">05.11.2026</td>
+                  <td class="requests__cell requests__cell--status"><span class="requests__status">Отправлена</span></td>
+                </tr>
+                <tr class="requests__row">
+                  <td class="requests__cell requests__cell--number">№ 1048</td>
+                  <td class="requests__cell requests__cell--subject">Подбор: ОАЭ, до 300 000 $, сдавать в аренду</td>
+                  <td class="requests__cell requests__cell--date">03.11.2026</td>
+                  <td class="requests__cell requests__cell--status"><span class="requests__status requests__status--work">В работе</span></td>
+                </tr>
+                <tr class="requests__row">
+                  <td class="requests__cell requests__cell--number">№ 1017</td>
+                  <td class="requests__cell requests__cell--subject"><a class="requests__link" href="object.html">Marina Crest Residence</a></td>
+                  <td class="requests__cell requests__cell--date">21.10.2026</td>
+                  <td class="requests__cell requests__cell--status"><span class="requests__status requests__status--closed">Закрыта</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="cabinet__note">Статус меняет менеджер: когда берёт заявку в работу и когда заканчивает её. Срочный вопрос можно задать в <a class="cabinet__note-link" href="https://t.me/davydova_ps">Telegram</a>.</p>
+          </section>
+
+          <section class="cabinet__section" id="profil" aria-labelledby="profil-title">
+            <div class="cabinet__head">
+              <h2 class="cabinet__title" id="profil-title">Профиль</h2>
+            </div>
+            <p class="cabinet__note">Имя и контакт подставляются в формы заявок сами.</p>
+            <form class="form cabinet__profile" action="cabinet.html#profil" method="post">
+              <div class="field form__field">
+                <label class="field__label" for="profile-name">Имя</label>
+                <input class="field__control" id="profile-name" type="text" name="name" autocomplete="name" value="Анна">
+              </div>
+              <div class="field form__field">
+                <span class="field__label">Почта для входа</span>
+                <p class="cabinet__value">anna.k@example.com</p>
+              </div>
+              <fieldset class="field form__field form__field--wide">
+                <legend class="field__label">Как с вами связаться</legend>
+                <div class="field__options">
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
+                </div>
+              </fieldset>
+              <div class="field form__field form__field--wide">
+                <label class="field__label" for="profile-contact">Контакт</label>
+                <input class="field__control" id="profile-contact" type="text" name="contact" value="@anna_k" placeholder="@username, номер или почта">
+              </div>
+              <button class="button button--primary form__submit" type="submit">Сохранить</button>
+            </form>
+
+            <div class="cabinet__danger">
+              <h3 class="cabinet__danger-title">Удаление аккаунта</h3>
+              <p class="cabinet__note">Удалим аккаунт, избранное, список сравнения и данные профиля. Восстановить их будет нельзя.</p>
+              <a class="button button--outline cabinet__delete" href="#delete-account" data-sheet-open="delete-account" aria-haspopup="dialog">Удалить аккаунт</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <dialog class="sheet sheet--window sheet--compact" id="delete-account" aria-labelledby="delete-account-title">
+    <div class="modal">
+      <div class="modal__head">
+        <div>
+          <h2 class="modal__title sheet__title" id="delete-account-title" tabindex="-1">Удалить аккаунт?</h2>
+          <p class="modal__text">Аккаунт, избранное, список сравнения и данные профиля удалятся сразу. Восстановить их будет нельзя.</p>
+        </div>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <form class="confirm" action="index.html" method="post">
+        <button class="button button--danger confirm__button" type="submit">Удалить аккаунт</button>
+        <a class="button button--outline confirm__button" href="#" data-sheet-close>Отмена</a>
+      </form>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__about">
+          <a class="footer__logo" href="index.html"><img class="footer__logo-image" src="../img/logo.webp" alt="" width="44" height="44">УКРИС</a>
+          <p>Каталог международных новостроек для инвесторов. Проекты отбирает и описывает редакция портала.</p>
+        </div>
+        <div class="footer__columns">
+          <nav class="footer__column" aria-label="Документы">
+            <p class="footer__heading">Документы</p>
+            <a class="footer__link" href="privacy.html">Политика конфиденциальности</a>
+            <a class="footer__link" href="consent.html">Согласие на обработку данных</a>
+            <a class="footer__link" href="disclaimer.html">Справочная оговорка</a>
+          </nav>
+          <div class="footer__column">
+            <p class="footer__heading">Контакты</p>
+            <a class="footer__link" href="https://t.me/davydova_ps">Telegram: @davydova_ps</a>
+            <a class="footer__link" href="tel:+79252980416">+7 (925) 298-04-16</a>
+            <a class="footer__link" href="mailto:ukris@ukris.online">ukris@ukris.online</a>
+            <p>г. Москва, Цветной бульвар, 15</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">Сведения об объектах носят справочный характер и не являются публичной офертой. Цены в других валютах пересчитаны в доллары по курсу на указанную дату и могут отличаться от цены застройщика.</p>
+        <p class="footer__legal">© 2026 УКРИС<br>ООО «Управление капитального ремонта и строительства»<br>ИНН 7720499594, ОГРН 1207700128624</p>
+      </div>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Основные разделы">
+    <a class="tabbar__item" href="index.html"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span><span class="tabbar__label">Главная</span></a>
+    <a class="tabbar__item" href="catalog.html"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg></span><span class="tabbar__label">Каталог</span></a>
+    <a class="tabbar__item tabbar__item--active" aria-current="page" href="cabinet.html#izbrannoe"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span class="tabbar__badge" aria-label="объектов: 3">3</span></span><span class="tabbar__label">Избранное</span></a>
+    <a class="tabbar__item" href="compare.html"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="tabbar__badge" aria-label="объектов: 3">3</span></span><span class="tabbar__label">Сравнение</span></a>
+    <a class="tabbar__item" href="#menu" data-sheet-open="menu" aria-haspopup="dialog"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></span><span class="tabbar__label">Меню</span></a>
+  </nav>
+  <dialog class="sheet sheet--bottom" id="menu" aria-labelledby="menu-title">
+    <span class="sheet__grabber" aria-hidden="true"></span>
+    <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2><a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a></div>
+    <ul class="sheet__options">
+      <li><a class="sheet__option" href="cabinet.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-user"></use></svg>Личный кабинет</a></li>
+      <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-world"></use></svg>О проекте</a></li>
+      <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-phone"></use></svg>Контакты</a></li>
+      <li><a class="sheet__option" href="https://t.me/davydova_ps"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a></li>
+    </ul>
+  </dialog>
+  <dialog class="sheet sheet--full" id="filters" aria-labelledby="filters-title">
+    <form class="sheet__form" action="catalog.html" method="get">
+      <div class="sheet__head"><h2 class="sheet__title" id="filters-title" tabindex="-1">Фильтры</h2><a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a></div>
+      <div class="sheet__body">
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-world"></use></svg>
+            <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Любая страна</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Страна</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="" checked><span class="picker__option-text">Любая страна</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae"><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-building"></use></svg>
+            <span class="picker__text"><span class="picker__label">Город</span><span class="picker__value">Любой город</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Город</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="" checked><span class="picker__option-text">Любой город</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="dubai"><span class="picker__option-text">Дубай</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="abu-dhabi"><span class="picker__option-text">Абу-Даби</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="alanya"><span class="picker__option-text">Алания</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="mersin"><span class="picker__option-text">Мерсин</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="phuket"><span class="picker__option-text">Пхукет</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-wallet"></use></svg>
+            <span class="picker__text"><span class="picker__label">Бюджет</span><span class="picker__value">Любой</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Бюджет</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="" checked><span class="picker__option-text">Любой</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="0-200000"><span class="picker__option-text">до 200 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="200000-500000"><span class="picker__option-text">200 000 - 500 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="500000-1000000"><span class="picker__option-text">500 000 - 1 000 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="1000000-"><span class="picker__option-text">от 1 000 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-home"></use></svg>
+            <span class="picker__text"><span class="picker__label">Тип</span><span class="picker__value">Любой тип</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Тип</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="" checked><span class="picker__option-text">Любой тип</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="apartments"><span class="picker__option-text">Апартаменты</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="flats"><span class="picker__option-text">Квартиры</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="villas"><span class="picker__option-text">Виллы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="townhouses"><span class="picker__option-text">Таунхаусы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="sheet__foot">
+        <button class="button button--accent sheet__submit" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>Найти объекты</button>
+      </div>
+    </form>
+  </dialog>
+  <a class="to-top" href="#" aria-label="Наверх"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
+</body>
+</html>

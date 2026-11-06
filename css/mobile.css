@@ -335,6 +335,14 @@ html:has(.sheet[open]) {
       transform: translateY(100%);
     }
   }
+
+  /* Короткое окно (подтверждение) на телефоне занимает только свою высоту, лист снизу. */
+  .sheet--compact {
+    top: auto;
+    height: auto;
+    max-height: 90dvh;
+    border-radius: 20px 20px 0 0;
+  }
 }
 
 /* За ручку и заголовок лист снизу тянут вниз (js/swipe.js): браузер не должен забирать жест

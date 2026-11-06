@@ -1,0 +1,440 @@
+/* Личный кабинет и вход по коду из письма. Окно подтверждения удаления это лист sheet--window
+   из mobile.css с содержимым modal из catalog.css. */
+
+/* ============ auth (вход: почта, потом код) ============ */
+.auth {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  max-width: 520px;
+  margin: var(--space-xl) auto 0;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.auth__back {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: var(--space-s);
+  min-height: 44px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+.auth__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.auth__text {
+  color: var(--color-text-muted);
+}
+
+.auth__email {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.auth__form {
+  margin-top: var(--space-s);
+}
+
+.auth__submit {
+  width: 100%;
+}
+
+.auth__code {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.auth__note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.auth__link {
+  min-height: 44px;
+  padding: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+/* ============ cabinet (раскладка: меню слева, разделы справа) ============ */
+.cabinet {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+
+.cabinet__nav {
+  position: sticky;
+  top: var(--space-l);
+  display: flex;
+  flex: 0 0 260px;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-s);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+}
+
+.cabinet__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 12px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  border-radius: var(--radius-s);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.cabinet__link-icon {
+  color: var(--color-brand);
+}
+
+.cabinet__link--exit {
+  color: var(--color-text-muted);
+}
+
+.cabinet__link--exit .cabinet__link-icon {
+  color: var(--color-text-muted);
+}
+
+.cabinet__count {
+  min-width: 24px;
+  margin-left: auto;
+  padding: 0 6px;
+  font-size: var(--fs-xs);
+  line-height: 24px;
+  text-align: center;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border-radius: var(--radius-round);
+}
+
+.cabinet__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  min-width: 0;
+}
+
+.cabinet__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.cabinet__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-m);
+}
+
+.cabinet__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.cabinet__more,
+.cabinet__note-link {
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+.cabinet__note-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cabinet__note {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* Кнопка карточки в избранном стоит над ссылкой, растянутой на всю карточку. */
+.cabinet__remove {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  min-height: 40px;
+  padding: 0 var(--space-m);
+}
+
+.cabinet__value {
+  display: flex;
+  align-items: center;
+  min-height: var(--control-height);
+  font-weight: 600;
+}
+
+.cabinet__danger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-s);
+  padding: var(--space-l);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+}
+
+.cabinet__danger-title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.cabinet__delete {
+  margin-top: var(--space-s);
+  color: var(--color-error);
+}
+
+/* ============ saved (что лежит в сравнении) ============ */
+.saved {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.saved__item {
+  display: flex;
+  flex: 1 1 260px;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  background: var(--color-paper);
+  border-radius: var(--radius-m);
+}
+
+.saved__image {
+  flex: none;
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--radius-s);
+}
+
+.saved__text {
+  min-width: 0;
+}
+
+.saved__place {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.saved__name {
+  font-size: var(--fs-small);
+  font-weight: 700;
+  transition: color var(--transition);
+}
+
+/* ============ requests (мои заявки) ============ */
+.requests {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.requests__head-cell {
+  padding: var(--space-s) var(--space-m);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.requests__cell {
+  padding: var(--space-m);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.requests__cell--number,
+.requests__cell--date {
+  white-space: nowrap;
+}
+
+.requests__cell--number {
+  font-weight: 700;
+}
+
+.requests__link {
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+/* Статус назван словом, цвет только помогает отличить его глазом. */
+.requests__status {
+  display: inline-flex;
+  padding: 4px 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--color-paper);
+  border: 1px solid transparent;
+  border-radius: var(--radius-round);
+}
+
+.requests__status--work {
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+}
+
+.requests__status--closed {
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+/* ============ confirm (кнопки окна подтверждения) ============ */
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.confirm__button {
+  flex: 1 1 200px;
+}
+
+.button--danger {
+  color: var(--color-text-on-dark);
+  background: var(--color-error);
+}
+
+@media (hover: hover) {
+  .auth__back:hover,
+  .auth__link:hover,
+  .cabinet__more:hover,
+  .cabinet__note-link:hover,
+  .saved__name:hover,
+  .requests__link:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .cabinet__link:hover {
+    background: var(--color-paper);
+  }
+
+  .cabinet__delete:hover {
+    border-color: var(--color-error);
+  }
+
+  .button--danger:hover {
+    background: color-mix(in srgb, var(--color-error) 85%, var(--color-ink));
+  }
+}
+
+/* До 1024 px меню кабинета становится строкой кнопок, которая листается вбок внутри себя. */
+@media (max-width: 1024px) {
+  .cabinet {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-l);
+  }
+
+  .cabinet__nav {
+    position: static;
+    flex: none;
+    flex-direction: row;
+    gap: var(--space-s);
+    overflow-x: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    scrollbar-width: none;
+  }
+
+  .cabinet__link {
+    flex: none;
+    min-height: 44px;
+    padding: 0 var(--space-m);
+    white-space: nowrap;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-round);
+  }
+
+  .cabinet__count {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth {
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .auth__title,
+  .cabinet__title {
+    font-size: 24px;
+  }
+
+  /* Заявка карточкой: номер и статус в первой строке, ниже объект и дата. */
+  .requests__head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .requests__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px var(--space-m);
+    padding: var(--space-m) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .requests__cell {
+    padding: 0;
+    border: 0;
+  }
+
+  .requests__cell--subject {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .requests__cell--date {
+    order: 4;
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+  }
+
+  .requests__cell--status {
+    order: 2;
+  }
+
+  .cabinet__danger {
+    padding: var(--space-m);
+  }
+}
