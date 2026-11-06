@@ -13,6 +13,10 @@ python -m http.server 8766 --bind 127.0.0.1
 
 Затем http://127.0.0.1:8766/html/index.html. Через `file://` страницы тоже открываются.
 
+Опубликован через GitHub Pages из ветки `main`: https://torfinkissed1.github.io/ukris-prototype/ (корневой
+`index.html` сразу переводит на `html/index.html`, `.nojekyll` отключает обработку файлов на стороне GitHub).
+Каждый пуш в `main` обновляет сайт за минуту-две.
+
 ## Страницы
 
 | Файл | Что показывает |
