@@ -1,5 +1,5 @@
 /* ============ lead-form ============
-   Фото во всю карточку, слева на затемнении текст, справа белая карточка с полями. */
+   Фото во всю карточку: сверху на затемнении текст, под ним белая карточка с полями на всю ширину. */
 .lead-form {
   position: relative;
   overflow: hidden;
@@ -18,39 +18,51 @@
 .lead-form__body {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-xl) var(--space-2xl);
+  flex-direction: column;
+  gap: var(--space-xl);
   padding: var(--space-2xl);
-  background: linear-gradient(90deg, rgba(6, 43, 48, 0.88) 0%, rgba(6, 43, 48, 0.6) 45%, rgba(6, 43, 48, 0.15) 100%);
+  background: linear-gradient(180deg, rgba(6, 43, 48, 0.85) 0%, rgba(6, 43, 48, 0.55) 60%, rgba(6, 43, 48, 0.35) 100%);
 }
 
 .lead-form__intro {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-m);
-  flex: 1 1 360px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-l) var(--space-2xl);
   color: var(--color-text-on-dark);
 }
 
+.lead-form__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-m);
+  flex: 1 1 420px;
+  max-width: 640px;
+}
+
 .lead-form__title {
-  max-width: 480px;
   font-size: 40px;
   font-weight: 700;
   line-height: var(--lh-tight);
 }
 
 .lead-form__lead {
-  max-width: 460px;
   color: var(--color-text-on-dark-muted);
+}
+
+.lead-form__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-m);
 }
 
 .lead-form__points {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin: var(--space-s) 0;
 }
 
 .lead-form__point {
@@ -79,10 +91,6 @@
 }
 
 .lead-form__form {
-  flex: 1 1 520px;
-  min-width: 0;
-  max-width: 600px;
-  margin-left: auto;
   padding: var(--space-xl);
   background: var(--color-bg);
   border-radius: var(--radius-l);
@@ -94,14 +102,15 @@
   font-weight: 700;
 }
 
+/* Согласие и кнопка в одной строке: согласие занимает остаток ширины. */
+.lead-form__consent {
+  flex: 1 1 400px;
+  justify-content: center;
+}
+
 @media (max-width: 1024px) {
   .lead-form__title {
     font-size: var(--fs-h2);
-  }
-
-  .lead-form__form {
-    max-width: none;
-    margin-left: 0;
   }
 }
 
@@ -111,8 +120,8 @@
   }
 
   .lead-form__body {
+    gap: var(--space-l);
     padding: var(--space-l) var(--space-m) var(--space-m);
-    background: linear-gradient(180deg, rgba(6, 43, 48, 0.9) 0%, rgba(6, 43, 48, 0.7) 50%, rgba(6, 43, 48, 0.5) 100%);
   }
 
   .lead-form__form {
@@ -130,7 +139,7 @@
 }
 
 .form__field {
-  flex: 1 1 220px;
+  flex: 1 1 300px;
 }
 
 .form__field--wide {

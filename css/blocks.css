@@ -113,13 +113,6 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-l);
-  transition: transform 0.3s ease;
-}
-
-@media (hover: hover) and (min-width: 1025px) {
-  .project-card:hover {
-    transform: scale(1.02);
-  }
 }
 
 .project-card__media {

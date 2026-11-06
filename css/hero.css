@@ -26,10 +26,11 @@
   background: linear-gradient(180deg, rgba(6, 43, 48, 0.8) 0%, rgba(6, 43, 48, 0.45) 40%, rgba(6, 43, 48, 0.15) 62%, var(--color-overlay) 100%);
 }
 
+/* Заголовок и панель поиска стоят одной группой по центру экрана, без пустоты между ними. */
 .hero__inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--space-xl);
 }
 

@@ -440,14 +440,16 @@
           <img class="lead-form__image" src="../img/lead-terrace.webp" alt="" width="1536" height="1024" loading="lazy">
           <div class="lead-form__body">
             <div class="lead-form__intro">
-              <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
-              <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
+              <div class="lead-form__heading">
+                <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
+                <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
+                <a class="button button--outline-light" href="https://t.me/davydova_ps"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
+              </div>
               <ul class="lead-form__points">
               <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Только проекты из каталога, проверенные редакцией</li>
               <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Цены, условия оплаты и риски в одном формате</li>
               <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Ответим в Telegram, по телефону или почте</li>
               </ul>
-              <a class="button button--outline-light" href="https://t.me/davydova_ps"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
             </div>
             <form class="form lead-form__form" action="#podbor" method="post">
               <p class="lead-form__form-title">Заявка на подбор</p>
@@ -474,7 +476,7 @@
                 <span class="field-box__label">Бюджет в $, необязательно</span>
                 <input class="field-box__input" type="text" name="budget_usd" placeholder="Например, 300 000" inputmode="numeric" autocomplete="off">
               </label>
-              <details class="picker form__field form__field--wide">
+              <details class="picker form__field">
                 <summary class="picker__button">
                   <span class="picker__text"><span class="picker__label">Цель покупки</span><span class="picker__value">Сдавать в аренду</span></span>
                   <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
@@ -489,7 +491,7 @@
                   </ul>
                 </div>
               </details>
-              <fieldset class="field form__field form__field--wide">
+              <fieldset class="field form__field">
                 <legend class="field__label">Как с вами связаться</legend>
                 <div class="field__options">
                   <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
@@ -497,7 +499,7 @@
                   <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
                 </div>
               </fieldset>
-              <label class="field-box form__field form__field--wide">
+              <label class="field-box form__field">
                 <span class="field-box__label">Контакт</span>
                 <input class="field-box__input" type="text" name="contact" placeholder="@username, номер или почта" required>
               </label>
@@ -509,7 +511,7 @@
                 <span class="field-box__label">Комментарий, необязательно</span>
                 <textarea class="field-box__input field-box__input--textarea" name="comment" rows="3" placeholder="Что важно при выборе"></textarea>
               </label>
-              <div class="field form__field form__field--wide">
+              <div class="field form__field lead-form__consent">
                 <label class="field__check">
                   <input class="field__check-input" type="checkbox" name="consent" required>
                   <span>Даю согласие на обработку персональных данных по <a class="field__check-link" href="privacy.html">политике конфиденциальности</a></span>
