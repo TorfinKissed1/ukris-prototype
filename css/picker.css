@@ -255,6 +255,8 @@
     justify-content: space-between;
     padding: 8px var(--gutter) var(--space-s);
     background: var(--color-bg);
+    /* За заголовок лист тянут вниз (js/swipe.js), жест не должен уходить в прокрутку. */
+    touch-action: none;
   }
 
   /* Ручка занимает свою строку: ширина 40 px, боковые поля добирают остаток. */

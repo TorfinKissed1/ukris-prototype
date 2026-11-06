@@ -1,0 +1,67 @@
+// Закрытие листов свайпом вниз за ручку или заголовок: лист снизу (dialog.sheet--bottom) и лист
+// выпадашки на телефоне (.picker__panel). Лист едет за пальцем; отпустили дальше четверти высоты
+// листа или резко смахнули вниз, лист закрывается, иначе возвращается на место.
+// Без скрипта листы закрываются крестиком и затемнением, как раньше.
+
+const HANDLE_SELECTOR = '.sheet--bottom .sheet__grabber, .sheet--bottom .sheet__head, .picker__head';
+const CLOSE_SHARE = 0.25;
+const FLICK_MIN_SHIFT = 20;
+const FLICK_SPEED = 0.5; // пикселей в миллисекунду
+
+let drag = null;
+
+function closePanel(panel) {
+  if (panel.matches('.picker__panel')) {
+    // Уводит лист вниз и закрывает выпадашку js/picker.js, так же как по крестику.
+    panel.querySelector('.picker__close').click();
+    return;
+  }
+  panel.close();
+}
+
+document.addEventListener('pointerdown', (event) => {
+  const handle = event.target.closest(HANDLE_SELECTOR);
+  // Крестик и ссылки в заголовке нажимаются как обычно.
+  if (!handle || event.button !== 0 || event.target.closest('button, a')) {
+    return;
+  }
+  const panel = handle.closest('.picker__panel') || handle.closest('dialog.sheet');
+  drag = {
+    panel,
+    pointerId: event.pointerId,
+    startY: event.clientY,
+    startTime: event.timeStamp,
+    shift: 0,
+  };
+  handle.setPointerCapture(event.pointerId);
+  panel.style.transition = 'none';
+});
+
+document.addEventListener('pointermove', (event) => {
+  if (!drag || event.pointerId !== drag.pointerId) {
+    return;
+  }
+  drag.shift = Math.max(0, event.clientY - drag.startY);
+  drag.panel.style.transform = `translateY(${drag.shift}px)`;
+});
+
+// Снятые в одном кадре inline-стили и закрытие дают переход из текущего сдвига: лист уезжает
+// вниз или возвращается по своему transition из CSS.
+function finishDrag(event) {
+  if (!drag || event.pointerId !== drag.pointerId) {
+    return;
+  }
+  const { panel, shift } = drag;
+  const speed = shift / Math.max(1, event.timeStamp - drag.startTime);
+  const isFlick = shift > FLICK_MIN_SHIFT && speed > FLICK_SPEED;
+  const shouldClose = event.type === 'pointerup' && (shift > panel.offsetHeight * CLOSE_SHARE || isFlick);
+  drag = null;
+  panel.style.transition = '';
+  panel.style.transform = '';
+  if (shouldClose) {
+    closePanel(panel);
+  }
+}
+
+document.addEventListener('pointerup', finishDrag);
+document.addEventListener('pointercancel', finishDrag);

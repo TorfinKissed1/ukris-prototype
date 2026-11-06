@@ -337,6 +337,13 @@ html:has(.sheet[open]) {
   }
 }
 
+/* За ручку и заголовок лист снизу тянут вниз (js/swipe.js): браузер не должен забирать жест
+   себе под прокрутку страницы. */
+.sheet--bottom .sheet__grabber,
+.sheet--bottom .sheet__head {
+  touch-action: none;
+}
+
 .sheet__grabber {
   flex: none;
   width: 40px;
