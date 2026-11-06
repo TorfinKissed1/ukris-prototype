@@ -437,80 +437,87 @@
     <section class="section podbor" id="podbor">
       <div class="container">
         <div class="lead-form">
-          <div class="lead-form__intro">
-            <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
-            <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
-            <div class="lead-form__contacts">
+          <img class="lead-form__image" src="../img/lead-terrace.webp" alt="" width="1536" height="1024" loading="lazy">
+          <div class="lead-form__body">
+            <div class="lead-form__intro">
+              <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
+              <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
+              <ul class="lead-form__points">
+              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Только проекты из каталога, проверенные редакцией</li>
+              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Цены, условия оплаты и риски в одном формате</li>
+              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Ответим в Telegram, по телефону или почте</li>
+              </ul>
               <a class="button button--outline-light" href="https://t.me/davydova_ps"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
             </div>
-          </div>
-          <form class="form lead-form__form" action="#podbor" method="post">
-            <div class="trap" aria-hidden="true">
-              <label for="podbor-company-website">Сайт компании</label>
-              <input id="podbor-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
-            </div>
-            <details class="picker picker--dark form__field">
-              <summary class="picker__button">
-                <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Пока не определился</span></span>
-                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
-                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
-              </summary>
-              <div class="picker__panel">
-                <ul class="picker__list">
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="" checked><span class="picker__option-text">Пока не определился</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae"><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                </ul>
+            <form class="form lead-form__form" action="#podbor" method="post">
+              <p class="lead-form__form-title">Заявка на подбор</p>
+              <div class="trap" aria-hidden="true">
+                <label for="podbor-company-website">Сайт компании</label>
+                <input id="podbor-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
               </div>
-            </details>
-            <label class="field-box field-box--dark form__field">
-              <span class="field-box__label">Бюджет в $, необязательно</span>
-              <input class="field-box__input" type="number" name="budget_usd" min="0" step="1000" inputmode="numeric" placeholder="Например, 300 000">
-            </label>
-            <details class="picker picker--dark form__field">
-              <summary class="picker__button">
-                <span class="picker__text"><span class="picker__label">Цель покупки</span><span class="picker__value">Сдавать в аренду</span></span>
-                <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
-                <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
-              </summary>
-              <div class="picker__panel">
-                <ul class="picker__list">
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="rent" checked><span class="picker__option-text">Сдавать в аренду</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="resale"><span class="picker__option-text">Перепродать после сдачи</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="living"><span class="picker__option-text">Жить самому</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="capital"><span class="picker__option-text">Сохранить капитал</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                </ul>
-              </div>
-            </details>
-            <div class="field field--dark form__field">
-              <label class="field__label" for="podbor-name">Имя <span class="field__optional">(необязательно)</span></label>
-              <input class="field__control" id="podbor-name" type="text" name="name" autocomplete="name">
-            </div>
-            <fieldset class="field field--dark form__field form__field--wide">
-              <legend class="field__label">Как с вами связаться</legend>
-              <div class="field__options">
-                <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
-                <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
-                <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
-              </div>
-            </fieldset>
-            <div class="field field--dark form__field form__field--wide">
-              <label class="field__label" for="podbor-contact">Контакт</label>
-              <input class="field__control" id="podbor-contact" type="text" name="contact" required placeholder="@username, номер или почта">
-            </div>
-            <div class="field field--dark form__field form__field--wide">
-              <label class="field__label" for="podbor-comment">Комментарий <span class="field__optional">(необязательно)</span></label>
-              <textarea class="field__control field__control--textarea" id="podbor-comment" name="comment" rows="3"></textarea>
-            </div>
-            <div class="field field--dark form__field form__field--wide">
-              <label class="field__check">
-                <input class="field__check-input" type="checkbox" name="consent" required>
-                <span>Даю согласие на обработку персональных данных по <a class="field__check-link" href="privacy.html">политике конфиденциальности</a></span>
+              <details class="picker form__field">
+                <summary class="picker__button">
+                  <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Пока не определился</span></span>
+                  <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                  <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+                </summary>
+                <div class="picker__panel">
+                  <ul class="picker__list">
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="" checked><span class="picker__option-text">Пока не определился</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae"><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  </ul>
+                </div>
+              </details>
+              <label class="field-box form__field">
+                <span class="field-box__label">Бюджет в $, необязательно</span>
+                <input class="field-box__input" type="text" name="budget_usd" placeholder="Например, 300 000" inputmode="numeric" autocomplete="off">
               </label>
-            </div>
-            <button class="button button--light form__submit" type="submit">Получить подборку</button>
-          </form>
+              <details class="picker form__field form__field--wide">
+                <summary class="picker__button">
+                  <span class="picker__text"><span class="picker__label">Цель покупки</span><span class="picker__value">Сдавать в аренду</span></span>
+                  <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+                  <span class="icon-button picker__close" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></span>
+                </summary>
+                <div class="picker__panel">
+                  <ul class="picker__list">
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="rent" checked><span class="picker__option-text">Сдавать в аренду</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="resale"><span class="picker__option-text">Перепродать после сдачи</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="living"><span class="picker__option-text">Жить самому</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="capital"><span class="picker__option-text">Сохранить капитал</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  </ul>
+                </div>
+              </details>
+              <fieldset class="field form__field form__field--wide">
+                <legend class="field__label">Как с вами связаться</legend>
+                <div class="field__options">
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
+                </div>
+              </fieldset>
+              <label class="field-box form__field form__field--wide">
+                <span class="field-box__label">Контакт</span>
+                <input class="field-box__input" type="text" name="contact" placeholder="@username, номер или почта" required>
+              </label>
+              <label class="field-box form__field">
+                <span class="field-box__label">Имя, необязательно</span>
+                <input class="field-box__input" type="text" name="name" placeholder="" autocomplete="name">
+              </label>
+              <label class="field-box form__field form__field--wide">
+                <span class="field-box__label">Комментарий, необязательно</span>
+                <textarea class="field-box__input field-box__input--textarea" name="comment" rows="3" placeholder="Что важно при выборе"></textarea>
+              </label>
+              <div class="field form__field form__field--wide">
+                <label class="field__check">
+                  <input class="field__check-input" type="checkbox" name="consent" required>
+                  <span>Даю согласие на обработку персональных данных по <a class="field__check-link" href="privacy.html">политике конфиденциальности</a></span>
+                </label>
+              </div>
+              <button class="button button--primary form__submit" type="submit">Получить подборку</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

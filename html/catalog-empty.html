@@ -113,12 +113,12 @@
             <span class="search__divider" aria-hidden="true"></span>
             <label class="field-box field-box--flat search__part">
               <span class="field-box__label">Бюджет от, $</span>
-              <input class="field-box__input" type="number" name="budget_min" min="0" step="10000" inputmode="numeric" placeholder="Любой">
+              <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой">
             </label>
             <span class="search__divider" aria-hidden="true"></span>
             <label class="field-box field-box--flat search__part">
               <span class="field-box__label">Бюджет до, $</span>
-              <input class="field-box__input" type="number" name="budget_max" min="0" step="10000" inputmode="numeric" placeholder="Любой" value="100000">
+              <input class="field-box__input" type="text" name="budget_max" inputmode="numeric" autocomplete="off" placeholder="Любой" value="100000">
             </label>
             <span class="search__divider" aria-hidden="true"></span>
             <details class="picker picker--flat search__part">
@@ -221,7 +221,7 @@
         </details>
         <label class="field-box form__field">
           <span class="field-box__label">Бюджет в $, необязательно</span>
-          <input class="field-box__input" type="number" name="budget_usd" min="0" step="1000" inputmode="numeric" value="100000">
+          <input class="field-box__input" type="text" name="budget_usd" inputmode="numeric" autocomplete="off" value="100000">
         </label>
         <details class="picker form__field form__field--wide">
           <summary class="picker__button">

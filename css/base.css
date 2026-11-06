@@ -163,6 +163,11 @@ textarea {
   background: var(--color-paper);
 }
 
+/* Две бежевые секции подряд читаются как одна: между ними обычный отступ, а не двойной. */
+.section--paper + .section--paper {
+  padding-top: 0;
+}
+
 .section__head {
   display: flex;
   flex-wrap: wrap;
