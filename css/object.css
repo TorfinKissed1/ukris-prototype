@@ -1,0 +1,485 @@
+/* Карточка объекта. Подключается после общих стилей и pages.css (крошки, список с галочками). */
+
+/* ============ object ============ */
+.object {
+  --object-heading-size: 28px;
+  padding-top: var(--space-l);
+}
+
+.object__crumbs {
+  margin-bottom: var(--space-l);
+}
+
+.object__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.object__gallery {
+  flex: 3 1 560px;
+  min-width: 0;
+}
+
+.object__summary {
+  flex: 2 1 360px;
+  min-width: 0;
+}
+
+.object__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-xl) var(--space-2xl);
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.object__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.object__block--wide {
+  flex: 2 1 520px;
+}
+
+.object__heading {
+  font-size: var(--object-heading-size);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+}
+
+.object__subheading {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.object__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.object__note {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.object__map-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-s);
+  font-weight: 600;
+  color: var(--color-brand);
+  border-bottom: 1px solid currentColor;
+  transition: color var(--transition);
+}
+
+.object__map-link:hover {
+  color: var(--color-accent-strong);
+}
+
+@media (max-width: 768px) {
+  .object {
+    --object-heading-size: 24px;
+  }
+
+  .object__top {
+    padding-bottom: var(--space-xl);
+  }
+
+  .object__row {
+    padding: var(--space-xl) 0;
+  }
+}
+
+/* ============ gallery ============ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-s);
+}
+
+.gallery__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-paper);
+  border-radius: var(--radius-m);
+}
+
+.gallery__image--main {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-l);
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    gap: var(--space-xs);
+  }
+
+  .gallery__image {
+    border-radius: var(--radius-s);
+  }
+
+  .gallery__image--main {
+    border-radius: var(--radius-m);
+  }
+}
+
+/* ============ summary (основные сведения и действия) ============ */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  padding: var(--space-xl);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+}
+
+.summary__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.summary__place {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.summary__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  overflow-wrap: anywhere;
+}
+
+.summary__price {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-l);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summary__price-value {
+  font-size: var(--object-heading-size);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--color-brand);
+}
+
+.summary__price-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.summary__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m) var(--space-l);
+}
+
+.summary__fact {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 110px;
+  min-width: 0;
+}
+
+.summary__fact-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.summary__fact-value {
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.summary__action {
+  flex: 1 1 100%;
+}
+
+.summary__tool {
+  flex: 1 1 160px;
+  padding: 0 var(--space-m);
+}
+
+.summary__tool--active .summary__tool-icon {
+  color: var(--color-like);
+  fill: var(--color-like);
+}
+
+.summary__checked {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .summary {
+    padding: var(--space-l);
+  }
+}
+
+/* ============ payment (условия оплаты) ============
+   Этапы идут в ряд, доля сверху; на телефоне этапы встают друг под другом. */
+.payment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.payment__item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-s);
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: var(--space-l);
+  background: var(--color-paper);
+  border-radius: var(--radius-l);
+}
+
+.payment__stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.payment__name {
+  font-weight: 600;
+}
+
+.payment__hint {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.payment__share {
+  font-size: var(--object-heading-size);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* ============ plans (планировки) ============ */
+/* Колонки заданы числом, а не auto-fill: четыре типовые планировки не рвутся на 3 + 1. */
+.plans {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-m);
+}
+
+@media (max-width: 768px) {
+  .plans {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .plans {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+}
+
+.plan-card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-paper);
+}
+
+.plan-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-s);
+  padding: var(--space-m);
+}
+
+.plan-card__name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.plan-card__facts {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.plan-card__comment {
+  font-size: var(--fs-small);
+}
+
+.plan-card__price {
+  margin-top: auto;
+  padding-top: var(--space-s);
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* ============ invest (инвестиционный комментарий) ============ */
+.invest__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-m);
+}
+
+.invest__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  padding: var(--space-l);
+  background: var(--color-bg);
+  border-radius: var(--radius-l);
+}
+
+.invest__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.invest__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.invest__point {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+}
+
+/* Точка-маркер по центру первой строки. */
+.invest__point::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.7em;
+  background: var(--color-accent);
+  border-radius: var(--radius-round);
+}
+
+/* ============ sources (презентация и источники) ============ */
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-xl) var(--space-2xl);
+  padding: var(--space-2xl) 0 var(--space-section);
+}
+
+.sources__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-l);
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.sources__list {
+  display: flex;
+  flex-direction: column;
+  flex: 2 1 520px;
+  min-width: 0;
+}
+
+.sources__item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-m);
+  padding: var(--space-m) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sources__item:first-child {
+  padding-top: 0;
+}
+
+.sources__date {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ============ lead-object (объект в окне заявки) ============ */
+.lead-object {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  padding: var(--space-m);
+  background: var(--color-paper);
+  border-radius: var(--radius-m);
+}
+
+.lead-object__image {
+  flex: none;
+  width: 96px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-s);
+}
+
+.lead-object__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.lead-object__place {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.lead-object__name {
+  font-weight: 700;
+}
+
+.lead-object__price {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+}
