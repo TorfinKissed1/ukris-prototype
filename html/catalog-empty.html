@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../css/picker.css">
   <link rel="stylesheet" href="../css/catalog.css">
   <script src="../js/picker.js" defer></script>
-  <script src="../js/header.js" defer></script>
+  <script src="../js/to-top.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -38,6 +38,7 @@
     <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21l18 0M5 21v-14l8 -4v18M19 21v-10l-6 -4M9 9l0 .01M9 12l0 .01M9 15l0 .01M9 18l0 .01"></path></symbol>
     <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14M18 11l-6 -6M6 11l6 -6"></path></symbol>
   </svg>
 
   <div class="header-slot">
@@ -69,7 +70,10 @@
 
   <main class="catalog">
     <div class="container">
-      <h1 class="catalog__title" data-first-screen>Новостройки в Таиланде</h1>
+      <h1 class="catalog__title">Новостройки в Таиланде</h1>
+    </div>
+    <div class="catalog__bar">
+      <div class="container">
       <form class="finder finder--bordered catalog__search" id="filters" action="catalog.html" method="get" aria-label="Фильтры">
             <div class="catalog__search-head">
               <h2 class="catalog__search-title">Фильтры</h2>
@@ -159,6 +163,9 @@
             </div>
             <a class="button button--outline catalog__search-reset" href="catalog.html">Сбросить фильтры</a>
           </form>
+      </div>
+    </div>
+    <div class="container">
 
       <div class="catalog__content">
         <div class="catalog__toolbar">
@@ -297,5 +304,6 @@
       </div>
     </div>
   </footer>
+  <a class="to-top" href="#" aria-label="Наверх"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
 </body>
 </html>

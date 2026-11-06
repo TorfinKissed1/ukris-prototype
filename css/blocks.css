@@ -113,6 +113,11 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-l);
+  transition: border-color var(--transition);
+}
+
+.project-card:hover {
+  border-color: var(--color-brand);
 }
 
 .project-card__media {
@@ -463,5 +468,44 @@
 @media (max-width: 768px) {
   .footer__columns {
     margin-left: 0;
+  }
+}
+
+/* ============ to-top (кнопка «наверх», показывает js/to-top.js) ============ */
+.to-top {
+  position: fixed;
+  right: var(--space-l);
+  bottom: var(--space-l);
+  z-index: var(--z-header);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border-radius: var(--radius-round);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition), background-color var(--transition);
+}
+
+.to-top:hover {
+  background: var(--color-brand-hover);
+}
+
+.to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .to-top {
+    right: var(--space-m);
+    bottom: var(--space-m);
+    width: 48px;
+    height: 48px;
   }
 }

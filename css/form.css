@@ -26,20 +26,13 @@
 
 .lead-form__intro {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-l) var(--space-2xl);
-  color: var(--color-text-on-dark);
-}
-
-.lead-form__heading {
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-m);
-  flex: 1 1 420px;
-  max-width: 640px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-text-on-dark);
 }
 
 .lead-form__title {
@@ -50,44 +43,6 @@
 
 .lead-form__lead {
   color: var(--color-text-on-dark-muted);
-}
-
-.lead-form__side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-m);
-}
-
-.lead-form__points {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.lead-form__point {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: var(--fs-small);
-  font-weight: 500;
-}
-
-.lead-form__point-icon {
-  display: inline-flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  color: var(--color-ink);
-  background: var(--color-accent);
-  border-radius: var(--radius-round);
-}
-
-.lead-form__check {
-  width: 16px;
-  height: 16px;
 }
 
 .lead-form__form {
@@ -105,7 +60,7 @@
 /* Согласие и кнопка в одной строке: согласие занимает остаток ширины. */
 .lead-form__consent {
   flex: 1 1 400px;
-  justify-content: center;
+  align-self: center;
 }
 
 @media (max-width: 1024px) {
@@ -134,6 +89,7 @@
 .form {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   align-content: flex-start;
   gap: var(--space-m);
 }
@@ -144,6 +100,15 @@
 
 .form__field--wide {
   flex-basis: 100%;
+}
+
+/* Четыре поля в ряд (форма подбора на главной). */
+.form--columns_4 .form__field {
+  flex-basis: 220px;
+}
+
+.form--columns_4 .form__field--span_3 {
+  flex: 3 1 680px;
 }
 
 .form__submit {
@@ -263,12 +228,44 @@
   cursor: pointer;
 }
 
+/* Своя галочка: рамка, при отметке плавно заливается фирменным цветом и рисует галку. */
 .field__check-input {
+  display: inline-grid;
   flex: none;
-  width: 20px;
-  height: 20px;
+  place-content: center;
+  width: 22px;
+  height: 22px;
   margin: 0;
-  accent-color: var(--color-brand);
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.field__check-input::after {
+  content: "";
+  width: 6px;
+  height: 11px;
+  margin-top: -2px;
+  border: solid var(--color-text-on-dark);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.field__check-input:hover {
+  border-color: var(--color-brand);
+}
+
+.field__check-input:checked {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.field__check-input:checked::after {
+  transform: rotate(45deg) scale(1);
 }
 
 .field__check-link {
@@ -299,9 +296,7 @@
   border-color: var(--color-bg);
 }
 
-.field--dark .field__check-input {
-  accent-color: var(--color-accent);
-}
+
 
 /* ============ field-box (подпись внутри рамки, как у выпадашки picker) ============ */
 .field-box {

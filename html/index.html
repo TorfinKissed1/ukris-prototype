@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../css/picker.css">
   <script src="../js/picker.js" defer></script>
   <script src="../js/header.js" defer></script>
+  <script src="../js/to-top.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -37,6 +38,7 @@
     <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21l18 0M5 21v-14l8 -4v18M19 21v-10l-6 -4M9 9l0 .01M9 12l0 .01M9 15l0 .01M9 18l0 .01"></path></symbol>
     <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14M18 11l-6 -6M6 11l6 -6"></path></symbol>
   </svg>
 
   <header class="header header--overlay" data-header>
@@ -440,23 +442,24 @@
           <img class="lead-form__image" src="../img/lead-terrace.webp" alt="" width="1536" height="1024" loading="lazy">
           <div class="lead-form__body">
             <div class="lead-form__intro">
-              <div class="lead-form__heading">
-                <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
-                <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
-                <a class="button button--outline-light" href="https://t.me/davydova_ps"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
-              </div>
-              <ul class="lead-form__points">
-              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Только проекты из каталога, проверенные редакцией</li>
-              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Цены, условия оплаты и риски в одном формате</li>
-              <li class="lead-form__point"><span class="lead-form__point-icon"><svg class="icon lead-form__check" aria-hidden="true"><use href="#i-check"></use></svg></span>Ответим в Telegram, по телефону или почте</li>
-              </ul>
+              <h2 class="lead-form__title">Получите подборку под вашу задачу</h2>
+              <p class="lead-form__lead">Расскажите о бюджете и цели покупки. Мы подберём проекты из каталога и свяжемся с вами удобным способом.</p>
+              <a class="button button--outline-light" href="https://t.me/davydova_ps"><svg class="icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
             </div>
-            <form class="form lead-form__form" action="#podbor" method="post">
+            <form class="form form--columns_4 lead-form__form" action="#podbor" method="post">
               <p class="lead-form__form-title">Заявка на подбор</p>
               <div class="trap" aria-hidden="true">
                 <label for="podbor-company-website">Сайт компании</label>
                 <input id="podbor-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
               </div>
+              <label class="field-box form__field">
+                <span class="field-box__label">Имя</span>
+                <input class="field-box__input" type="text" name="name" placeholder="Как к вам обращаться" required autocomplete="name">
+              </label>
+              <label class="field-box form__field">
+                <span class="field-box__label">Контакт</span>
+                <input class="field-box__input" type="text" name="contact" placeholder="Телефон, Telegram или почта" required>
+              </label>
               <details class="picker form__field">
                 <summary class="picker__button">
                   <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Пока не определился</span></span>
@@ -472,10 +475,6 @@
                   </ul>
                 </div>
               </details>
-              <label class="field-box form__field">
-                <span class="field-box__label">Бюджет в $, необязательно</span>
-                <input class="field-box__input" type="text" name="budget_usd" placeholder="Например, 300 000" inputmode="numeric" autocomplete="off">
-              </label>
               <details class="picker form__field">
                 <summary class="picker__button">
                   <span class="picker__text"><span class="picker__label">Цель покупки</span><span class="picker__value">Сдавать в аренду</span></span>
@@ -491,25 +490,13 @@
                   </ul>
                 </div>
               </details>
-              <fieldset class="field form__field">
-                <legend class="field__label">Как с вами связаться</legend>
-                <div class="field__options">
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
-                </div>
-              </fieldset>
               <label class="field-box form__field">
-                <span class="field-box__label">Контакт</span>
-                <input class="field-box__input" type="text" name="contact" placeholder="@username, номер или почта" required>
+                <span class="field-box__label">Бюджет в $, необязательно</span>
+                <input class="field-box__input" type="text" name="budget_usd" placeholder="Например, 300 000" inputmode="numeric" autocomplete="off">
               </label>
-              <label class="field-box form__field">
-                <span class="field-box__label">Имя, необязательно</span>
-                <input class="field-box__input" type="text" name="name" placeholder="" autocomplete="name">
-              </label>
-              <label class="field-box form__field form__field--wide">
+              <label class="field-box form__field form__field--span_3">
                 <span class="field-box__label">Комментарий, необязательно</span>
-                <textarea class="field-box__input field-box__input--textarea" name="comment" rows="3" placeholder="Что важно при выборе"></textarea>
+                <input class="field-box__input" type="text" name="comment" placeholder="Что важно при выборе: район, вид, рассрочка">
               </label>
               <div class="field form__field lead-form__consent">
                 <label class="field__check">
@@ -554,5 +541,6 @@
       </div>
     </div>
   </footer>
+  <a class="to-top" href="#" aria-label="Наверх"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
 </body>
 </html>
