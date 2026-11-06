@@ -1,0 +1,214 @@
+/* Страница сравнения: 2-4 объекта колонками. На узком экране таблица листается вбок внутри
+   compare__scroll, страница вбок не едет, а колонка с подписями строк стоит на месте. */
+
+/* ============ compare ============ */
+.compare {
+  --compare-label: 220px;
+  --compare-column: 240px;
+  --compare-columns: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.compare__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.compare__count {
+  color: var(--color-text-muted);
+}
+
+.compare__link {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.compare__clear {
+  min-height: 44px;
+  padding: 0 var(--space-m);
+}
+
+.compare__hint {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.compare__hint-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.compare__scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+}
+
+/* Колонки объектов равные: ширину задаёт первая строка (table-layout: fixed). Сколько объектов,
+   считается по заголовкам колонок, без скрипта и без стилей в разметке. */
+.compare__table {
+  width: 100%;
+  min-width: calc(var(--compare-label) + var(--compare-columns) * var(--compare-column));
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.compare__table:has(.compare__object:nth-of-type(3)) {
+  --compare-columns: 3;
+}
+
+.compare__table:has(.compare__object:nth-of-type(4)) {
+  --compare-columns: 4;
+}
+
+.compare__corner,
+.compare__label {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: var(--compare-label);
+  background: var(--color-paper);
+}
+
+.compare__object,
+.compare__label,
+.compare__cell {
+  padding: var(--space-m) var(--space-l);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare__label,
+.compare__cell {
+  border-top: 1px solid var(--color-border);
+}
+
+.compare__object {
+  font-weight: 400;
+}
+
+.compare__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-s);
+}
+
+.compare__name {
+  display: block;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: color var(--transition);
+}
+
+.compare__remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.compare__remove-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.compare__label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.compare__cell {
+  font-size: var(--fs-small);
+}
+
+.compare__price {
+  display: block;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+.compare__note {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.compare__cell--comment {
+  color: var(--color-text-muted);
+}
+
+.compare__action {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--space-m);
+}
+
+@media (hover: hover) {
+  .compare__name:hover,
+  .compare__remove:hover,
+  .compare__link:hover {
+    color: var(--color-accent-strong);
+  }
+}
+
+/* ============ compare-few (меньше двух объектов: сообщение и то, что уже в списке) ============ */
+.compare-few {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.compare-few__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .compare {
+    --compare-label: 120px;
+    --compare-column: 200px;
+  }
+
+  .compare__hint {
+    display: flex;
+  }
+
+  .compare__object,
+  .compare__label,
+  .compare__cell {
+    padding: 12px;
+  }
+
+  .compare__name {
+    font-size: var(--fs-small);
+  }
+
+  .compare__label {
+    font-size: var(--fs-xs);
+  }
+}
