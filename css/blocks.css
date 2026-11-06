@@ -501,10 +501,11 @@
   transform: none;
 }
 
-@media (max-width: 768px) {
+/* Над нижней панелью телефона. */
+@media (max-width: 1024px) {
   .to-top {
     right: var(--space-m);
-    bottom: var(--space-m);
+    bottom: calc(var(--tabbar-height) + var(--space-m) + env(safe-area-inset-bottom));
     width: 48px;
     height: 48px;
   }

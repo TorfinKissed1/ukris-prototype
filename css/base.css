@@ -49,6 +49,7 @@
   --gutter: 24px;
   --control-height: 52px;
   --header-height: 80px;
+  --tabbar-height: 64px;
   --shadow-dropdown: 0 10px 28px rgba(17, 24, 39, 0.09);
   --transition: 0.3s ease;
   --z-dropdown: 20;
@@ -317,6 +318,12 @@ textarea {
     --fs-hero: 44px;
     --fs-h2: 30px;
     --space-section: 72px;
+    --header-height: 0px;
+  }
+
+  /* Место под нижнюю панель, чтобы она не закрывала конец страницы. */
+  body {
+    padding-bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
   }
 }
 
@@ -326,7 +333,6 @@ textarea {
     --fs-h2: 26px;
     --space-section: 56px;
     --gutter: 16px;
-    --header-height: 64px;
   }
 }
 

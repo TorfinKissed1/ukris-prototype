@@ -12,11 +12,6 @@
   line-height: var(--lh-tight);
 }
 
-.catalog__search-head,
-.catalog__search-reset {
-  display: none;
-}
-
 /* За прокруткой едет только сама панель со скруглёнными углами: полоса вокруг неё прозрачная
    и не перехватывает клики по карточкам. На планшете и телефоне вместо панели кнопка «Фильтры». */
 @media (min-width: 1025px) {
@@ -59,71 +54,23 @@
   gap: var(--space-s);
 }
 
-.catalog__filters-toggle {
+.catalog__sort-button {
   display: none;
   min-height: 44px;
   border-radius: var(--radius-round);
 }
 
+/* На телефоне и планшете панель фильтров заменяют строка сверху и лист фильтров (css/mobile.css),
+   а сортировка открывается листом снизу по кнопке. */
 @media (max-width: 1024px) {
-  .catalog__search {
+  .catalog__search,
+  .catalog__sort-picker {
     display: none;
   }
 
-  .catalog__filters-toggle {
+  .catalog__sort-button {
     display: inline-flex;
   }
-
-  .catalog__search:target {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    gap: var(--space-s);
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-modal);
-    padding: 0 var(--gutter) var(--space-m);
-    overflow-y: auto;
-    border: 0;
-    border-radius: 0;
-  }
-
-  .catalog__search:target .catalog__search-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    min-height: 64px;
-    margin-bottom: var(--space-s);
-    background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .catalog__search:target .search__part {
-    flex: 1 1 100%;
-    background: var(--color-paper);
-    border-radius: var(--radius-s);
-  }
-
-  .catalog__search:target .search__submit {
-    position: sticky;
-    bottom: 0;
-    flex: 1 1 100%;
-    margin-top: auto;
-  }
-
-  .catalog__search:target .catalog__search-reset {
-    display: inline-flex;
-    flex: none;
-  }
-}
-
-.catalog__search-title {
-  font-size: var(--fs-h3);
-  font-weight: 700;
 }
 
 /* ============ chips (выбранные фильтры) ============ */
@@ -274,6 +221,7 @@
 }
 
 .modal__dialog {
+  transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1), opacity 0.24s ease;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
@@ -301,6 +249,13 @@
   margin-top: var(--space-s);
   font-size: var(--fs-small);
   color: var(--color-text-muted);
+}
+
+@starting-style {
+  .modal:target .modal__dialog {
+    opacity: 0;
+    transform: translateY(24px);
+  }
 }
 
 @media (max-width: 768px) {

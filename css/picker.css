@@ -61,7 +61,7 @@
   transform: rotate(180deg);
 }
 
-.picker__close {
+.picker__head {
   display: none;
 }
 
@@ -79,6 +79,15 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-dropdown);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* На компьютере список плавно выпадает вниз. */
+@starting-style {
+  .picker[open] .picker__panel {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 
 .picker__list {
@@ -199,59 +208,80 @@
   left: auto;
 }
 
-@media (max-width: 768px) {
-  .picker[open] .picker__button {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: calc(var(--z-modal) + 2);
-    min-height: 64px;
-    padding: 0 var(--gutter);
-    color: var(--color-text);
-    background: var(--color-bg);
-    border: 0;
-    border-bottom: 1px solid var(--color-border);
-    border-radius: 0;
-  }
-
-  .picker[open] .picker__text {
-    flex-direction: column;
-  }
-
-  .picker[open] .picker__label {
-    font-size: var(--fs-h3);
-    font-weight: 700;
-    color: var(--color-text);
-  }
-
-  .picker[open] .picker__value,
-  .picker[open] .picker__chevron,
-  .picker[open] .picker__icon {
-    display: none;
-  }
-
-  .picker[open] .picker__close {
-    display: inline-flex;
-  }
-
+/* На телефоне и планшете список выезжает снизу листом с ручкой, заголовком и крестиком.
+   Плавный уход вниз делает js/picker.js (класс picker--closing), без скрипта лист закрывается сразу. */
+@media (max-width: 1024px) {
   .picker__panel {
     position: fixed;
-    inset: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: calc(var(--z-modal) + 1);
     width: auto;
-    max-height: none;
-    padding: 76px var(--gutter) var(--space-l);
+    max-height: 80dvh;
+    padding: 0 0 calc(var(--space-s) + env(safe-area-inset-bottom));
     border: 0;
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 0 100vmax rgba(0, 63, 71, 0.18);
+    transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  @starting-style {
+    .picker[open] .picker__panel {
+      opacity: 1;
+      transform: translateY(100%);
+    }
+  }
+
+  .picker--closing .picker__panel {
+    transform: translateY(100%);
+  }
+
+  .picker__head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px var(--gutter) var(--space-s);
+    background: var(--color-bg);
+  }
+
+  /* Ручка занимает свою строку: ширина 40 px, боковые поля добирают остаток. */
+  .picker__grabber {
+    flex: 0 0 40px;
+    height: 4px;
+    margin: 0 calc(50% - 20px) 8px;
+    background: var(--color-border);
+    border-radius: var(--radius-round);
+  }
+
+  .picker__title {
+    font-size: var(--fs-h3);
+    font-weight: 700;
+  }
+
+  .picker__list {
+    gap: 0;
   }
 
   .picker__option {
     min-height: 56px;
-    padding: 0 var(--space-m);
+    padding: 0 var(--gutter);
     font-size: var(--fs-body);
-    border-bottom: 1px solid var(--color-border);
     border-radius: 0;
+  }
+
+  .picker__option:has(.picker__input:checked) {
+    background: var(--color-brand-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .picker__panel {
+    transition: none;
   }
 }

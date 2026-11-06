@@ -1,11 +1,19 @@
-// Шапка стоит в начале страницы. Когда первый экран (элемент с data-first-screen) целиком ушёл
-// из окна, шапка получает header--scrolled: закрепляется и выезжает сверху (стили в css/header.css).
+// Главная. Шапка стоит в начале страницы. Когда первый экран (data-first-screen) целиком ушёл из окна,
+// на компьютере шапка закрепляется и выезжает сверху (header--scrolled, css/header.css),
+// на телефоне вместо неё выезжает строка поиска (quickbar--shown, css/mobile.css).
 const header = document.querySelector('[data-header]');
+const quickbar = document.querySelector('[data-quickbar]');
 const firstScreen = document.querySelector('[data-first-screen]');
 
-if (header && firstScreen) {
+if (firstScreen) {
   const observer = new IntersectionObserver(([entry]) => {
-    header.classList.toggle('header--scrolled', !entry.isIntersecting && entry.boundingClientRect.top < 0);
+    const passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+    if (header) {
+      header.classList.toggle('header--scrolled', passed);
+    }
+    if (quickbar) {
+      quickbar.classList.toggle('quickbar--shown', passed);
+    }
   });
   observer.observe(firstScreen);
 }

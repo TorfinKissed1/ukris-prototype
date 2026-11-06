@@ -90,24 +90,6 @@
   outline: none;
 }
 
-/* На планшете и телефоне в шапке остаются строка поиска и кнопка-лупа. */
-@media (max-width: 1024px) {
-  .search--compact {
-    flex-wrap: nowrap;
-  }
-
-  .search--compact .search__part,
-  .search--compact .search__divider,
-  .search--compact .search__submit-text {
-    display: none;
-  }
-
-  .search--compact .search__submit {
-    flex: none;
-    width: 44px;
-    padding: 0;
-  }
-}
 
 @media (max-width: 1024px) {
   .search {

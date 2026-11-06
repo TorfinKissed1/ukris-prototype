@@ -144,116 +144,16 @@
   border-radius: var(--radius-round);
 }
 
-.header__burger {
-  display: none;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1240px) {
   .header__inner {
     gap: var(--space-m);
   }
 }
 
-/* Меню на телефоне открывается через :target, без скриптов. */
-@media (max-width: 768px) {
-  .header__burger {
-    display: inline-flex;
-  }
-
-  .header__nav,
-  .header__telegram {
-    display: none;
-  }
-
-  .header__nav:target {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-s);
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-modal);
-    padding: 0 var(--gutter) var(--space-l);
-    background: var(--color-bg);
-    border-radius: 0;
-  }
-
-  .header__nav-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 64px;
-    margin-bottom: var(--space-s);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .header__nav-title {
-    font-size: var(--fs-h3);
-    font-weight: 700;
-  }
-
-  .header__nav:target .header__link {
-    min-height: 56px;
-    padding: 0 var(--space-m);
-    font-size: 18px;
-    background: var(--color-paper);
-    border-radius: var(--radius-m);
-  }
-
-  .header__nav:target .header__link--active {
-    background: var(--color-brand);
-  }
-}
-
-@media (max-width: 480px) {
-  .header__logo-image {
-    width: 40px;
-    height: 40px;
-  }
-
-  .header__logo-caption,
-  .header__login-text {
-    display: none;
-  }
-
-  .header__tools {
-    gap: 6px;
-  }
-
-  .header__login {
-    width: 44px;
-    padding: 0;
-  }
-}
-
-@media (max-width: 400px) {
-  .header__inner {
-    gap: var(--space-s);
-  }
-
-  .header__tools {
-    gap: var(--space-xs);
-  }
-
-  .header__tool,
-  .header__login,
-  .header__burger {
-    width: 40px;
-    min-height: 40px;
-    height: 40px;
-  }
-}
-
-/* На узких экранах остаётся только знак логотипа, иначе кнопки не помещаются:
-   до 360 px всегда, до 480 px когда в закреплённой шапке появилась кнопка поиска. */
-@media (max-width: 480px) {
-  .header--scrolled .header__logo-text {
-    display: none;
-  }
-}
-
-@media (max-width: 360px) {
-  .header__logo-text {
+/* На телефоне и планшете шапки нет: навигация в нижней панели, поиск в строке сверху (css/mobile.css). */
+@media (max-width: 1024px) {
+  .header,
+  .header-slot {
     display: none;
   }
 }
@@ -317,11 +217,4 @@
 
 .header--overlay.header--scrolled .header__search {
   display: flex;
-}
-
-@media (max-width: 768px) {
-  .header--overlay.header--scrolled .header__tool,
-  .header--overlay.header--scrolled .header__login {
-    display: none;
-  }
 }
