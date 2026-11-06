@@ -46,6 +46,7 @@
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></symbol>
     <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zM16 3v4M8 3v4M4 11h16"></path></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7l16 0M10 11l0 6M14 11l0 6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></symbol>
   </svg>
 
   <div class="header-slot">
@@ -86,97 +87,110 @@
         </ol>
       </nav>
 
-      <div class="page__head">
-        <h1 class="page__title">Сравнение проектов</h1>
-        <p class="page__lead">Ключевые условия рядом: цена, площадь, сроки и порядок оплаты. Данные берутся из карточек объектов в момент открытия страницы.</p>
-      </div>
-
       <div class="compare">
-        <div class="compare__bar">
-          <p class="compare__count">3 объекта из 4. Ещё один можно добавить в <a class="compare__link" href="catalog.html">каталоге</a> кнопкой «К сравнению».</p>
-          <button class="button button--outline compare__clear" type="button"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>Очистить список</button>
+        <div class="compare__top">
+          <h1 class="page__title">Сравнение проектов</h1>
+          <button class="compare__clear" type="button"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>Очистить сравнение</button>
         </div>
+        <p class="compare__count">3 объекта из 4. Ещё один можно добавить в <a class="compare__link" href="catalog.html">каталоге</a> кнопкой «К сравнению».</p>
 
-        <p class="compare__hint" aria-hidden="true">Таблица листается вбок<svg class="icon compare__hint-icon"><use href="#i-arrow"></use></svg></p>
-        <div class="compare__scroll" tabindex="0" role="region" aria-label="Таблица сравнения">
-          <table class="compare__table">
-            <thead>
-              <tr>
-                <td class="compare__corner"></td>
-                <th class="compare__object" scope="col">
-                  <img class="compare__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
-                  <a class="compare__name" href="object.html">Marina Crest Residence</a>
-                  <button class="compare__remove" type="button" aria-label="Убрать из сравнения: Marina Crest Residence"><svg class="icon compare__remove-icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
-                </th>
-                <th class="compare__object" scope="col">
-                  <img class="compare__image" src="../img/villa-palms.webp" alt="" width="1200" height="750">
-                  <a class="compare__name" href="object.html">Palm Garden Villas</a>
-                  <button class="compare__remove" type="button" aria-label="Убрать из сравнения: Palm Garden Villas"><svg class="icon compare__remove-icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
-                </th>
-                <th class="compare__object" scope="col">
-                  <img class="compare__image" src="../img/interior-city.webp" alt="" width="960" height="600">
-                  <a class="compare__name" href="object.html">Azure Heights</a>
-                  <button class="compare__remove" type="button" aria-label="Убрать из сравнения: Azure Heights"><svg class="icon compare__remove-icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th class="compare__label" scope="row">Страна и город</th>
-                <td class="compare__cell">ОАЭ, Дубай</td>
-                <td class="compare__cell">ОАЭ, Абу-Даби</td>
-                <td class="compare__cell">ОАЭ, Дубай</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Застройщик</th>
-                <td class="compare__cell">Crest Development</td>
-                <td class="compare__cell">Sand Line Properties</td>
-                <td class="compare__cell">Bayline Estates</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Цена от</th>
-                <td class="compare__cell"><span class="compare__price">1 506 000 AED</span><span class="compare__note">≈ 410 000 $</span></td>
-                <td class="compare__cell"><span class="compare__price">4 200 000 AED</span><span class="compare__note">≈ 1 144 000 $</span></td>
-                <td class="compare__cell"><span class="compare__price">295 000 $</span><span class="compare__note">Цена застройщика в долларах</span></td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Площадь от</th>
-                <td class="compare__cell">42 м²</td>
-                <td class="compare__cell">310 м²</td>
-                <td class="compare__cell">36 м²</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Передача ключей</th>
-                <td class="compare__cell">IV квартал 2027</td>
-                <td class="compare__cell">II квартал 2028</td>
-                <td class="compare__cell">IV квартал 2026</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Первый взнос</th>
-                <td class="compare__cell">20%</td>
-                <td class="compare__cell">10%</td>
-                <td class="compare__cell">30%</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Рассрочка</th>
-                <td class="compare__cell">50% за время стройки, раз в квартал; 30% при передаче ключей</td>
-                <td class="compare__cell">60% за время стройки, каждый месяц; 30% при передаче ключей</td>
-                <td class="compare__cell">40% до сдачи дома; 30% при передаче ключей</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row">Комментарий эксперта</th>
-                <td class="compare__cell compare__cell--comment">Под сдачу в аренду: в районе спрос круглый год. Застройщик сдавал дома в Dubai Marina без переноса сроков.</td>
-                <td class="compare__cell compare__cell--comment">Для жизни или долгого владения. Высокий порог входа, зато первый взнос небольшой.</td>
-                <td class="compare__cell compare__cell--comment">Дом почти готов, доход от аренды начнётся раньше остальных. Студии легко перепродать.</td>
-              </tr>
-              <tr>
-                <th class="compare__label" scope="row"><span class="visually-hidden">Заявка</span></th>
-                <td class="compare__cell"><a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a></td>
-                <td class="compare__cell"><a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a></td>
-                <td class="compare__cell"><a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="compare__board">
+          <p class="compare__hint" aria-hidden="true">Таблица листается вбок<svg class="icon compare__hint-icon"><use href="#i-arrow"></use></svg></p>
+          <div class="compare__scroll" tabindex="0" role="region" aria-label="Таблица сравнения">
+            <table class="compare__table">
+              <thead>
+                <tr>
+                  <th class="compare__object" scope="col">
+                    <div class="compare__media">
+                      <img class="compare__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
+                      <div class="compare__tools">
+                        <button class="compare__tool compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                      </div>
+                    </div>
+                    <p class="compare__price">от 1 506 000 AED</p>
+                    <p class="compare__note">≈ 410 000 $</p>
+                    <a class="compare__name" href="object.html">Marina Crest Residence</a>
+                    <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
+                  </th>
+                  <th class="compare__object" scope="col">
+                    <div class="compare__media">
+                      <img class="compare__image" src="../img/villa-palms.webp" alt="" width="1200" height="750">
+                      <div class="compare__tools">
+                        <button class="compare__tool compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                      </div>
+                    </div>
+                    <p class="compare__price">от 4 200 000 AED</p>
+                    <p class="compare__note">≈ 1 144 000 $</p>
+                    <a class="compare__name" href="object.html">Palm Garden Villas</a>
+                    <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
+                  </th>
+                  <th class="compare__object" scope="col">
+                    <div class="compare__media">
+                      <img class="compare__image" src="../img/interior-city.webp" alt="" width="960" height="600">
+                      <div class="compare__tools">
+                        <button class="compare__tool" type="button" aria-pressed="false" aria-label="Добавить в избранное: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                      </div>
+                    </div>
+                    <p class="compare__price">от 295 000 $</p>
+                    <p class="compare__note">Цена застройщика в долларах</p>
+                    <a class="compare__name" href="object.html">Azure Heights</a>
+                    <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Основное</span></th></tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Страна и город</span></th></tr>
+                <tr>
+                  <td class="compare__cell">ОАЭ, Дубай</td>
+                  <td class="compare__cell">ОАЭ, Абу-Даби</td>
+                  <td class="compare__cell">ОАЭ, Дубай</td>
+                </tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Застройщик</span></th></tr>
+                <tr>
+                  <td class="compare__cell">Crest Development</td>
+                  <td class="compare__cell">Sand Line Properties</td>
+                  <td class="compare__cell">Bayline Estates</td>
+                </tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Площадь от</span></th></tr>
+                <tr>
+                  <td class="compare__cell">42 м²</td>
+                  <td class="compare__cell">310 м²</td>
+                  <td class="compare__cell">36 м²</td>
+                </tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Передача ключей</span></th></tr>
+                <tr>
+                  <td class="compare__cell">IV квартал 2027</td>
+                  <td class="compare__cell">II квартал 2028</td>
+                  <td class="compare__cell">IV квартал 2026</td>
+                </tr>
+
+                <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Оплата</span></th></tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Первый взнос</span></th></tr>
+                <tr>
+                  <td class="compare__cell">20%</td>
+                  <td class="compare__cell">10%</td>
+                  <td class="compare__cell">30%</td>
+                </tr>
+                <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Рассрочка</span></th></tr>
+                <tr>
+                  <td class="compare__cell">50% за время стройки, раз в квартал; 30% при передаче ключей</td>
+                  <td class="compare__cell">60% за время стройки, каждый месяц; 30% при передаче ключей</td>
+                  <td class="compare__cell">40% до сдачи дома; 30% при передаче ключей</td>
+                </tr>
+
+                <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Комментарий эксперта</span></th></tr>
+                <tr>
+                  <td class="compare__cell compare__cell--comment">Под сдачу в аренду: в районе спрос круглый год. Застройщик сдавал дома в Dubai Marina без переноса сроков.</td>
+                  <td class="compare__cell compare__cell--comment">Для жизни или долгого владения. Высокий порог входа, зато первый взнос небольшой.</td>
+                  <td class="compare__cell compare__cell--comment">Дом почти готов, доход от аренды начнётся раньше остальных. Студии легко перепродать.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

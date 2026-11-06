@@ -1,22 +1,37 @@
-/* Страница сравнения: 2-4 объекта колонками. На узком экране таблица листается вбок внутри
-   compare__scroll, страница вбок не едет, а колонка с подписями строк стоит на месте. */
+/* Страница сравнения: 2-4 объекта колонками в одной панели. Сверху карточки объектов, ниже группы
+   характеристик: подпись строкой над значениями, значение под своим объектом. На узком экране
+   таблица листается вбок внутри compare__scroll, страница вбок не едет. */
 
 /* ============ compare ============ */
 .compare {
-  --compare-label: 220px;
-  --compare-column: 240px;
+  --compare-column: 260px;
   --compare-columns: 2;
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
 }
 
-.compare__bar {
+.compare__top {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-m);
+  gap: var(--space-s) var(--space-m);
+}
+
+.compare__clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--transition);
 }
 
 .compare__count {
@@ -27,11 +42,17 @@
   color: var(--color-brand);
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color var(--transition);
 }
 
-.compare__clear {
-  min-height: 44px;
-  padding: 0 var(--space-m);
+.compare__board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  margin-top: var(--space-s);
+  padding: var(--space-l);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
 }
 
 .compare__hint {
@@ -50,18 +71,16 @@
 .compare__scroll {
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-m);
+  scroll-snap-type: x proximity;
 }
 
-/* Колонки объектов равные: ширину задаёт первая строка (table-layout: fixed). Сколько объектов,
+/* Колонки равные (table-layout: fixed), ширину не меньше --compare-column на объект. Число объектов
    считается по заголовкам колонок, без скрипта и без стилей в разметке. */
 .compare__table {
   width: 100%;
-  min-width: calc(var(--compare-label) + var(--compare-columns) * var(--compare-column));
+  min-width: calc(var(--compare-columns) * var(--compare-column));
   table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .compare__table:has(.compare__object:nth-of-type(3)) {
@@ -72,107 +91,138 @@
   --compare-columns: 4;
 }
 
-.compare__corner,
-.compare__label {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  width: var(--compare-label);
-  background: var(--color-paper);
-}
-
-.compare__object,
-.compare__label,
-.compare__cell {
-  padding: var(--space-m) var(--space-l);
+.compare__object {
+  padding: 0 var(--space-l) var(--space-l) 0;
+  font-weight: 400;
   text-align: left;
   vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+  scroll-snap-align: start;
 }
 
-.compare__label,
-.compare__cell {
-  border-top: 1px solid var(--color-border);
-}
-
-.compare__object {
-  font-weight: 400;
+.compare__media {
+  position: relative;
 }
 
 .compare__image {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-m);
 }
 
-.compare__name {
-  display: block;
-  margin-top: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3;
-  transition: color var(--transition);
+.compare__tools {
+  position: absolute;
+  top: var(--space-s);
+  right: var(--space-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
-.compare__remove {
+.compare__tool {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 44px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  font-size: var(--fs-small);
-  font-weight: 600;
-  color: var(--color-text-muted);
-  background: none;
+  color: var(--color-ink);
+  background: var(--color-bg);
   border: 0;
+  border-radius: var(--radius-round);
   cursor: pointer;
   transition: color var(--transition);
 }
 
-.compare__remove-icon {
-  width: 16px;
-  height: 16px;
+.compare__tool--active {
+  color: var(--color-like);
 }
 
-.compare__label {
-  font-size: var(--fs-small);
-  font-weight: 600;
-}
-
-.compare__cell {
-  font-size: var(--fs-small);
+.compare__tool--active .icon {
+  fill: var(--color-like);
 }
 
 .compare__price {
-  display: block;
-  font-size: var(--fs-body);
+  margin-top: var(--space-m);
+  font-size: var(--fs-h3);
   font-weight: 700;
-  color: var(--color-brand);
+  line-height: 1.3;
 }
 
 .compare__note {
-  display: block;
   font-size: var(--fs-xs);
   color: var(--color-text-muted);
 }
 
-.compare__cell--comment {
-  color: var(--color-text-muted);
+/* Длинное название не раздувает строку карточек: две строки и многоточие. */
+.compare__name {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: var(--space-s);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  transition: color var(--transition);
 }
 
 .compare__action {
   width: 100%;
   min-height: 44px;
+  margin-top: var(--space-m);
   padding: 0 var(--space-m);
 }
 
+.compare__group,
+.compare__label {
+  text-align: left;
+}
+
+.compare__group {
+  padding: var(--space-xl) 0 var(--space-xs);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.compare__label {
+  padding: var(--space-m) 0 var(--space-xs);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* Подпись строки стоит у левого края, пока колонки листаются вбок. */
+.compare__sticky {
+  position: sticky;
+  left: 0;
+}
+
+.compare__cell {
+  padding: 0 var(--space-l) var(--space-m) 0;
+  font-size: var(--fs-small);
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.compare__cell--comment {
+  padding-top: var(--space-s);
+  color: var(--color-text-muted);
+}
+
 @media (hover: hover) {
+  .compare__clear:hover,
   .compare__name:hover,
-  .compare__remove:hover,
   .compare__link:hover {
     color: var(--color-accent-strong);
+  }
+
+  .compare__tool:hover {
+    color: var(--color-like);
   }
 }
 
@@ -190,8 +240,12 @@
 
 @media (max-width: 768px) {
   .compare {
-    --compare-label: 120px;
-    --compare-column: 200px;
+    --compare-column: 168px;
+  }
+
+  .compare__board {
+    padding: var(--space-m);
+    border-radius: var(--radius-m);
   }
 
   .compare__hint {
@@ -199,16 +253,20 @@
   }
 
   .compare__object,
-  .compare__label,
   .compare__cell {
-    padding: 12px;
+    padding-right: var(--space-m);
   }
 
-  .compare__name {
-    font-size: var(--fs-small);
+  .compare__image {
+    aspect-ratio: 1;
   }
 
-  .compare__label {
-    font-size: var(--fs-xs);
+  .compare__price {
+    font-size: var(--fs-body);
+  }
+
+  .compare__group {
+    padding-top: var(--space-l);
+    font-size: var(--fs-body);
   }
 }
