@@ -1,5 +1,6 @@
 /* Мобильная схема (до 1024 px): нижняя панель tabbar, верхняя строка поиска quickbar и листы sheet.
-   На компьютере tabbar и quickbar скрыты, листы открываются только с телефона и планшета. */
+   На компьютере tabbar и quickbar скрыты. Листы меню и фильтров открываются только с телефона и планшета,
+   окна заявок sheet--window на любой ширине. */
 
 /* ============ tabbar (нижняя навигация) ============ */
 .tabbar {
@@ -277,6 +278,63 @@ html:has(.sheet[open]) {
 .sheet--bottom {
   max-height: 80dvh;
   border-radius: 20px 20px 0 0;
+}
+
+/* Окно заявки: на компьютере и планшете окно по центру, которое плавно проявляется, до 768 px лист
+   на весь экран. Прокручивается весь слой, а не окно внутри, поэтому выпадашки формы не обрезаются.
+   Нажатие на поле вокруг окна приходит на сам dialog и закрывает его (js/sheets.js). */
+.sheet--window {
+  top: 0;
+  height: 100dvh;
+  align-items: center;
+  justify-content: safe center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-xl) var(--gutter);
+  background: transparent;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0, 0, 0.2, 1), overlay 0.24s allow-discrete, display 0.24s allow-discrete;
+}
+
+.sheet--window[open],
+.sheet--window:target {
+  opacity: 1;
+  transform: none;
+}
+
+@starting-style {
+  .sheet--window[open] {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Без скрипта окно открыто через :target и ::backdrop нет: затемнение даёт фон самого слоя. */
+.sheet--window:target:not([open]) {
+  background: rgba(0, 63, 71, 0.18);
+}
+
+@media (max-width: 768px) {
+  .sheet--window {
+    justify-content: flex-start;
+    padding: 0;
+    background: var(--color-bg);
+    opacity: 1;
+    transform: translateY(100%);
+  }
+
+  .sheet--window[open],
+  .sheet--window:target {
+    transform: none;
+  }
+
+  @starting-style {
+    .sheet--window[open] {
+      opacity: 1;
+      transform: translateY(100%);
+    }
+  }
 }
 
 .sheet__grabber {

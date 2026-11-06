@@ -117,8 +117,8 @@
             <div class="summary__fact"><dt class="summary__fact-label">Цена и наличие проверены</dt><dd class="summary__fact-value">03.11.2026</dd></div>
           </dl>
           <div class="summary__actions">
-            <a class="button button--primary summary__action" href="#usloviya">Запросить условия</a>
-            <a class="button button--outline summary__action" href="#podbor-modal">Получить подборку</a>
+            <a class="button button--primary summary__action" href="#usloviya" data-sheet-open="usloviya" aria-haspopup="dialog">Запросить условия</a>
+            <a class="button button--outline summary__action" href="#podbor-modal" data-sheet-open="podbor-modal" aria-haspopup="dialog">Получить подборку</a>
             <button class="button button--outline summary__tool" type="button" aria-pressed="false"><svg class="icon summary__tool-icon" aria-hidden="true"><use href="#i-compare"></use></svg>К сравнению</button>
             <button class="button button--outline summary__tool summary__tool--active" type="button" aria-pressed="true"><svg class="icon summary__tool-icon" aria-hidden="true"><use href="#i-heart"></use></svg>В избранном</button>
             <a class="button button--outline summary__tool" href="https://t.me/davydova_ps"><svg class="icon summary__tool-icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a>
@@ -285,14 +285,14 @@
     </div>
   </main>
 
-  <div class="modal" id="usloviya" role="dialog" aria-modal="true" aria-labelledby="usloviya-title">
-    <div class="modal__dialog">
+  <dialog class="sheet sheet--window" id="usloviya" aria-labelledby="usloviya-title">
+    <div class="modal">
       <div class="modal__head">
         <div>
-          <h2 class="modal__title" id="usloviya-title">Запросить условия</h2>
+          <h2 class="modal__title sheet__title" id="usloviya-title" tabindex="-1">Запросить условия</h2>
           <p class="modal__text">Пришлём актуальные цены, свободные планировки и график платежей по этому проекту.</p>
         </div>
-        <a class="icon-button" href="#" aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
       </div>
       <div class="lead-object">
         <img class="lead-object__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
@@ -337,16 +337,16 @@
         <button class="button button--primary form__submit" type="submit">Отправить запрос</button>
       </form>
     </div>
-  </div>
+  </dialog>
 
-  <div class="modal" id="podbor-modal" role="dialog" aria-modal="true" aria-labelledby="podbor-modal-title">
-    <div class="modal__dialog">
+  <dialog class="sheet sheet--window" id="podbor-modal" aria-labelledby="podbor-modal-title">
+    <div class="modal">
       <div class="modal__head">
         <div>
-          <h2 class="modal__title" id="podbor-modal-title">Получить подборку</h2>
+          <h2 class="modal__title sheet__title" id="podbor-modal-title" tabindex="-1">Получить подборку</h2>
           <p class="modal__text">Ответьте на несколько вопросов, и мы пришлём проекты, которые подходят по бюджету и цели.</p>
         </div>
-        <a class="icon-button" href="#" aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
       </div>
       <form class="form" action="#podbor-modal" method="post">
         <div class="trap" aria-hidden="true">
@@ -416,7 +416,7 @@
         <button class="button button--primary form__submit" type="submit">Отправить заявку</button>
       </form>
     </div>
-  </div>
+  </dialog>
 
   <footer class="footer">
     <div class="container">

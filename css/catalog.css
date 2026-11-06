@@ -203,25 +203,9 @@
   margin-top: var(--space-s);
 }
 
-/* ============ modal (открывается через :target) ============ */
+/* ============ modal (содержимое окна заявки) ============
+   Само окно это лист dialog.sheet--window из mobile.css: он открывает, закрывает и анимирует. */
 .modal {
-  display: none;
-}
-
-.modal:target {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal);
-  padding: var(--space-xl) var(--gutter);
-  overflow-y: auto;
-  background: rgba(6, 43, 48, 0.6);
-}
-
-.modal__dialog {
-  transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1), opacity 0.24s ease;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
@@ -251,19 +235,8 @@
   color: var(--color-text-muted);
 }
 
-@starting-style {
-  .modal:target .modal__dialog {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-}
-
 @media (max-width: 768px) {
-  .modal:target {
-    padding: 0;
-  }
-
-  .modal__dialog {
+  .modal {
     max-width: none;
     min-height: 100%;
     padding: var(--space-m) var(--gutter) var(--space-l);

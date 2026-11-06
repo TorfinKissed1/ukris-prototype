@@ -182,7 +182,7 @@
             <h2 class="empty__title" id="empty-title">Объекты не найдены</h2>
             <p class="empty__text">По этим условиям в каталоге пока нет проектов. Измените фильтры или оставьте заявку: подберём варианты под ваш бюджет вручную.</p>
             <div class="empty__actions">
-              <a class="button button--primary" href="#podbor-modal">Оставить заявку на подбор</a>
+              <a class="button button--primary" href="#podbor-modal" data-sheet-open="podbor-modal" aria-haspopup="dialog">Оставить заявку на подбор</a>
               <a class="button button--outline" href="catalog.html">Сбросить фильтры</a>
             </div>
           </section>
@@ -190,14 +190,14 @@
     </div>
   </main>
 
-  <div class="modal" id="podbor-modal" role="dialog" aria-modal="true" aria-labelledby="podbor-modal-title">
-    <div class="modal__dialog">
+  <dialog class="sheet sheet--window" id="podbor-modal" aria-labelledby="podbor-modal-title">
+    <div class="modal">
       <div class="modal__head">
         <div>
-          <h2 class="modal__title" id="podbor-modal-title">Получить подборку</h2>
+          <h2 class="modal__title sheet__title" id="podbor-modal-title" tabindex="-1">Получить подборку</h2>
           <p class="modal__text">Ответьте на несколько вопросов, и мы пришлём проекты, которые подходят по бюджету и цели.</p>
         </div>
-        <a class="icon-button" href="#" aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
       </div>
       <form class="form" action="#podbor-modal" method="post">
         <div class="trap" aria-hidden="true">
@@ -268,7 +268,7 @@
         <button class="button button--primary form__submit" type="submit">Отправить заявку</button>
       </form>
     </div>
-  </div>
+  </dialog>
 
   <footer class="footer">
     <div class="container">
