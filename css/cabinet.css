@@ -1,13 +1,22 @@
 /* Личный кабинет и вход по коду из письма. Окно подтверждения удаления это лист sheet--window
    из mobile.css с содержимым modal из catalog.css. */
 
-/* ============ auth (вход: почта, потом код) ============ */
+/* ============ auth (вход, код из письма, регистрация) ============
+   Экран высотой в окно без шапки: панель по центру, подвал виден только после прокрутки. */
 .auth {
+  --auth-offset: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - var(--auth-offset));
+  padding: var(--space-xl) var(--gutter);
+}
+
+.auth__panel {
   display: flex;
   flex-direction: column;
-  gap: var(--space-m);
-  max-width: 520px;
-  margin: var(--space-xl) auto 0;
+  gap: var(--space-l);
+  width: min(100%, 452px);
   padding: var(--space-xl);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-l);
@@ -19,6 +28,7 @@
   align-items: center;
   gap: var(--space-s);
   min-height: 44px;
+  margin: calc(var(--space-s) * -1) 0 calc(var(--space-s) * -1);
   font-size: var(--fs-small);
   font-weight: 600;
   color: var(--color-brand);
@@ -29,9 +39,12 @@
   font-size: 28px;
   font-weight: 700;
   line-height: var(--lh-tight);
+  text-align: center;
 }
 
 .auth__text {
+  margin-top: calc(var(--space-s) * -1);
+  text-align: center;
   color: var(--color-text-muted);
 }
 
@@ -41,17 +54,34 @@
 }
 
 .auth__form {
-  margin-top: var(--space-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
 }
 
 .auth__submit {
   width: 100%;
+  margin-top: var(--space-xs);
 }
 
 .auth__code {
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.auth__resend {
+  display: flex;
+  justify-content: center;
+}
+
+.auth__switch {
+  padding-top: var(--space-l);
+  font-size: var(--fs-small);
+  text-align: center;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
 }
 
 .auth__link {
@@ -339,6 +369,12 @@
 
 /* До 1024 px меню кабинета становится строкой кнопок, которая листается вбок внутри себя. */
 @media (max-width: 1024px) {
+  /* Вместо шапки сверху строка поиска (61 px), снизу нижняя панель. */
+  .auth {
+    --auth-offset: calc(61px + var(--tabbar-height));
+    padding: var(--space-l) var(--gutter);
+  }
+
   .cabinet {
     flex-direction: column;
     align-items: stretch;
@@ -372,10 +408,8 @@
 }
 
 @media (max-width: 768px) {
-  .auth {
-    margin-top: 0;
-    padding: 0;
-    border: 0;
+  .auth__panel {
+    padding: var(--space-l) var(--space-m);
   }
 
   .auth__title,

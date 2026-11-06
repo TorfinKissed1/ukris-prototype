@@ -21,6 +21,7 @@
   <script src="../js/to-top.js" defer></script>
   <script src="../js/sheets.js" defer></script>
   <script src="../js/swipe.js" defer></script>
+  <script src="../js/form-check.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -77,25 +78,23 @@
     </form>
   </div>
 
-  <main class="page">
-    <div class="container">
-      <div class="auth">
-        <a class="auth__back" href="login.html"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Изменить почту</a>
-        <h1 class="auth__title">Введите код</h1>
-        <p class="auth__text">Код отправлен на <span class="auth__email">anna.k@example.com</span></p>
-        <form class="form auth__form" action="cabinet.html" method="post">
-          <div class="field form__field form__field--wide">
-            <label class="field__label" for="login-code">Код из письма</label>
-            <input class="field__control auth__code" id="login-code" type="text" name="code" required inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6">
-          </div>
-          <button class="button button--primary auth__submit" type="submit">Войти</button>
-        </form>
-        <form class="auth__resend" action="login-code.html" method="post">
-          <input type="hidden" name="email" value="anna.k@example.com">
-          <button class="auth__link" type="submit">Отправить код повторно</button>
-        </form>
-      </div>
-    </div>
+  <main class="auth">
+    <section class="auth__panel" aria-labelledby="code-title">
+      <a class="auth__back" href="login.html"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Изменить почту</a>
+      <h1 class="auth__title" id="code-title">Введите код</h1>
+      <p class="auth__text">Код отправлен на <span class="auth__email">anna.k@example.com</span></p>
+      <form class="auth__form" action="cabinet.html" method="post">
+        <div class="field">
+          <label class="field__label" for="login-code">Код из письма</label>
+          <input class="field__control auth__code" id="login-code" type="text" name="code" required data-error-required="Введите код из письма" data-error-format="Код состоит из 6 цифр" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6">
+        </div>
+        <button class="button button--primary auth__submit" type="submit">Войти</button>
+      </form>
+      <form class="auth__resend" action="login-code.html" method="post">
+        <input type="hidden" name="email" value="anna.k@example.com">
+        <button class="auth__link" type="submit">Отправить код повторно</button>
+      </form>
+    </section>
   </main>
 
   <footer class="footer">
