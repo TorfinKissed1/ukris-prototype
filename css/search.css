@@ -48,6 +48,41 @@
   height: 24px;
 }
 
+/* В ужатом поиске шапки только строка и «Найти»: выпадашкам там не хватает ширины,
+   полный набор полей в панели на первом экране. */
+.search--compact .search__part,
+.search--compact .search__divider {
+  display: none;
+}
+
+/* Поля бюджета уже выпадашек: в них короткое «Любой» или сумма, а выпадашкам нужно место под «Любой город». */
+.search__part--narrow {
+  flex-grow: 0.6;
+}
+
+.search--six .search__submit {
+  padding: 0 var(--space-l);
+}
+
+/* Шесть полей в ряд (фильтры каталога): до 1320 px раскладываются по три в строку. */
+@media (max-width: 1320px) {
+  .search--six {
+    flex-wrap: wrap;
+  }
+
+  .search--six .search__part {
+    flex: 1 1 calc(33.333% - var(--space-xs));
+  }
+
+  .search--six .search__divider {
+    display: none;
+  }
+
+  .search--six .search__submit {
+    flex: 1 1 100%;
+  }
+}
+
 .search--compact .search__submit {
   min-height: 44px;
   padding: 0 var(--space-l);

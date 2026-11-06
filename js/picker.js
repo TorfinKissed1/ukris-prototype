@@ -31,6 +31,8 @@ document.addEventListener('change', (event) => {
   const optionText = input.closest('.picker__option').querySelector('.picker__option-text');
   picker.querySelector('.picker__value').textContent = optionText.textContent;
   closePicker(picker);
+  // Выбранная радиокнопка прячется вместе со списком, поэтому фокус возвращаем на кнопку выпадашки.
+  picker.querySelector('.picker__button').focus({ preventScroll: true });
 });
 
 document.addEventListener('click', (event) => {

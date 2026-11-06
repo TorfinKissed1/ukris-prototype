@@ -110,8 +110,10 @@
   transition: background-color var(--transition);
 }
 
-.picker__option:hover {
-  background: var(--color-paper);
+@media (hover: hover) {
+  .picker__option:hover {
+    background: var(--color-paper);
+  }
 }
 
 .picker__option:has(.picker__input:focus-visible) {
@@ -236,6 +238,11 @@
 
   .picker--closing .picker__panel {
     transform: translateY(100%);
+  }
+
+  /* Пока лист выпадашки открыт, страница под ним не прокручивается. */
+  html:has(.picker[open]) {
+    overflow: hidden;
   }
 
   .picker__head {

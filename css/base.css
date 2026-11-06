@@ -63,8 +63,10 @@
   box-sizing: border-box;
 }
 
+/* scrollbar-gutter: место под полосу прокрутки держится всегда, страница не сдвигается, когда лист её прячет. */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   interpolate-size: allow-keywords;
 }
 

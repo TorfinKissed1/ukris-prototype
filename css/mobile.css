@@ -39,7 +39,6 @@
     transition: color var(--transition);
   }
 
-  .tabbar__item:hover,
   .tabbar__item--active {
     color: var(--color-brand);
   }
@@ -191,9 +190,7 @@
     transition: background-color var(--transition);
   }
 
-  .quickbar__filters:hover {
-    background: var(--color-brand-hover);
-  }
+
 
   .quickbar__count {
     min-width: 20px;
@@ -378,8 +375,19 @@ html:has(.sheet[open]) {
   transition: background-color var(--transition);
 }
 
-.sheet__option:hover {
-  background: var(--color-paper);
+/* Ховеры только там, где есть мышь: на касании они залипают после нажатия. */
+@media (hover: hover) {
+  .tabbar__item:hover {
+    color: var(--color-brand);
+  }
+
+  .quickbar__filters:hover {
+    background: var(--color-brand-hover);
+  }
+
+  .sheet__option:hover {
+    background: var(--color-paper);
+  }
 }
 
 .sheet__option--current,

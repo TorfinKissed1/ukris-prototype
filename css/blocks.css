@@ -339,6 +339,11 @@
   font-weight: 600;
   list-style: none;
   cursor: pointer;
+  transition: color var(--transition);
+}
+
+.faq__question:hover {
+  color: var(--color-brand);
 }
 
 .faq__question::-webkit-details-marker {
@@ -501,8 +506,12 @@
   transform: none;
 }
 
-/* Над нижней панелью телефона. */
+/* Над нижней панелью телефона. Подвалу запас снизу, чтобы кнопка не закрывала последнюю строку. */
 @media (max-width: 1024px) {
+  .footer {
+    padding-bottom: calc(var(--space-l) + 64px);
+  }
+
   .to-top {
     right: var(--space-m);
     bottom: calc(var(--tabbar-height) + var(--space-m) + env(safe-area-inset-bottom));

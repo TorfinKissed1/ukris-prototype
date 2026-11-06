@@ -10,6 +10,14 @@ function openSheet(sheet) {
   }
 }
 
+// Ссылка вида catalog.html#filters без скрипта открыла бы лист через :target, без модальности.
+// Со скриптом открываем его как обычно и убираем #filters из адреса.
+const sheetFromHash = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+if (sheetFromHash && sheetFromHash.matches('dialog.sheet') && typeof sheetFromHash.showModal === 'function') {
+  history.replaceState(null, '', location.pathname + location.search);
+  openSheet(sheetFromHash);
+}
+
 document.addEventListener('click', (event) => {
   const opener = event.target.closest('[data-sheet-open]');
   if (opener) {

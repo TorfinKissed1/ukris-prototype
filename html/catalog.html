@@ -41,6 +41,8 @@
     <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
     <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14M18 11l-6 -6M6 11l6 -6"></path></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zM16 3v4M8 3v4M4 11h16"></path></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></symbol>
   </svg>
 
   <div class="header-slot">
@@ -68,7 +70,7 @@
   <div class="quickbar quickbar--sticky" data-quickbar>
     <form class="container quickbar__form" action="catalog.html" method="get" role="search" aria-label="Поиск объектов">
       <label class="quickbar__field"><svg class="icon quickbar__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="quickbar__input" type="search" name="q" placeholder="Поиск объектов" enterkeyhint="search" autocomplete="off"><button class="quickbar__clear" type="button" aria-label="Очистить поиск"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></label>
-      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span><span class="quickbar__count">1</span></a>
+      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters" aria-label="Фильтры"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span><span class="quickbar__count">1</span></a>
     </form>
   </div>
 
@@ -80,10 +82,9 @@
       <div class="container">
       <form class="finder finder--bordered catalog__search" action="catalog.html" method="get" aria-label="Фильтры">
             <label class="finder__query"><svg class="icon finder__query-icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="finder__query-input" type="search" name="q" placeholder="Проект, город или застройщик"></label>
-            <div class="search search--plain catalog__filters-row">
+            <div class="search search--plain search--six catalog__filters-row">
             <details class="picker picker--flat search__part">
               <summary class="picker__button">
-                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-world"></use></svg>
                 <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">ОАЭ</span></span>
                 <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
 </summary>
@@ -100,7 +101,6 @@
             <span class="search__divider" aria-hidden="true"></span>
             <details class="picker picker--flat search__part">
               <summary class="picker__button">
-                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-building"></use></svg>
                 <span class="picker__text"><span class="picker__label">Город</span><span class="picker__value">Любой город</span></span>
                 <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
 </summary>
@@ -114,19 +114,18 @@
               </div>
             </details>
             <span class="search__divider" aria-hidden="true"></span>
-            <label class="field-box field-box--flat search__part">
+            <label class="field-box field-box--flat search__part search__part--narrow">
               <span class="field-box__label">Бюджет от, $</span>
               <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой">
             </label>
             <span class="search__divider" aria-hidden="true"></span>
-            <label class="field-box field-box--flat search__part">
+            <label class="field-box field-box--flat search__part search__part--narrow">
               <span class="field-box__label">Бюджет до, $</span>
               <input class="field-box__input" type="text" name="budget_max" inputmode="numeric" autocomplete="off" placeholder="Любой">
             </label>
             <span class="search__divider" aria-hidden="true"></span>
             <details class="picker picker--flat search__part">
               <summary class="picker__button">
-                <svg class="icon picker__icon" aria-hidden="true"><use href="#i-home"></use></svg>
                 <span class="picker__text"><span class="picker__label">Тип</span><span class="picker__value">Любой тип</span></span>
                 <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
 </summary>
@@ -206,7 +205,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Marina Crest Residence</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Marina Crest Residence</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -230,7 +229,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Palm Garden Villas</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Palm Garden Villas</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -254,7 +253,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Harbour View</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Harbour View</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -278,7 +277,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Creek Point Tower</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Creek Point Tower</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -302,7 +301,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Saadiyat Shore</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Saadiyat Shore</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -326,7 +325,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Oasis Lane Townhouses</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Oasis Lane Townhouses</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -350,7 +349,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Azure Heights</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Azure Heights</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -374,7 +373,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Yas Bay Lofts</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Yas Bay Lofts</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -398,7 +397,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Palm Vista Villas</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Palm Vista Villas</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
@@ -422,7 +421,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Business Bay One</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Business Bay One</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Bayline Estates</dd></div>
@@ -446,7 +445,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Абу-Даби</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Reem Island Gardens</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Reem Island Gardens</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Sand Line Properties</dd></div>
@@ -470,7 +469,7 @@
               <div class="project-card__body">
                 <div>
                   <p class="project-card__place">ОАЭ, Дубай</p>
-                  <h2 class="project-card__title"><a class="project-card__link" href="#">Jumeirah Park Residences</a></h2>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html">Jumeirah Park Residences</a></h2>
                 </div>
                 <dl class="project-card__facts">
                   <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Greenway Homes</dd></div>
@@ -535,8 +534,8 @@
     <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2><a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a></div>
     <ul class="sheet__options">
       <li><a class="sheet__option" href="cabinet.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-user"></use></svg>Войти в кабинет</a></li>
-      <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-building"></use></svg>О проекте</a></li>
-      <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-home"></use></svg>Контакты</a></li>
+      <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-world"></use></svg>О проекте</a></li>
+      <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-phone"></use></svg>Контакты</a></li>
       <li><a class="sheet__option" href="https://t.me/davydova_ps"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a></li>
     </ul>
   </dialog>
@@ -604,6 +603,7 @@
         </details>
         <details class="picker">
           <summary class="picker__button">
+          <svg class="icon picker__icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
             <span class="picker__text"><span class="picker__label">Срок передачи ключей</span><span class="picker__value">Любой срок</span></span>
             <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
           </summary>
