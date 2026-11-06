@@ -37,6 +37,8 @@
     <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12M20 12v4h-4a2 2 0 0 1 0 -4h4"></path></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></symbol>
     <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14M18 11l-6 -6M6 11l6 -6"></path></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zM16 3v4M8 3v4M4 11h16"></path></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></symbol>
   </svg>
 
   <div class="header-slot">
@@ -59,6 +61,13 @@
       </div>
     </div>
   </header>
+  </div>
+
+  <div class="quickbar quickbar--sticky" data-quickbar>
+    <form class="container quickbar__form" action="catalog.html" method="get" role="search" aria-label="Поиск объектов">
+      <label class="quickbar__field"><svg class="icon quickbar__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="quickbar__input" type="search" name="q" placeholder="Поиск объектов" enterkeyhint="search" autocomplete="off"><button class="quickbar__clear" type="button" aria-label="Очистить поиск"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></label>
+      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters" aria-label="Фильтры"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span></a>
+    </form>
   </div>
 
   <main class="page">
@@ -146,10 +155,88 @@
     <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2><a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a></div>
     <ul class="sheet__options">
       <li><a class="sheet__option" href="cabinet.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-user"></use></svg>Войти в кабинет</a></li>
-      <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-building"></use></svg>О проекте</a></li>
-      <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-home"></use></svg>Контакты</a></li>
+      <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-world"></use></svg>О проекте</a></li>
+      <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-phone"></use></svg>Контакты</a></li>
       <li><a class="sheet__option" href="https://t.me/davydova_ps"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a></li>
     </ul>
+  </dialog>
+  <dialog class="sheet sheet--full" id="filters" aria-labelledby="filters-title">
+    <form class="sheet__form" action="catalog.html" method="get">
+      <div class="sheet__head"><h2 class="sheet__title" id="filters-title" tabindex="-1">Фильтры</h2><a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a></div>
+      <div class="sheet__body">
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-world"></use></svg>
+            <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Любая страна</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Страна</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="" checked><span class="picker__option-text">Любая страна</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae"><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-building"></use></svg>
+            <span class="picker__text"><span class="picker__label">Город</span><span class="picker__value">Любой город</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Город</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="" checked><span class="picker__option-text">Любой город</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="dubai"><span class="picker__option-text">Дубай</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="abu-dhabi"><span class="picker__option-text">Абу-Даби</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="alanya"><span class="picker__option-text">Алания</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="mersin"><span class="picker__option-text">Мерсин</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="city" value="phuket"><span class="picker__option-text">Пхукет</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-wallet"></use></svg>
+            <span class="picker__text"><span class="picker__label">Бюджет</span><span class="picker__value">Любой</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Бюджет</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="" checked><span class="picker__option-text">Любой</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="0-200000"><span class="picker__option-text">до 200 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="200000-500000"><span class="picker__option-text">200 000 - 500 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="500000-1000000"><span class="picker__option-text">500 000 - 1 000 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="budget" value="1000000-"><span class="picker__option-text">от 1 000 000 $</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <details class="picker">
+          <summary class="picker__button">
+            <svg class="icon picker__icon" aria-hidden="true"><use href="#i-home"></use></svg>
+            <span class="picker__text"><span class="picker__label">Тип</span><span class="picker__value">Любой тип</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Тип</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="" checked><span class="picker__option-text">Любой тип</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="apartments"><span class="picker__option-text">Апартаменты</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="flats"><span class="picker__option-text">Квартиры</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="villas"><span class="picker__option-text">Виллы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="type" value="townhouses"><span class="picker__option-text">Таунхаусы</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="sheet__foot">
+        <button class="button button--accent sheet__submit" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>Найти объекты</button>
+      </div>
+    </form>
   </dialog>
   <a class="to-top" href="#" aria-label="Наверх"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
 </body>
