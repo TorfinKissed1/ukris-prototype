@@ -210,14 +210,48 @@
   color: var(--color-text-muted);
 }
 
+/* Ошибка выезжает вниз из нулевой высоты (js/form-check.js добавляет её при отправке). */
 .field__error {
+  display: grid;
+  grid-template-rows: 0fr;
   font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--color-error);
+  opacity: 0;
+  transition: grid-template-rows 0.24s ease, opacity 0.24s ease;
 }
 
-.field--error .field__control {
+.field__error-text {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.field--error .field__error,
+.field-box--error .field__error {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+@starting-style {
+  .field--error .field__error,
+  .field-box--error .field__error {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+}
+
+.field--error .field__control,
+.field--error .field__check-input,
+.field-box--error,
+.field-box--error:hover,
+.field-box--error:focus-within {
   border-color: var(--color-error);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field__error {
+    transition: none;
+  }
 }
 
 .field__check {

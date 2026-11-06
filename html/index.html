@@ -21,6 +21,7 @@
   <script src="../js/to-top.js" defer></script>
   <script src="../js/sheets.js" defer></script>
   <script src="../js/swipe.js" defer></script>
+  <script src="../js/form-check.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -461,11 +462,11 @@
               </div>
               <label class="field-box form__field">
                 <span class="field-box__label">Имя</span>
-                <input class="field-box__input" type="text" name="name" placeholder="Как к вам обращаться" required autocomplete="name">
+                <input class="field-box__input" type="text" name="name" placeholder="Как к вам обращаться" required data-error-required="Укажите имя" autocomplete="name">
               </label>
               <label class="field-box form__field">
                 <span class="field-box__label">Контакт</span>
-                <input class="field-box__input" type="text" name="contact" placeholder="Телефон, Telegram или почта" required>
+                <input class="field-box__input" type="text" name="contact" placeholder="Телефон, Telegram или почта" required data-error-required="Укажите контакт для связи">
               </label>
               <details class="picker form__field">
                 <summary class="picker__button">

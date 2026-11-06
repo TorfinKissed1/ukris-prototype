@@ -21,6 +21,7 @@
   <script src="../js/to-top.js" defer></script>
   <script src="../js/sheets.js" defer></script>
   <script src="../js/swipe.js" defer></script>
+  <script src="../js/form-check.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -246,10 +247,9 @@
             <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
           </div>
         </fieldset>
-        <div class="field field--error form__field form__field--wide">
+        <div class="field form__field form__field--wide">
           <label class="field__label" for="modal-contact">Контакт</label>
-          <input class="field__control" id="modal-contact" type="text" name="contact" required aria-invalid="true" aria-describedby="modal-contact-error" placeholder="@username, номер или почта">
-          <p class="field__error" id="modal-contact-error">Укажите контакт для связи</p>
+          <input class="field__control" id="modal-contact" type="text" name="contact" required data-error-required="Укажите контакт для связи" placeholder="@username, номер или почта">
         </div>
         <div class="field form__field">
           <label class="field__label" for="modal-name">Имя <span class="field__optional">(необязательно)</span></label>

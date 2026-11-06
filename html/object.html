@@ -22,6 +22,7 @@
   <script src="../js/to-top.js" defer></script>
   <script src="../js/sheets.js" defer></script>
   <script src="../js/swipe.js" defer></script>
+  <script src="../js/form-check.js" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -322,7 +323,7 @@
         </fieldset>
         <div class="field form__field form__field--wide">
           <label class="field__label" for="usloviya-contact">Контакт</label>
-          <input class="field__control" id="usloviya-contact" type="text" name="contact" required placeholder="@username, номер или почта">
+          <input class="field__control" id="usloviya-contact" type="text" name="contact" required data-error-required="Укажите контакт для связи" placeholder="@username, номер или почта">
         </div>
         <div class="field form__field form__field--wide">
           <label class="field__label" for="usloviya-comment">Комментарий <span class="field__optional">(необязательно)</span></label>
@@ -396,7 +397,7 @@
         </fieldset>
         <div class="field form__field form__field--wide">
           <label class="field__label" for="podbor-contact">Контакт</label>
-          <input class="field__control" id="podbor-contact" type="text" name="contact" required placeholder="@username, номер или почта">
+          <input class="field__control" id="podbor-contact" type="text" name="contact" required data-error-required="Укажите контакт для связи" placeholder="@username, номер или почта">
         </div>
         <div class="field form__field">
           <label class="field__label" for="podbor-name">Имя <span class="field__optional">(необязательно)</span></label>
