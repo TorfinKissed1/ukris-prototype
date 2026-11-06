@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="../css/picker.css">
   <link rel="stylesheet" href="../css/mobile.css">
   <link rel="stylesheet" href="../css/pages.css">
-  <link rel="stylesheet" href="../css/catalog.css">
   <link rel="stylesheet" href="../css/compare.css">
   <script src="../js/picker.js" defer></script>
   <script src="../js/to-top.js" defer></script>
@@ -47,6 +46,7 @@
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></symbol>
     <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12zM16 3v4M8 3v4M4 11h16"></path></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7l16 0M10 11l0 6M14 11l0 6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></symbol>
   </svg>
 
   <div class="header-slot">
@@ -87,45 +87,68 @@
         </ol>
       </nav>
 
-      <div class="page__head">
-        <h1 class="page__title">Сравнение проектов</h1>
-      </div>
+      <div class="compare">
+        <div class="compare__top">
+          <h1 class="page__title">Сравнение проектов</h1>
+          <button class="compare__clear" type="button"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>Очистить сравнение</button>
+        </div>
 
-      <div class="compare-few">
-        <section class="empty" aria-labelledby="few-title">
-          <h2 class="empty__title" id="few-title">Добавьте ещё хотя бы один объект</h2>
-          <p class="empty__text">Сравнить можно от двух до четырёх проектов. Нажмите «К сравнению» на карточке в каталоге или на странице объекта.</p>
-          <div class="empty__actions">
-            <a class="button button--primary" href="catalog.html">Перейти в каталог</a>
-            <button class="button button--outline" type="button">Очистить список</button>
+        <div class="compare__board">
+          <div class="compare__scroll" tabindex="0" role="region" aria-label="Таблица сравнения">
+            <table class="compare__table">
+              <thead>
+                <tr>
+                  <th class="compare__object" scope="col">
+                    <div class="compare__media">
+                      <img class="compare__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
+                      <div class="compare__tools">
+                        <button class="compare__tool compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                      </div>
+                    </div>
+                    <p class="compare__price">от 1 506 000 AED</p>
+                    <p class="compare__note">≈ 410 000 $</p>
+                    <a class="compare__name" href="object.html">Marina Crest Residence</a>
+                    <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th class="compare__group" colspan="1" scope="colgroup"><span class="compare__sticky">Основное</span></th></tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Страна и город</span></th></tr>
+                <tr>
+                  <td class="compare__cell">ОАЭ, Дубай</td>
+                </tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Застройщик</span></th></tr>
+                <tr>
+                  <td class="compare__cell">Crest Development</td>
+                </tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Площадь от</span></th></tr>
+                <tr>
+                  <td class="compare__cell">42 м²</td>
+                </tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Передача ключей</span></th></tr>
+                <tr>
+                  <td class="compare__cell">IV квартал 2027</td>
+                </tr>
+
+                <tr><th class="compare__group" colspan="1" scope="colgroup"><span class="compare__sticky">Оплата</span></th></tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Первый взнос</span></th></tr>
+                <tr>
+                  <td class="compare__cell">20%</td>
+                </tr>
+                <tr><th class="compare__label" colspan="1" scope="colgroup"><span class="compare__sticky">Рассрочка</span></th></tr>
+                <tr>
+                  <td class="compare__cell">50% за время стройки, раз в квартал; 30% при передаче ключей</td>
+                </tr>
+
+                <tr><th class="compare__group" colspan="1" scope="colgroup"><span class="compare__sticky">Комментарий эксперта</span></th></tr>
+                <tr>
+                  <td class="compare__cell compare__cell--comment">Под сдачу в аренду: в районе спрос круглый год. Застройщик сдавал дома в Dubai Marina без переноса сроков.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </section>
-
-        <h2 class="compare-few__title">Уже в списке</h2>
-        <div class="projects projects--narrow">
-          <article class="project-card">
-            <div class="project-card__media">
-              <img class="project-card__image" src="../img/dubai-pool.webp" alt="Marina Crest Residence, Дубай" width="1200" height="750">
-              <div class="project-card__badges">
-                <span class="project-card__badge">Ключи: 2027</span>
-                <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Убрать из избранного" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
-              </div>
-            </div>
-            <div class="project-card__body">
-              <div>
-                <p class="project-card__place">ОАЭ, Дубай</p>
-                <h3 class="project-card__title"><a class="project-card__link" href="object.html">Marina Crest Residence</a></h3>
-              </div>
-              <dl class="project-card__facts">
-                <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value">Crest Development</dd></div>
-                <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value">Апартаменты</dd></div>
-              </dl>
-              <div class="project-card__footer">
-                <p class="project-card__price"><span class="project-card__price-value">от 1 506 000 AED</span><span class="project-card__price-note">≈ 410 000 $</span></p>
-                <button class="button button--outline project-card__compare" type="button" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg>В сравнении</button>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </div>

@@ -90,7 +90,6 @@
 
       <div class="page__head">
         <h1 class="page__title">Личный кабинет</h1>
-        <p class="page__lead">Вы вошли как anna.k@example.com</p>
       </div>
 
       <div class="cabinet">
@@ -236,21 +235,19 @@
                 </tr>
               </tbody>
             </table>
-            <p class="cabinet__note">Статус меняет менеджер: когда берёт заявку в работу и когда заканчивает её. Срочный вопрос можно задать в <a class="cabinet__note-link" href="https://t.me/davydova_ps">Telegram</a>.</p>
           </section>
 
           <section class="cabinet__section" id="profil" aria-labelledby="profil-title">
             <div class="cabinet__head">
               <h2 class="cabinet__title" id="profil-title">Профиль</h2>
             </div>
-            <p class="cabinet__note">Имя и контакт подставляются в формы заявок сами.</p>
             <form class="form cabinet__profile" action="cabinet.html#profil" method="post">
               <div class="field form__field">
                 <label class="field__label" for="profile-name">Имя</label>
                 <input class="field__control" id="profile-name" type="text" name="name" autocomplete="name" value="Анна">
               </div>
               <div class="field form__field">
-                <span class="field__label">Почта для входа</span>
+                <span class="field__label">Электронная почта</span>
                 <p class="cabinet__value">anna.k@example.com</p>
               </div>
               <fieldset class="field form__field form__field--wide">
@@ -270,7 +267,7 @@
 
             <div class="cabinet__danger">
               <h3 class="cabinet__danger-title">Удаление аккаунта</h3>
-              <p class="cabinet__note">Удалим аккаунт, избранное, список сравнения и данные профиля. Восстановить их будет нельзя.</p>
+              <p class="cabinet__note">Это приведёт к удалению аккаунта и данных, связанных с ним. Действие необратимо.</p>
               <a class="button button--outline cabinet__delete" href="#delete-account" data-sheet-open="delete-account" aria-haspopup="dialog">Удалить аккаунт</a>
             </div>
           </section>
@@ -284,12 +281,11 @@
       <div class="modal__head">
         <div>
           <h2 class="modal__title sheet__title" id="delete-account-title" tabindex="-1">Удалить аккаунт?</h2>
-          <p class="modal__text">Аккаунт, избранное, список сравнения и данные профиля удалятся сразу. Восстановить их будет нельзя.</p>
         </div>
         <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
       </div>
       <form class="confirm" action="index.html" method="post">
-        <button class="button button--danger confirm__button" type="submit">Удалить аккаунт</button>
+        <button class="button button--danger confirm__button" type="submit">Удалить</button>
         <a class="button button--outline confirm__button" href="#" data-sheet-close>Отмена</a>
       </form>
     </div>

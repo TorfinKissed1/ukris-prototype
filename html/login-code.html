@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Код из письма - УКРИС</title>
-  <meta name="description" content="Вход в личный кабинет по коду из письма, без пароля.">
+  <title>Вход - УКРИС</title>
+  <meta name="description" content="Вход в личный кабинет.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,18 +81,18 @@
     <div class="container">
       <div class="auth">
         <a class="auth__back" href="login.html"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Изменить почту</a>
-        <h1 class="auth__title">Введите код из письма</h1>
-        <p class="auth__text">Отправили код на <strong class="auth__email">anna.k@example.com</strong>. Если письма нет, проверьте папку «Спам».</p>
+        <h1 class="auth__title">Введите код</h1>
+        <p class="auth__text">Код отправлен на <span class="auth__email">anna.k@example.com</span></p>
         <form class="form auth__form" action="cabinet.html" method="post">
           <div class="field form__field form__field--wide">
-            <label class="field__label" for="login-code">Код</label>
-            <input class="field__control auth__code" id="login-code" type="text" name="code" required inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000">
+            <label class="field__label" for="login-code">Код из письма</label>
+            <input class="field__control auth__code" id="login-code" type="text" name="code" required inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6">
           </div>
           <button class="button button--primary auth__submit" type="submit">Войти</button>
         </form>
         <form class="auth__resend" action="login-code.html" method="post">
           <input type="hidden" name="email" value="anna.k@example.com">
-          <button class="auth__link" type="submit">Отправить код ещё раз</button>
+          <button class="auth__link" type="submit">Отправить код повторно</button>
         </form>
       </div>
     </div>

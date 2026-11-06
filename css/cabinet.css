@@ -54,11 +54,6 @@
   letter-spacing: 0.3em;
 }
 
-.auth__note {
-  font-size: var(--fs-xs);
-  color: var(--color-text-muted);
-}
-
 .auth__link {
   min-height: 44px;
   padding: 0;
@@ -156,16 +151,10 @@
   line-height: var(--lh-tight);
 }
 
-.cabinet__more,
-.cabinet__note-link {
+.cabinet__more {
   font-weight: 600;
   color: var(--color-brand);
   transition: color var(--transition);
-}
-
-.cabinet__note-link {
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .cabinet__note {
@@ -330,7 +319,6 @@
   .auth__back:hover,
   .auth__link:hover,
   .cabinet__more:hover,
-  .cabinet__note-link:hover,
   .saved__name:hover,
   .requests__link:hover {
     color: var(--color-accent-strong);

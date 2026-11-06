@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Вход в кабинет - УКРИС</title>
-  <meta name="description" content="Вход в личный кабинет по коду из письма, без пароля.">
+  <title>Вход - УКРИС</title>
+  <meta name="description" content="Вход в личный кабинет.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,26 +80,24 @@
   <main class="page">
     <div class="container">
       <div class="auth">
-        <h1 class="auth__title">Вход в кабинет</h1>
-        <p class="auth__text">Пришлём на почту код для входа. Пароль не нужен: при первом входе кабинет создастся сам.</p>
+        <h1 class="auth__title">Вход</h1>
         <form class="form auth__form" action="login-code.html" method="post">
           <div class="trap" aria-hidden="true">
             <label for="login-company-website">Сайт компании</label>
             <input id="login-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
           </div>
           <div class="field form__field form__field--wide">
-            <label class="field__label" for="login-email">Почта</label>
+            <label class="field__label" for="login-email">Электронная почта</label>
             <input class="field__control" id="login-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="name@example.com">
           </div>
           <div class="field form__field form__field--wide">
             <label class="field__check">
               <input class="field__check-input" type="checkbox" name="consent" required>
-              <span>Даю согласие на обработку персональных данных по <a class="field__check-link" href="privacy.html">политике конфиденциальности</a></span>
+              <span>Даю согласие на обработку <a class="field__check-link" href="consent.html">персональных данных</a></span>
             </label>
           </div>
           <button class="button button--primary auth__submit" type="submit">Получить код</button>
         </form>
-        <p class="auth__note">Кабинет нужен, чтобы избранное и сравнение не потерялись и были видны с любого устройства. Каталогом и заявками можно пользоваться без входа.</p>
       </div>
     </div>
   </main>

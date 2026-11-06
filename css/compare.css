@@ -34,17 +34,6 @@
   transition: color var(--transition);
 }
 
-.compare__count {
-  color: var(--color-text-muted);
-}
-
-.compare__link {
-  color: var(--color-brand);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color var(--transition);
-}
-
 .compare__board {
   display: flex;
   flex-direction: column;
@@ -55,17 +44,16 @@
   border-radius: var(--radius-l);
 }
 
-.compare__hint {
-  display: none;
+.compare__board--empty {
   align-items: center;
-  gap: var(--space-xs);
-  font-size: var(--fs-xs);
-  color: var(--color-text-muted);
+  gap: var(--space-l);
+  padding: var(--space-2xl) var(--space-l);
+  text-align: center;
 }
 
-.compare__hint-icon {
-  width: 16px;
-  height: 16px;
+.compare__empty-title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
 }
 
 .compare__scroll {
@@ -89,6 +77,12 @@
 
 .compare__table:has(.compare__object:nth-of-type(4)) {
   --compare-columns: 4;
+}
+
+/* Один объект занимает одну колонку, а не всю панель. */
+.compare__table:has(.compare__object:only-of-type) {
+  width: calc(var(--compare-column) + var(--space-l));
+  min-width: 0;
 }
 
 .compare__object {
@@ -216,26 +210,13 @@
 
 @media (hover: hover) {
   .compare__clear:hover,
-  .compare__name:hover,
-  .compare__link:hover {
+  .compare__name:hover {
     color: var(--color-accent-strong);
   }
 
   .compare__tool:hover {
     color: var(--color-like);
   }
-}
-
-/* ============ compare-few (меньше двух объектов: сообщение и то, что уже в списке) ============ */
-.compare-few {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-l);
-}
-
-.compare-few__title {
-  font-size: var(--fs-h3);
-  font-weight: 700;
 }
 
 @media (max-width: 768px) {
@@ -246,10 +227,6 @@
   .compare__board {
     padding: var(--space-m);
     border-radius: var(--radius-m);
-  }
-
-  .compare__hint {
-    display: flex;
   }
 
   .compare__object,
