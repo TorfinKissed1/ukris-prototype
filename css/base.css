@@ -204,6 +204,13 @@ textarea {
   color: var(--color-accent-strong);
 }
 
+/* Кнопки под содержимым секции, например «Показать ещё» под карточками. */
+.section__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
