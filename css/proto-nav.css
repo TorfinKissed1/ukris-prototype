@@ -57,8 +57,7 @@
   border: 1px solid var(--color-border);
   border-right: 0;
   border-radius: 0 0 0 var(--radius-m);
-  /* Закрытая панель прячется после выезда: иначе она видна полоской в месте под полосу прокрутки
-     (scrollbar-gutter в base.css), и её ссылки ловят Tab. */
+  /* Закрытая панель прячется после выезда, иначе её ссылки за краем экрана ловят Tab. */
   visibility: hidden;
   transition: visibility var(--transition);
 }

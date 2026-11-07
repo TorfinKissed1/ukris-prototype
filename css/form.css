@@ -182,10 +182,12 @@
   resize: vertical;
 }
 
+/* Варианты стоят под legend, а на legend не действует gap колонки .field: отступ задан здесь. */
 .field__options {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-s);
+  margin-top: var(--space-s);
 }
 
 .field__option {

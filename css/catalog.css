@@ -209,6 +209,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
+  /* Окно не сжимается до высоты листа: иначе длинная форма вылезает за его низ вместе с отступом. */
+  flex-shrink: 0;
   width: 100%;
   max-width: 640px;
   padding: var(--space-xl);
@@ -229,11 +231,21 @@
   line-height: var(--lh-tight);
 }
 
+/* Кнопка отправки на всю ширину, согласие под ней. */
+.modal__submit {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.modal__consent {
+  order: 1;
+}
+
 @media (max-width: 768px) {
   .modal {
     max-width: none;
     min-height: 100%;
-    padding: var(--space-m) var(--gutter) var(--space-l);
+    padding: var(--space-m) var(--gutter) calc(var(--space-xl) + env(safe-area-inset-bottom));
     border-radius: 0;
   }
 

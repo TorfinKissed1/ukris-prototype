@@ -63,11 +63,19 @@
   box-sizing: border-box;
 }
 
-/* scrollbar-gutter: место под полосу прокрутки держится всегда, страница не сдвигается, когда лист её прячет. */
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
   interpolate-size: allow-keywords;
+}
+
+/* Полосы прокрутки браузера скрыты на странице и в окнах: прокрутка остаётся колесом, жестом и
+   клавишами. Без полосы страница и не сдвигается, когда открытый лист прячет прокрутку. */
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 /* Якорь не уезжает под закреплённую шапку. */
