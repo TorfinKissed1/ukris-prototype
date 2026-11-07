@@ -16,11 +16,14 @@
   <link rel="stylesheet" href="../css/form.css?v=a7cdcdc3">
   <link rel="stylesheet" href="../css/picker.css?v=79336419">
   <link rel="stylesheet" href="../css/mobile.css?v=9ee0e4c7">
-  <link rel="stylesheet" href="../css/catalog.css?v=74c84fd8">
+  <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
+  <link rel="stylesheet" href="../css/catalog.css?v=8e1a27bc">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/picker.js?v=afb4141a" defer></script>
   <script src="../js/to-top.js?v=fa881674" defer></script>
   <script src="../js/sheets.js?v=b5494c03" defer></script>
+  <script src="../js/search-data.js?v=61be7fb3" defer></script>
+  <script src="../js/search.js?v=34b72acf" defer></script>
   <script src="../js/swipe.js?v=81f2aeee" defer></script>
   <script src="../js/form-check.js?v=4cb2a264" defer></script>
   <script src="../js/proto-nav.js?v=18a9a222" defer></script>
@@ -74,7 +77,7 @@
   <div class="quickbar quickbar--sticky" data-quickbar>
     <form class="container quickbar__form" action="catalog.html" method="get" role="search" aria-label="Поиск объектов">
       <label class="quickbar__field"><svg class="icon quickbar__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="quickbar__input" type="search" name="q" placeholder="Поиск объектов" enterkeyhint="search" autocomplete="off"><button class="quickbar__clear" type="button" aria-label="Очистить поиск"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></label>
-      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters" aria-label="Фильтры"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span><span class="quickbar__count">4</span></a>
+      <a class="quickbar__filters" href="#filters" data-sheet-open="filters" aria-haspopup="dialog" aria-controls="filters" aria-label="Фильтры"><svg class="icon" aria-hidden="true"><use href="#i-filter"></use></svg><span class="quickbar__filters-text">Фильтры</span><span class="quickbar__count">6</span></a>
     </form>
   </div>
 
@@ -95,7 +98,7 @@
     <div class="catalog__bar">
       <div class="container">
       <form class="finder finder--bordered catalog__search" action="catalog.html" method="get" aria-label="Фильтры">
-            <label class="finder__query"><svg class="icon finder__query-icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="finder__query-input" type="search" name="q" placeholder="Проект, город или застройщик"></label>
+            <label class="finder__query"><svg class="icon finder__query-icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="finder__query-input" type="search" name="q" placeholder="Проект, город или застройщик" value="вид на море"></label>
             <div class="search search--plain search--six catalog__filters-row">
             <details class="picker picker--flat search__part">
               <summary class="picker__button">
@@ -130,7 +133,7 @@
             <span class="search__divider" aria-hidden="true"></span>
             <label class="field-box field-box--flat search__part search__part--narrow">
               <span class="field-box__label">Бюджет от, $</span>
-              <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой">
+              <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой" value="50000">
             </label>
             <span class="search__divider" aria-hidden="true"></span>
             <label class="field-box field-box--flat search__part search__part--narrow">
@@ -157,14 +160,14 @@
             <span class="search__divider" aria-hidden="true"></span>
             <details class="picker picker--flat search__part">
               <summary class="picker__button">
-                <span class="picker__text"><span class="picker__label">Срок ключей</span><span class="picker__value">Любой срок</span></span>
+                <span class="picker__text"><span class="picker__label">Срок ключей</span><span class="picker__value">Сдан</span></span>
                 <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
               </summary>
               <div class="picker__panel">
                 <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Срок ключей</span></div>
                 <ul class="picker__list">
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="" checked><span class="picker__option-text">Любой срок</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="done"><span class="picker__option-text">Сдан</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value=""><span class="picker__option-text">Любой срок</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="done" checked><span class="picker__option-text">Сдан</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
                   <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2026"><span class="picker__option-text">2026</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
                   <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2027"><span class="picker__option-text">2027</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
                   <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2028"><span class="picker__option-text">2028</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
@@ -181,10 +184,15 @@
 
       <div class="catalog__content">
           <div class="chips">
-            <a class="chips__item" href="catalog.html?city=phuket&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Таиланд">Таиланд<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
-            <a class="chips__item" href="catalog.html?country=thailand&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Пхукет">Пхукет<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
-            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;type=villas" aria-label="Убрать фильтр: До 100 000 $">До 100 000 $<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
-            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_max=100000" aria-label="Убрать фильтр: Виллы">Виллы<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?city=phuket&amp;budget_min=50000&amp;budget_max=100000&amp;type=villas&amp;keys=done&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: Таиланд">Таиланд<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;budget_min=50000&amp;budget_max=100000&amp;type=villas&amp;keys=done&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: Пхукет">Пхукет<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_max=100000&amp;type=villas&amp;keys=done&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: От 50 000 $">От 50 000 $<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_min=50000&amp;type=villas&amp;keys=done&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: До 100 000 $">До 100 000 $<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_min=50000&amp;budget_max=100000&amp;keys=done&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: Виллы">Виллы<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_min=50000&amp;budget_max=100000&amp;type=villas&amp;q=%D0%B2%D0%B8%D0%B4+%D0%BD%D0%B0+%D0%BC%D0%BE%D1%80%D0%B5" aria-label="Убрать фильтр: Сдан">Сдан<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <a class="chips__item" href="catalog.html?country=thailand&amp;city=phuket&amp;budget_min=50000&amp;budget_max=100000&amp;type=villas&amp;keys=done" aria-label="Убрать фильтр: «вид на море»">«вид на море»<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+            <input class="chips__toggle visually-hidden" type="checkbox" id="chips-more">
+            <label class="chips__more" for="chips-more">Ещё 1</label>
             <a class="chips__reset" href="catalog.html">Сбросить все</a>
           </div>
 
@@ -314,6 +322,15 @@
     <a class="tabbar__item" href="compare.html"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="tabbar__badge" aria-label="объектов: 3">3</span></span><span class="tabbar__label">Сравнение</span></a>
     <a class="tabbar__item" href="#menu" data-sheet-open="menu" aria-haspopup="dialog"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></span><span class="tabbar__label">Меню</span></a>
   </nav>
+  <dialog class="sheet sheet--full search-sheet" id="search" aria-label="Поиск">
+    <form class="sheet__form" action="catalog.html" method="get" role="search">
+      <div class="sheet__head search-sheet__head">
+        <label class="search-sheet__field"><svg class="icon search-sheet__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="search-sheet__input" type="search" name="q" placeholder="Проект, город или застройщик" enterkeyhint="search" autocomplete="off"></label>
+        <a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <div class="sheet__body search-sheet__results"></div>
+    </form>
+  </dialog>
   <dialog class="sheet sheet--bottom" id="menu" aria-labelledby="menu-title">
     <span class="sheet__grabber" aria-hidden="true"></span>
     <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2></div>
@@ -362,7 +379,7 @@
         <div class="sheet__row">
           <label class="field-box">
           <span class="field-box__label">Бюджет от, $</span>
-          <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой">
+          <input class="field-box__input" type="text" name="budget_min" inputmode="numeric" autocomplete="off" placeholder="Любой" value="50000">
         </label>
           <label class="field-box">
           <span class="field-box__label">Бюджет до, $</span>
@@ -389,14 +406,14 @@
         <details class="picker">
           <summary class="picker__button">
             <svg class="icon picker__icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-            <span class="picker__text"><span class="picker__label">Срок передачи ключей</span><span class="picker__value">Любой срок</span></span>
+            <span class="picker__text"><span class="picker__label">Срок передачи ключей</span><span class="picker__value">Сдан</span></span>
             <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
           </summary>
           <div class="picker__panel">
             <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Срок передачи ключей</span></div>
             <ul class="picker__list">
-              <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="" checked><span class="picker__option-text">Любой срок</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
-              <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="done"><span class="picker__option-text">Сдан</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value=""><span class="picker__option-text">Любой срок</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="done" checked><span class="picker__option-text">Сдан</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
               <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2026"><span class="picker__option-text">2026</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
               <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2027"><span class="picker__option-text">2027</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
               <li><label class="picker__option"><input class="picker__input" type="radio" name="keys" value="2028"><span class="picker__option-text">2028</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>

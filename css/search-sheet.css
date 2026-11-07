@@ -1,0 +1,164 @@
+/* ============ search-sheet (поиск на весь экран на телефоне и планшете) ============
+   Лист dialog.sheet--full из mobile.css; поле сверху, под ним подсказки-характеристики и объекты,
+   их рисует js/search.js. */
+.search-sheet__head {
+  padding-top: env(safe-area-inset-top);
+}
+
+.search-sheet__field {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-s);
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 14px;
+  background: var(--color-paper);
+  border: 1px solid transparent;
+  border-radius: var(--radius-round);
+  cursor: text;
+  transition: border-color var(--transition);
+}
+
+/* Фокус в поле показывает только цвет рамки. */
+.search-sheet__field:focus-within {
+  border-color: var(--color-brand);
+}
+
+.search-sheet__icon {
+  color: var(--color-text-muted);
+}
+
+.search-sheet__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  font-size: 16px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  appearance: none;
+}
+
+/* Системный крестик поиска не нужен: закрывает лист свой крестик рядом. */
+.search-sheet__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-sheet__results {
+  gap: var(--space-l);
+  padding-top: var(--space-s);
+}
+
+.search-sheet__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.search-sheet__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.search-sheet__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.search-sheet__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-s);
+  min-height: 40px;
+  padding: 0 6px 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border-radius: var(--radius-round);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.search-sheet__chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--space-s);
+  font-size: var(--fs-xs);
+  background: var(--color-bg);
+  border-radius: var(--radius-round);
+}
+
+.search-sheet__rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-sheet__row,
+.search-sheet__object {
+  display: flex;
+  min-width: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-sheet__row {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.search-sheet__object {
+  align-items: center;
+  gap: var(--space-m);
+}
+
+.search-sheet__image {
+  flex: none;
+  width: 64px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-paper);
+  border-radius: var(--radius-s);
+}
+
+.search-sheet__object-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.search-sheet__row-title {
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.search-sheet__row-hint {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.search-sheet__note {
+  padding: var(--space-m) 0;
+  color: var(--color-text-muted);
+}
+
+@media (hover: hover) {
+  .search-sheet__chip:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand);
+  }
+
+  .search-sheet__row:hover .search-sheet__row-title,
+  .search-sheet__object:hover .search-sheet__row-title {
+    color: var(--color-brand);
+  }
+}

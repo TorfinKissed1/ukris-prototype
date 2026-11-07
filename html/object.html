@@ -15,13 +15,16 @@
   <link rel="stylesheet" href="../css/form.css?v=a7cdcdc3">
   <link rel="stylesheet" href="../css/picker.css?v=79336419">
   <link rel="stylesheet" href="../css/mobile.css?v=9ee0e4c7">
-  <link rel="stylesheet" href="../css/catalog.css?v=74c84fd8">
+  <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
+  <link rel="stylesheet" href="../css/catalog.css?v=8e1a27bc">
   <link rel="stylesheet" href="../css/pages.css?v=4e271515">
   <link rel="stylesheet" href="../css/object.css?v=e915628b">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/picker.js?v=afb4141a" defer></script>
   <script src="../js/to-top.js?v=fa881674" defer></script>
   <script src="../js/sheets.js?v=b5494c03" defer></script>
+  <script src="../js/search-data.js?v=61be7fb3" defer></script>
+  <script src="../js/search.js?v=34b72acf" defer></script>
   <script src="../js/swipe.js?v=81f2aeee" defer></script>
   <script src="../js/form-check.js?v=4cb2a264" defer></script>
   <script src="../js/toggles.js?v=a930f124" defer></script>
@@ -457,6 +460,15 @@
     <a class="tabbar__item" href="compare.html"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg><span class="tabbar__badge" aria-label="объектов: 3">3</span></span><span class="tabbar__label">Сравнение</span></a>
     <a class="tabbar__item" href="#menu" data-sheet-open="menu" aria-haspopup="dialog"><span class="tabbar__icon"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></span><span class="tabbar__label">Меню</span></a>
   </nav>
+  <dialog class="sheet sheet--full search-sheet" id="search" aria-label="Поиск">
+    <form class="sheet__form" action="catalog.html" method="get" role="search">
+      <div class="sheet__head search-sheet__head">
+        <label class="search-sheet__field"><svg class="icon search-sheet__icon" aria-hidden="true"><use href="#i-search"></use></svg><span class="visually-hidden">Поиск по названию, городу или застройщику</span><input class="search-sheet__input" type="search" name="q" placeholder="Проект, город или застройщик" enterkeyhint="search" autocomplete="off"></label>
+        <a class="icon-button sheet__close" href="#" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <div class="sheet__body search-sheet__results"></div>
+    </form>
+  </dialog>
   <dialog class="sheet sheet--bottom" id="menu" aria-labelledby="menu-title">
     <span class="sheet__grabber" aria-hidden="true"></span>
     <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2></div>
