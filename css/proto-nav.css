@@ -39,8 +39,10 @@
   transition: background-color var(--transition);
 }
 
-.proto-nav__toggle:hover {
-  background: var(--color-brand-hover);
+@media (hover: hover) {
+  .proto-nav__toggle:hover {
+    background: var(--color-brand-hover);
+  }
 }
 
 .proto-nav__panel {
@@ -80,8 +82,10 @@
   transition: border-color var(--transition), color var(--transition), background-color var(--transition);
 }
 
-.proto-nav__link:hover {
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .proto-nav__link:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .proto-nav__link--current {

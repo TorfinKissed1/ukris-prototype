@@ -83,8 +83,10 @@
   transition: color var(--transition);
 }
 
-.object__map-link:hover {
-  color: var(--color-accent-strong);
+@media (hover: hover) {
+  .object__map-link:hover {
+    color: var(--color-accent-strong);
+  }
 }
 
 @media (max-width: 768px) {
@@ -225,6 +227,12 @@
 .summary__tool {
   flex: 1 1 160px;
   padding: 0 var(--space-m);
+}
+
+/* Заливка сердечка появляется и уходит плавно, поэтому без отметки она прозрачная, а не none. */
+.summary__tool-icon {
+  fill: transparent;
+  transition: fill var(--transition), color var(--transition);
 }
 
 .summary__tool--active .summary__tool-icon {

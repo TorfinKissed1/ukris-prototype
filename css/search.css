@@ -103,9 +103,14 @@
   transition: background-color var(--transition);
 }
 
-.search__query:hover,
 .search__query:focus-within {
   background: var(--color-paper);
+}
+
+@media (hover: hover) {
+  .search__query:hover {
+    background: var(--color-paper);
+  }
 }
 
 .search__query-icon {
@@ -199,15 +204,23 @@
   transition: background-color var(--transition), color var(--transition);
 }
 
-.finder__tab:hover {
-  color: var(--color-brand);
-  background: var(--color-bg);
+@media (hover: hover) {
+  .finder__tab:hover {
+    color: var(--color-brand);
+    background: var(--color-bg);
+  }
 }
 
-.finder__tab--active,
-.finder__tab--active:hover {
+.finder__tab--active {
   color: var(--color-text-on-dark);
   background: var(--color-brand);
+}
+
+@media (hover: hover) {
+  .finder__tab--active:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand);
+  }
 }
 
 .finder__query {
@@ -222,9 +235,14 @@
   transition: border-color var(--transition);
 }
 
-.finder__query:hover,
 .finder__query:focus-within {
   border-color: var(--color-brand);
+}
+
+@media (hover: hover) {
+  .finder__query:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .finder__query-icon {

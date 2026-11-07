@@ -137,8 +137,10 @@
   transition: color var(--transition);
 }
 
-.contacts__value--link:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .contacts__value--link:hover {
+    color: var(--color-brand);
+  }
 }
 
 .contacts__legal {
@@ -239,8 +241,10 @@
   transition: color var(--transition);
 }
 
-.doc__content a:hover {
-  color: var(--color-accent-strong);
+@media (hover: hover) {
+  .doc__content a:hover {
+    color: var(--color-accent-strong);
+  }
 }
 
 /* ============ doc-nav (список документов сбоку) ============ */
@@ -266,8 +270,10 @@
   transition: color var(--transition), background-color var(--transition);
 }
 
-.doc-nav__link:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .doc-nav__link:hover {
+    color: var(--color-brand);
+  }
 }
 
 .doc-nav__link--active {

@@ -95,9 +95,11 @@
   transition: background-color var(--transition), color var(--transition);
 }
 
-.header__link:hover {
-  color: var(--color-brand);
-  background: var(--color-bg);
+@media (hover: hover) {
+  .header__link:hover {
+    color: var(--color-brand);
+    background: var(--color-bg);
+  }
 }
 
 .header__link--active {
@@ -106,9 +108,11 @@
   background: var(--color-brand);
 }
 
-.header__link--active:hover {
-  color: var(--color-text-on-dark);
-  background: var(--color-brand-hover);
+@media (hover: hover) {
+  .header__link--active:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand-hover);
+  }
 }
 
 .header__tools {
@@ -189,9 +193,11 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-.header--overlay:not(.header--scrolled) .header__link:hover {
-  color: var(--color-ink);
-  background: var(--color-bg);
+@media (hover: hover) {
+  .header--overlay:not(.header--scrolled) .header__link:hover {
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
 }
 
 .header--overlay:not(.header--scrolled) .icon-button,
@@ -201,9 +207,11 @@
   border-color: var(--color-border-on-dark);
 }
 
-.header--overlay:not(.header--scrolled) .icon-button:hover,
-.header--overlay:not(.header--scrolled) .header__login:hover {
-  border-color: var(--color-text-on-dark);
+@media (hover: hover) {
+  .header--overlay:not(.header--scrolled) .icon-button:hover,
+  .header--overlay:not(.header--scrolled) .header__login:hover {
+    border-color: var(--color-text-on-dark);
+  }
 }
 
 /* Два класса в селекторе: иначе .search из search.css, подключённый позже, показал бы строку сразу. */

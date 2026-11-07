@@ -210,8 +210,10 @@ textarea {
   transition: color var(--transition);
 }
 
-.section__more:hover {
-  color: var(--color-accent-strong);
+@media (hover: hover) {
+  .section__more:hover {
+    color: var(--color-accent-strong);
+  }
 }
 
 /* Кнопки под содержимым секции, например «Показать ещё» под карточками. */
@@ -245,8 +247,10 @@ textarea {
   background: var(--color-brand);
 }
 
-.button--primary:hover {
-  background: var(--color-brand-hover);
+@media (hover: hover) {
+  .button--primary:hover {
+    background: var(--color-brand-hover);
+  }
 }
 
 .button--light {
@@ -254,8 +258,10 @@ textarea {
   background: var(--color-bg);
 }
 
-.button--light:hover {
-  background: var(--color-paper);
+@media (hover: hover) {
+  .button--light:hover {
+    background: var(--color-paper);
+  }
 }
 
 .button--outline-light {
@@ -264,8 +270,10 @@ textarea {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.button--outline-light:hover {
-  border-color: var(--color-text-on-dark);
+@media (hover: hover) {
+  .button--outline-light:hover {
+    border-color: var(--color-text-on-dark);
+  }
 }
 
 .button--outline {
@@ -274,8 +282,10 @@ textarea {
   background: var(--color-bg);
 }
 
-.button--outline:hover {
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .button--outline:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .button--soft {
@@ -283,9 +293,11 @@ textarea {
   background: var(--color-brand-soft);
 }
 
-.button--soft:hover {
-  color: var(--color-text-on-dark);
-  background: var(--color-brand);
+@media (hover: hover) {
+  .button--soft:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand);
+  }
 }
 
 .button--accent {
@@ -293,8 +305,10 @@ textarea {
   background: var(--color-accent);
 }
 
-.button--accent:hover {
-  background: var(--color-accent-hover);
+@media (hover: hover) {
+  .button--accent:hover {
+    background: var(--color-accent-hover);
+  }
 }
 
 .button--block {
@@ -318,9 +332,11 @@ textarea {
   transition: border-color var(--transition), background-color var(--transition), color var(--transition);
 }
 
-.icon-button:hover {
-  color: var(--color-brand);
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .icon-button:hover {
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
 }
 
 .icon {

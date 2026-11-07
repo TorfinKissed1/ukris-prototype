@@ -76,8 +76,10 @@
   color: var(--color-text-on-dark-muted);
 }
 
-.direction:hover .direction__arrow {
-  background: var(--color-accent);
+@media (hover: hover) {
+  .direction:hover .direction__arrow {
+    background: var(--color-accent);
+  }
 }
 
 @media (hover: hover) and (min-width: 1025px) {
@@ -118,8 +120,10 @@
   transition: border-color var(--transition);
 }
 
-.project-card:hover {
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .project-card:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .project-card__media {
@@ -179,12 +183,21 @@
   transition: color var(--transition);
 }
 
-.project-card__favorite:hover {
-  color: var(--color-like);
+@media (hover: hover) {
+  .project-card__favorite:hover {
+    color: var(--color-like);
+  }
 }
 
 .project-card__favorite--active {
   color: var(--color-like);
+}
+
+/* Заливка сердечка появляется и уходит плавно: у fill: none нет промежуточных значений,
+   поэтому без отметки заливка прозрачная. */
+.project-card__favorite .icon {
+  fill: transparent;
+  transition: fill var(--transition);
 }
 
 .project-card__favorite--active .icon {
@@ -226,8 +239,10 @@
   z-index: 1;
 }
 
-.project-card__link:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .project-card__link:hover {
+    color: var(--color-brand);
+  }
 }
 
 .project-card__facts {
@@ -294,10 +309,12 @@
   padding: 0 var(--space-m);
 }
 
-.project-card__compare:hover {
-  color: var(--color-text-on-dark);
-  background: var(--color-brand);
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .project-card__compare:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+  }
 }
 
 .project-card__compare[aria-pressed="true"] {
@@ -364,8 +381,10 @@
   transition: color var(--transition);
 }
 
-.faq__question:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .faq__question:hover {
+    color: var(--color-brand);
+  }
 }
 
 .faq__question::-webkit-details-marker {
@@ -454,8 +473,10 @@
   transition: color var(--transition);
 }
 
-.crumbs__link:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .crumbs__link:hover {
+    color: var(--color-brand);
+  }
 }
 
 .crumbs__current {
@@ -527,8 +548,10 @@
   transition: color var(--transition);
 }
 
-.footer__link:hover {
-  color: var(--color-text-on-dark);
+@media (hover: hover) {
+  .footer__link:hover {
+    color: var(--color-text-on-dark);
+  }
 }
 
 .footer__bottom {
@@ -575,8 +598,10 @@
   transition: opacity var(--transition), transform var(--transition), visibility var(--transition), background-color var(--transition);
 }
 
-.to-top:hover {
-  background: var(--color-brand-hover);
+@media (hover: hover) {
+  .to-top:hover {
+    background: var(--color-brand-hover);
+  }
 }
 
 .to-top--visible {

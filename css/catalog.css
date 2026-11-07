@@ -113,9 +113,11 @@
   transition: background-color var(--transition), color var(--transition);
 }
 
-.chips__item:hover {
-  color: var(--color-text-on-dark);
-  background: var(--color-brand);
+@media (hover: hover) {
+  .chips__item:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-brand);
+  }
 }
 
 .chips__remove {
@@ -147,9 +149,11 @@
   transition: color var(--transition), border-color var(--transition);
 }
 
-.chips__reset:hover {
-  color: var(--color-brand);
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .chips__reset:hover {
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
 }
 
 /* ============ pagination ============ */
@@ -177,8 +181,10 @@
   transition: border-color var(--transition);
 }
 
-.pagination__link:hover {
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .pagination__link:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .pagination__link--current {

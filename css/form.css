@@ -167,9 +167,14 @@
   transition: border-color var(--transition);
 }
 
-.field__control:hover,
 .field__control:focus {
   border-color: var(--color-brand);
+}
+
+@media (hover: hover) {
+  .field__control:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .field__control:focus {
@@ -264,9 +269,14 @@
 .field--error .field__control,
 .field--error .field__check-input,
 .field-box--error,
-.field-box--error:hover,
 .field-box--error:focus-within {
   border-color: var(--color-error);
+}
+
+@media (hover: hover) {
+  .field-box--error:hover {
+    border-color: var(--color-error);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -310,8 +320,10 @@
   transition: transform 0.2s ease;
 }
 
-.field__check-input:hover {
-  border-color: var(--color-brand);
+@media (hover: hover) {
+  .field__check-input:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .field__check-input:checked {
@@ -339,10 +351,15 @@
   border-color: var(--color-border-on-dark);
 }
 
-.field--dark .field__control:hover,
-.field--dark .field__control:focus,
-.field--dark .field__option-label:hover {
+.field--dark .field__control:focus {
   border-color: var(--color-text-on-dark);
+}
+
+@media (hover: hover) {
+  .field--dark .field__control:hover,
+  .field--dark .field__option-label:hover {
+    border-color: var(--color-text-on-dark);
+  }
 }
 
 .field--dark .field__option-input:checked + .field__option-label {
@@ -368,9 +385,14 @@
   transition: border-color var(--transition);
 }
 
-.field-box:hover,
 .field-box:focus-within {
   border-color: var(--color-brand);
+}
+
+@media (hover: hover) {
+  .field-box:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .field-box__label {
@@ -410,9 +432,14 @@
   border-color: var(--color-border-on-dark);
 }
 
-.field-box--dark:hover,
 .field-box--dark:focus-within {
   border-color: var(--color-text-on-dark);
+}
+
+@media (hover: hover) {
+  .field-box--dark:hover {
+    border-color: var(--color-text-on-dark);
+  }
 }
 
 .field-box--dark .field-box__label {
@@ -427,8 +454,14 @@
   border-radius: var(--radius-m);
 }
 
-.field-box--flat:hover,
 .field-box--flat:focus-within {
   background: var(--color-paper);
   border-color: transparent;
+}
+
+@media (hover: hover) {
+  .field-box--flat:hover {
+    background: var(--color-paper);
+    border-color: transparent;
+  }
 }

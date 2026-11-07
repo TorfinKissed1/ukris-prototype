@@ -135,6 +135,12 @@
   color: var(--color-like);
 }
 
+/* Заливка сердечка появляется и уходит плавно, поэтому без отметки она прозрачная, а не none. */
+.compare__tool .icon {
+  fill: transparent;
+  transition: fill var(--transition);
+}
+
 .compare__tool--active .icon {
   fill: var(--color-like);
 }
