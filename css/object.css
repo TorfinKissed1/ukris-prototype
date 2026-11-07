@@ -232,6 +232,13 @@
   fill: var(--color-like);
 }
 
+/* Объект в сравнении: кнопка залита, как «К сравнению» в карточке каталога. */
+.summary__compare[aria-pressed="true"] {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
 .summary__checked {
   font-size: var(--fs-xs);
   color: var(--color-text-muted);
