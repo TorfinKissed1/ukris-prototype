@@ -51,7 +51,7 @@ python -m http.server 8766 --bind 127.0.0.1
 | `css/search.css` | `finder` (вкладки стран, строка поиска и ряд фильтров одной панелью) и ряд `search`, ужатый вид для шапки | выпадашки внутри (`picker.css`) |
 | `css/picker.css` | выпадающий список `picker`: на компьютере выпадает вниз, до 1024 px выезжает листом снизу | раскладку вокруг себя |
 | `css/blocks.css` | `direction`, `projects`, `project-card`, `faq`, `footer`, `to-top` | формы |
-| `css/form.css` | `lead-form`, `form` (модификатор `form--columns_4`), `field`, своя галочка `field__check-input`, `field-box` (поле с подписью внутри рамки), ошибка под полем `field__error` (выезжает вниз, рамка поля красная: `field--error`, `field-box--error`) | |
+| `css/form.css` | `lead-form`, `form` (модификатор `form--columns_4`, поле на две колонки `form__field--span_2`), `field`, своя галочка `field__check-input`, `field-box` (поле с подписью внутри рамки), ошибка под полем `field__error` (выезжает вниз, рамка поля красная: `field--error`, `field-box--error`) | |
 | `css/catalog.css` | раскладка каталога, плавающая панель фильтров `catalog__bar`, кнопка сортировки для телефона, `chips`, `pagination`, `empty`, содержимое окна заявки `modal` | общие блоки, само окно (`sheet--window` в `mobile.css`) |
 | `css/pages.css` | простые страницы: `page`, хлебные крошки `crumbs`, список с галочками `ticks`, `about`, `contacts`, документ `doc` с боковым списком `doc-nav`, `not-found` | карточку объекта |
 | `css/compare.css` | таблица сравнения `compare` (число колонок считает сама по заголовкам через `:has()`, подписи строк липкие `compare__sticky`), один объект занимает одну колонку, пустое состояние `compare__board--empty` | |

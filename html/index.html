@@ -557,6 +557,20 @@
                 <span class="field-box__label">Имя</span>
                 <input class="field-box__input" type="text" name="name" placeholder="Как к вам обращаться" required data-error-required="Укажите имя" autocomplete="name">
               </label>
+              <details class="picker form__field">
+                <summary class="picker__button">
+                  <span class="picker__text"><span class="picker__label">Способ связи</span><span class="picker__value">Telegram</span></span>
+                  <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+</summary>
+                <div class="picker__panel">
+<div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Способ связи</span><button class="icon-button picker__close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+                  <ul class="picker__list">
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="channel" value="telegram" checked><span class="picker__option-text">Telegram</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="channel" value="phone"><span class="picker__option-text">Телефон</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                    <li><label class="picker__option"><input class="picker__input" type="radio" name="channel" value="email"><span class="picker__option-text">Email</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+                  </ul>
+                </div>
+              </details>
               <label class="field-box form__field">
                 <span class="field-box__label">Контакт</span>
                 <input class="field-box__input" type="text" name="contact" placeholder="Телефон, Telegram или почта" required data-error-required="Укажите контакт для связи">
@@ -595,7 +609,7 @@
                 <span class="field-box__label">Бюджет в $, необязательно</span>
                 <input class="field-box__input" type="text" name="budget_usd" placeholder="Например, 300 000" inputmode="numeric" autocomplete="off">
               </label>
-              <label class="field-box form__field form__field--span_3">
+              <label class="field-box form__field form__field--span_2">
                 <span class="field-box__label">Комментарий, необязательно</span>
                 <input class="field-box__input" type="text" name="comment" placeholder="Что важно при выборе: район, вид, рассрочка">
               </label>

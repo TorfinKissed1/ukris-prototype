@@ -107,8 +107,15 @@
   flex-basis: 220px;
 }
 
-.form--columns_4 .form__field--span_3 {
-  flex: 3 1 680px;
+.form--columns_4 .form__field--span_2 {
+  flex: 2 1 456px;
+}
+
+/* На планшете поля идут по три, и комментарий на две колонки оставлял согласие зажатым рядом с ним. */
+@media (max-width: 1024px) {
+  .form--columns_4 .form__field--span_2 {
+    flex-basis: 100%;
+  }
 }
 
 .form__submit {
