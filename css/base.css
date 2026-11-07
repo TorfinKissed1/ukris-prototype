@@ -207,7 +207,9 @@ textarea {
 /* Кнопки под содержимым секции, например «Показать ещё» под карточками. */
 .section__actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: var(--space-s);
   margin-top: var(--space-xl);
 }
 
@@ -320,6 +322,27 @@ textarea {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* На телефоне ссылка из заголовка секции («Весь каталог») переезжает кнопкой под содержимое.
+   Стоит после .button, иначе его display перебивает скрытие. */
+.section__actions--mobile,
+.section__action--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .section__more {
+    display: none;
+  }
+
+  .section__actions--mobile {
+    display: flex;
+  }
+
+  .section__action--mobile {
+    display: inline-flex;
+  }
 }
 
 @media (max-width: 1024px) {

@@ -116,6 +116,18 @@
   min-width: 240px;
 }
 
+/* Форма подбора на телефоне: кнопка на всю ширину, согласие под ней. */
+@media (max-width: 768px) {
+  .lead-form__submit {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .lead-form__consent {
+    order: 1;
+  }
+}
+
 /* ============ field ============ */
 .field {
   display: flex;

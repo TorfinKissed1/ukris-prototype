@@ -97,10 +97,12 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-@media (max-width: 480px) {
+/* На телефоне и узком планшете карточки в две колонки, где помещаются, и с фото пониже,
+   чтобы одна карточка не занимала больше экрана. */
+@media (max-width: 768px) {
   .projects,
   .projects--narrow {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   }
 }
 
@@ -251,11 +253,12 @@
   font-weight: 500;
 }
 
+/* Цена и кнопка всегда друг под другом: при длинной и короткой цене подвал одной высоты,
+   линии над ценой у соседних карточек на одном уровне, «К сравнению» всегда слева. */
 .project-card__footer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   gap: var(--space-m);
   margin-top: auto;
   padding-top: var(--space-m);
@@ -287,7 +290,6 @@
 .project-card__compare {
   position: relative;
   z-index: 2;
-  align-self: center;
   min-height: 40px;
   padding: 0 var(--space-m);
 }
@@ -302,6 +304,26 @@
   color: var(--color-text-on-dark);
   background: var(--color-brand);
   border-color: var(--color-brand);
+}
+
+@media (max-width: 768px) {
+  .project-card__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-card__body {
+    gap: var(--space-s);
+    padding: var(--space-m);
+  }
+
+  .project-card__badges {
+    padding: var(--space-s);
+  }
+
+  .project-card__footer {
+    gap: var(--space-s);
+    padding-top: var(--space-s);
+  }
 }
 
 /* ============ faq ============ */
