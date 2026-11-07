@@ -1,6 +1,6 @@
 // Выпадающие списки .picker работают и без скрипта (details + радиокнопки).
 // Скрипт только делает их удобнее: подставляет выбранное в кнопку, закрывает список
-// после выбора, по клику мимо, по крестику и по Escape, и держит открытым один список за раз.
+// после выбора, по клику мимо и по Escape, и держит открытым один список за раз.
 // На телефоне и планшете список выезжает листом снизу; закрытие сначала уводит лист вниз.
 
 const SHEET_MEDIA = window.matchMedia('(max-width: 1024px)');
@@ -36,11 +36,6 @@ document.addEventListener('change', (event) => {
 });
 
 document.addEventListener('click', (event) => {
-  const closeButton = event.target.closest('.picker__close');
-  if (closeButton) {
-    closePicker(closeButton.closest('.picker'));
-    return;
-  }
   document.querySelectorAll('.picker[open]').forEach((picker) => {
     if (!picker.contains(event.target)) {
       closePicker(picker);

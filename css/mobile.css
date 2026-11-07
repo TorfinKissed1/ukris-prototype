@@ -250,7 +250,7 @@
 }
 
 .sheet::backdrop {
-  background: rgba(0, 63, 71, 0.18);
+  background: var(--color-backdrop);
   backdrop-filter: blur(10px);
   opacity: 0;
   transition: opacity 0.24s, overlay 0.24s allow-discrete, display 0.24s allow-discrete;
@@ -312,7 +312,7 @@ html:has(.sheet[open]) {
 
 /* Без скрипта окно открыто через :target и ::backdrop нет: затемнение даёт фон самого слоя. */
 .sheet--window:target:not([open]) {
-  background: rgba(0, 63, 71, 0.18);
+  background: var(--color-backdrop);
 }
 
 @media (max-width: 768px) {

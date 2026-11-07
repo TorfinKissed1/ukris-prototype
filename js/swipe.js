@@ -1,7 +1,7 @@
 // Закрытие листов свайпом вниз за ручку или заголовок: лист снизу (dialog.sheet--bottom) и лист
 // выпадашки на телефоне (.picker__panel). Лист едет за пальцем; отпустили дальше четверти высоты
 // листа или резко смахнули вниз, лист закрывается, иначе возвращается на место.
-// Без скрипта листы закрываются крестиком и затемнением, как раньше.
+// Без скрипта выпадашка закрывается повторным нажатием на её кнопку, нижний лист выбором пункта.
 
 const HANDLE_SELECTOR = '.sheet--bottom .sheet__grabber, .sheet--bottom .sheet__head, .picker__head';
 const CLOSE_SHARE = 0.25;
@@ -12,8 +12,8 @@ let drag = null;
 
 function closePanel(panel) {
   if (panel.matches('.picker__panel')) {
-    // Уводит лист вниз и закрывает выпадашку js/picker.js, так же как по крестику.
-    panel.querySelector('.picker__close').click();
+    // closePicker из js/picker.js уводит лист вниз и закрывает выпадашку.
+    closePicker(panel.closest('.picker'));
     return;
   }
   panel.close();
@@ -21,7 +21,7 @@ function closePanel(panel) {
 
 document.addEventListener('pointerdown', (event) => {
   const handle = event.target.closest(HANDLE_SELECTOR);
-  // Крестик и ссылки в заголовке нажимаются как обычно.
+  // Кнопки и ссылки в заголовке нажимаются как обычно.
   if (!handle || event.button !== 0 || event.target.closest('button, a')) {
     return;
   }

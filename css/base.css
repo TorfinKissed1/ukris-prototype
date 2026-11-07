@@ -17,6 +17,8 @@
   --color-field-on-dark: rgba(255, 255, 255, 0.06);
   --color-overlay: rgba(6, 43, 48, 0.78);
   --color-overlay-clear: rgba(6, 43, 48, 0);
+  --color-backdrop: rgba(0, 63, 71, 0.18);
+  --color-backdrop-clear: rgba(0, 63, 71, 0);
   --color-brand-soft: #e5eeef;
   --color-like: #e0384b;
   --color-focus: #08b6bd;

@@ -225,19 +225,19 @@
     padding: 0 0 calc(var(--space-s) + env(safe-area-inset-bottom));
     border: 0;
     border-radius: 20px 20px 0 0;
-    box-shadow: 0 0 0 100vmax rgba(0, 63, 71, 0.18);
-    transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 0 0 100vmax var(--color-backdrop);
+    transition: transform 0.24s cubic-bezier(0.4, 0, 1, 1), box-shadow 0.24s ease;
   }
 
-  @starting-style {
-    .picker[open] .picker__panel {
-      opacity: 1;
-      transform: translateY(100%);
-    }
+  /* Выезд ключевой анимацией, а не @starting-style: Safari на iPhone не считает содержимое
+     открытого <details> новым элементом, и стартовое положение там не срабатывает. */
+  .picker[open] .picker__panel {
+    animation: picker-sheet-in 0.28s cubic-bezier(0, 0, 0.2, 1);
   }
 
   .picker--closing .picker__panel {
     transform: translateY(100%);
+    box-shadow: 0 0 0 100vmax var(--color-backdrop-clear);
   }
 
   /* Пока лист выпадашки открыт, страница под ним не прокручивается. */
@@ -277,10 +277,11 @@
     gap: 0;
   }
 
+  /* Варианты мельче заголовка листа: заголовок называет список, варианты его пункты. */
   .picker__option {
-    min-height: 56px;
+    min-height: var(--control-height);
     padding: 0 var(--gutter);
-    font-size: var(--fs-body);
+    font-size: var(--fs-small);
     border-radius: 0;
   }
 
@@ -289,8 +290,16 @@
   }
 }
 
+@keyframes picker-sheet-in {
+  from {
+    transform: translateY(100%);
+    box-shadow: 0 0 0 100vmax var(--color-backdrop-clear);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .picker__panel {
     transition: none;
+    animation: none;
   }
 }
