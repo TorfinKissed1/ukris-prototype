@@ -406,6 +406,26 @@
   color: var(--color-text-muted);
 }
 
+/* Safari не умеет плавно менять высоту до auto: там ответ хотя бы проявляется и съезжает на место. */
+@supports not (interpolate-size: allow-keywords) {
+  .faq__item[open] .faq__answer {
+    animation: faq-answer-in 0.3s ease;
+  }
+}
+
+@keyframes faq-answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__answer {
+    animation: none !important;
+  }
+}
+
 /* ============ crumbs (хлебные крошки) ============ */
 .crumbs {
   font-size: var(--fs-xs);
