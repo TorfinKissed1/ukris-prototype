@@ -156,6 +156,60 @@
   }
 }
 
+/* Выбранных фильтров видно не больше шести, остальные за кнопкой «Ещё N». Работает без скрипта:
+   кнопка это подпись к скрытому флажку. Раскрытые таблетки плавно появляются, кнопка уходит,
+   обратно не сворачиваются: исчезали бы рывком. */
+.chips__item:nth-child(n+7) {
+  display: none;
+}
+
+.chips:has(.chips__toggle:checked) .chips__item:nth-child(n+7) {
+  display: inline-flex;
+  animation: chips-in 0.24s ease;
+}
+
+.chips__more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+@media (hover: hover) {
+  .chips__more:hover {
+    border-color: var(--color-brand);
+  }
+}
+
+.chips__toggle:focus-visible + .chips__more {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.chips__toggle:checked + .chips__more {
+  display: none;
+}
+
+@keyframes chips-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chips:has(.chips__toggle:checked) .chips__item:nth-child(n+7) {
+    animation: none;
+  }
+}
+
 /* ============ pagination ============ */
 .pagination {
   display: flex;
