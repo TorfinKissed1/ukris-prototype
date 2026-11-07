@@ -80,7 +80,17 @@
 
   <main class="catalog">
     <div class="container">
-      <h1 class="catalog__title">Новостройки в ОАЭ</h1>
+      <nav class="crumbs catalog__crumbs" aria-label="Вы здесь">
+        <ol class="crumbs__list">
+          <li class="crumbs__item"><a class="crumbs__link" href="index.html">Главная</a></li>
+          <li class="crumbs__item"><a class="crumbs__link" href="catalog.html">Каталог</a></li>
+          <li class="crumbs__item"><span class="crumbs__current" aria-current="page">ОАЭ</span></li>
+        </ol>
+      </nav>
+      <div class="catalog__head">
+        <h1 class="catalog__title">Новостройки в ОАЭ</h1>
+        <p class="catalog__count">Найдено 14 объектов</p>
+      </div>
     </div>
     <div class="catalog__bar">
       <div class="container">
@@ -171,7 +181,10 @@
 
       <div class="catalog__content">
         <div class="catalog__toolbar">
-            <p class="catalog__count">Найдено 14 объектов</p>
+            <div class="chips catalog__chips">
+              <a class="chips__item" href="catalog.html" aria-label="Убрать фильтр: ОАЭ">ОАЭ<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+              <a class="chips__reset" href="catalog.html">Сбросить все</a>
+            </div>
             <div class="catalog__tools">
               <a class="button button--outline catalog__sort-button" href="#sort" data-sheet-open="sort" aria-haspopup="dialog">Сначала новые<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
               <details class="picker picker--inline catalog__sort-picker">
@@ -190,11 +203,6 @@
                 </div>
               </details>
             </div>
-          </div>
-
-          <div class="chips">
-            <a class="chips__item" href="catalog.html" aria-label="Убрать фильтр: ОАЭ">ОАЭ<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
-            <a class="chips__reset" href="catalog.html">Сбросить все</a>
           </div>
 
           <div class="projects projects--narrow">

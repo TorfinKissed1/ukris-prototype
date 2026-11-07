@@ -5,11 +5,28 @@
   padding: var(--space-xl) 0 var(--space-section);
 }
 
-.catalog__title {
+.catalog__crumbs {
+  margin-bottom: var(--space-m);
+}
+
+.catalog__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
   margin-bottom: var(--space-l);
+}
+
+.catalog__title {
   font-size: var(--fs-h2);
   font-weight: 700;
   line-height: var(--lh-tight);
+}
+
+/* Итог поиска под заголовком приглушён, чтобы не спорить с ним. */
+.catalog__count {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
 /* За прокруткой едет только сама панель со скруглёнными углами: полоса вокруг неё прозрачная
@@ -35,6 +52,7 @@
   margin-top: var(--space-l);
 }
 
+/* Выбранные фильтры слева, сортировка справа в том же ряду. */
 .catalog__toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -43,9 +61,9 @@
   gap: var(--space-m);
 }
 
-.catalog__count {
-  font-size: 18px;
-  font-weight: 700;
+.catalog__chips {
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
 .catalog__tools {

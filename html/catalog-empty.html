@@ -80,7 +80,17 @@
 
   <main class="catalog">
     <div class="container">
-      <h1 class="catalog__title">Новостройки в Таиланде</h1>
+      <nav class="crumbs catalog__crumbs" aria-label="Вы здесь">
+        <ol class="crumbs__list">
+          <li class="crumbs__item"><a class="crumbs__link" href="index.html">Главная</a></li>
+          <li class="crumbs__item"><a class="crumbs__link" href="catalog.html">Каталог</a></li>
+          <li class="crumbs__item"><span class="crumbs__current" aria-current="page">Таиланд</span></li>
+        </ol>
+      </nav>
+      <div class="catalog__head">
+        <h1 class="catalog__title">Новостройки в Таиланде</h1>
+        <p class="catalog__count">Найдено 0 объектов</p>
+      </div>
     </div>
     <div class="catalog__bar">
       <div class="container">
@@ -170,10 +180,6 @@
     <div class="container">
 
       <div class="catalog__content">
-        <div class="catalog__toolbar">
-            <p class="catalog__count">Найдено 0 объектов</p>
-          </div>
-
           <div class="chips">
             <a class="chips__item" href="catalog.html?city=phuket&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Таиланд">Таиланд<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
             <a class="chips__item" href="catalog.html?country=thailand&amp;budget_max=100000&amp;type=villas" aria-label="Убрать фильтр: Пхукет">Пхукет<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
