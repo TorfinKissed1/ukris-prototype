@@ -25,9 +25,14 @@
   display: none;
 }
 
-.picker__button:hover,
 .picker[open] .picker__button {
   border-color: var(--color-brand);
+}
+
+@media (hover: hover) {
+  .picker__button:hover {
+    border-color: var(--color-brand);
+  }
 }
 
 .picker__text {
@@ -82,9 +87,19 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* На компьютере список плавно выпадает вниз. */
-@starting-style {
-  .picker[open] .picker__panel {
+/* На компьютере список плавно выпадает вниз и так же уходит (класс закрытия ставит js/picker.js).
+   Ключевая анимация, а не @starting-style: Safari не считает содержимое открытого <details> новым элементом. */
+.picker[open] .picker__panel {
+  animation: picker-drop-in 0.2s ease;
+}
+
+.picker--closing .picker__panel {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+@keyframes picker-drop-in {
+  from {
     opacity: 0;
     transform: translateY(-6px);
   }
@@ -151,10 +166,16 @@
   border-radius: var(--radius-m);
 }
 
-.picker--flat .picker__button:hover,
 .picker--flat[open] .picker__button {
   background: var(--color-paper);
   border-color: transparent;
+}
+
+@media (hover: hover) {
+  .picker--flat .picker__button:hover {
+    background: var(--color-paper);
+    border-color: transparent;
+  }
 }
 
 .picker__icon {
@@ -179,9 +200,14 @@
   border-color: var(--color-border-on-dark);
 }
 
-.picker--dark .picker__button:hover,
 .picker--dark[open] .picker__button {
   border-color: var(--color-text-on-dark);
+}
+
+@media (hover: hover) {
+  .picker--dark .picker__button:hover {
+    border-color: var(--color-text-on-dark);
+  }
 }
 
 .picker--dark .picker__label,
@@ -236,6 +262,7 @@
   }
 
   .picker--closing .picker__panel {
+    opacity: 1;
     transform: translateY(100%);
     box-shadow: 0 0 0 100vmax var(--color-backdrop-clear);
   }

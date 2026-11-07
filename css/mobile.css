@@ -218,7 +218,7 @@
 }
 
 /* ============ sheet (лист, выезжает снизу) ============
-   С скриптом это модальный <dialog>: выезд и уход анимирует CSS (@starting-style, allow-discrete).
+   Со скриптом это модальный <dialog>: выезд и уход ключевыми анимациями ниже, уход запускает js/sheets.js.
    Без скрипта лист открывается ссылкой на #id через :target и закрывается ссылкой на «#». */
 .sheet {
   position: fixed;
@@ -233,35 +233,72 @@
   color: var(--color-text);
   background: var(--color-bg);
   border: 0;
-  transform: translateY(100%);
-  transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1), overlay 0.24s allow-discrete, display 0.24s allow-discrete;
+  /* Отпущенный, но не дотянутый свайпом лист плавно возвращается на место. */
+  transition: transform 0.24s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .sheet[open],
 .sheet:target {
   display: flex;
-  transform: none;
 }
 
-@starting-style {
-  .sheet[open] {
-    transform: translateY(100%);
-  }
+/* Выезд и уход ключевыми анимациями: на iPhone @starting-style и overlay у <dialog> не анимируют.
+   Класс закрытия ставит js/sheets.js и закрывает dialog, когда анимация доиграла. */
+.sheet[open] {
+  animation: sheet-in 0.28s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.sheet--closing[open] {
+  animation: sheet-out 0.24s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 .sheet::backdrop {
   background: var(--color-backdrop);
   backdrop-filter: blur(10px);
-  opacity: 0;
-  transition: opacity 0.24s, overlay 0.24s allow-discrete, display 0.24s allow-discrete;
 }
 
 .sheet[open]::backdrop {
-  opacity: 1;
+  animation: backdrop-in 0.28s ease;
 }
 
-@starting-style {
-  .sheet[open]::backdrop {
+.sheet--closing[open]::backdrop {
+  animation: backdrop-out 0.24s ease forwards;
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheet-out {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheet-window-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes sheet-window-out {
+  to {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes backdrop-out {
+  to {
     opacity: 0;
   }
 }
@@ -292,22 +329,14 @@ html:has(.sheet[open]) {
   overscroll-behavior: contain;
   padding: var(--space-xl) var(--gutter);
   background: transparent;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0, 0, 0.2, 1), overlay 0.24s allow-discrete, display 0.24s allow-discrete;
 }
 
-.sheet--window[open],
-.sheet--window:target {
-  opacity: 1;
-  transform: none;
+.sheet--window[open] {
+  animation-name: sheet-window-in;
 }
 
-@starting-style {
-  .sheet--window[open] {
-    opacity: 0;
-    transform: translateY(24px);
-  }
+.sheet--window.sheet--closing[open] {
+  animation-name: sheet-window-out;
 }
 
 /* Без скрипта окно открыто через :target и ::backdrop нет: затемнение даёт фон самого слоя. */
@@ -320,20 +349,15 @@ html:has(.sheet[open]) {
     justify-content: flex-start;
     padding: 0;
     background: var(--color-bg);
-    opacity: 1;
-    transform: translateY(100%);
   }
 
-  .sheet--window[open],
-  .sheet--window:target {
-    transform: none;
+  /* На телефоне окно заявки это лист на весь экран: выезжает снизу и уходит вниз. */
+  .sheet--window[open] {
+    animation-name: sheet-in;
   }
 
-  @starting-style {
-    .sheet--window[open] {
-      opacity: 1;
-      transform: translateY(100%);
-    }
+  .sheet--window.sheet--closing[open] {
+    animation-name: sheet-out;
   }
 
   /* Короткое окно (подтверждение) на телефоне занимает только свою высоту, лист снизу. */
@@ -424,8 +448,10 @@ html:has(.sheet[open]) {
   transition: color var(--transition);
 }
 
-.sheet__reset:hover {
-  color: var(--color-brand);
+@media (hover: hover) {
+  .sheet__reset:hover {
+    color: var(--color-brand);
+  }
 }
 
 .sheet__submit {
@@ -463,11 +489,18 @@ html:has(.sheet[open]) {
   }
 }
 
-.sheet__option--current,
-.sheet__option--current:hover {
+.sheet__option--current {
   font-weight: 700;
   color: var(--color-brand);
   background: var(--color-brand-soft);
+}
+
+@media (hover: hover) {
+  .sheet__option--current:hover {
+    font-weight: 700;
+    color: var(--color-brand);
+    background: var(--color-brand-soft);
+  }
 }
 
 .sheet__option-icon {
@@ -483,5 +516,6 @@ html:has(.sheet[open]) {
   .sheet::backdrop,
   .quickbar {
     transition: none;
+    animation: none;
   }
 }

@@ -1,6 +1,45 @@
 // Листы (dialog.sheet) и очистка строки поиска сверху.
 // Кнопки открытия это ссылки на #id: без скрипта лист открывается через :target, со скриптом
-// открывается модально, а выезд и уход анимирует CSS. Escape и возврат фокуса даёт сам dialog.
+// открывается модально. Выезд анимирует CSS, уход тоже, но запускается отсюда: класс sheet--closing,
+// и dialog закрывается, когда анимация доиграла. Возврат фокуса даёт сам dialog.
+
+const SHEET_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+// Запас на случай, если animationend не придёт: анимация ухода длится 240 мс.
+const SHEET_CLOSE_FALLBACK = 400;
+
+function closeSheet(sheet) {
+  if (!sheet.open || sheet.classList.contains('sheet--closing')) {
+    return;
+  }
+  if (SHEET_REDUCED_MOTION.matches) {
+    sheet.close();
+    return;
+  }
+  let fallback = 0;
+  const finish = (event) => {
+    // animationend всплывает и от анимаций внутри листа (выпадашки), ждём только свою.
+    if (event && event.target !== sheet) {
+      return;
+    }
+    sheet.removeEventListener('animationend', finish);
+    window.clearTimeout(fallback);
+    sheet.close();
+    sheet.classList.remove('sheet--closing');
+    // Сдвиг, оставленный свайпом (js/swipe.js), нужен анимации ухода как точка старта.
+    sheet.style.transform = '';
+  };
+  sheet.addEventListener('animationend', finish);
+  fallback = window.setTimeout(finish, SHEET_CLOSE_FALLBACK);
+  sheet.classList.add('sheet--closing');
+}
+
+// Escape закрывает лист тем же плавным уходом, а не сразу.
+document.addEventListener('cancel', (event) => {
+  if (event.target.matches('dialog.sheet')) {
+    event.preventDefault();
+    closeSheet(event.target);
+  }
+}, true);
 
 function openSheet(sheet) {
   sheet.showModal();
@@ -34,14 +73,14 @@ document.addEventListener('click', (event) => {
     const sheet = closer.closest('dialog');
     if (sheet && sheet.open) {
       event.preventDefault();
-      sheet.close();
+      closeSheet(sheet);
     }
     return;
   }
 
   // Нажатие на затемнение вокруг листа приходит на сам dialog.
   if (event.target.matches('dialog.sheet[open]')) {
-    event.target.close();
+    closeSheet(event.target);
     return;
   }
 

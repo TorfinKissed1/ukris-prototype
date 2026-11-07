@@ -16,7 +16,8 @@ function closePanel(panel) {
     closePicker(panel.closest('.picker'));
     return;
   }
-  panel.close();
+  // closeSheet из js/sheets.js: уход начинается с того места, куда лист дотянули.
+  closeSheet(panel);
 }
 
 document.addEventListener('pointerdown', (event) => {
@@ -45,8 +46,9 @@ document.addEventListener('pointermove', (event) => {
   drag.panel.style.transform = `translateY(${drag.shift}px)`;
 });
 
-// Снятые в одном кадре inline-стили и закрытие дают переход из текущего сдвига: лист уезжает
-// вниз или возвращается по своему transition из CSS.
+// Не дотянули: inline-сдвиг снимается, и лист возвращается по своему transition из CSS.
+// Дотянули: у выпадашки сдвиг снимается в том же кадре, что ставится класс закрытия (переход идёт
+// из текущего места), у листа dialog сдвиг остаётся точкой старта анимации ухода, его снимает closeSheet.
 function finishDrag(event) {
   if (!drag || event.pointerId !== drag.pointerId) {
     return;
@@ -57,7 +59,9 @@ function finishDrag(event) {
   const shouldClose = event.type === 'pointerup' && (shift > panel.offsetHeight * CLOSE_SHARE || isFlick);
   drag = null;
   panel.style.transition = '';
-  panel.style.transform = '';
+  if (!shouldClose || panel.matches('.picker__panel')) {
+    panel.style.transform = '';
+  }
   if (shouldClose) {
     closePanel(panel);
   }
