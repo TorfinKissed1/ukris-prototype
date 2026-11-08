@@ -3,14 +3,14 @@
 // листа или резко смахнули вниз, лист закрывается, иначе возвращается на место.
 // Без скрипта выпадашка закрывается повторным нажатием на её кнопку, нижний лист выбором пункта.
 
-const HANDLE_SELECTOR = '.sheet--bottom .sheet__grabber, .sheet--bottom .sheet__head, .picker__head';
-const CLOSE_SHARE = 0.25;
-const FLICK_MIN_SHIFT = 20;
-const FLICK_SPEED = 0.5; // пикселей в миллисекунду
+const SWIPE_HANDLE_SELECTOR = '.sheet--bottom .sheet__grabber, .sheet--bottom .sheet__head, .picker__head';
+const SWIPE_CLOSE_SHARE = 0.25;
+const SWIPE_FLICK_MIN_SHIFT = 20;
+const SWIPE_FLICK_SPEED = 0.5; // пикселей в миллисекунду
 
-let drag = null;
+let swipeDrag = null;
 
-function closePanel(panel) {
+function closeSwipedPanel(panel) {
   if (panel.matches('.picker__panel')) {
     // closePicker из js/picker.js уводит лист вниз и закрывает выпадашку.
     closePicker(panel.closest('.picker'));
@@ -21,13 +21,13 @@ function closePanel(panel) {
 }
 
 document.addEventListener('pointerdown', (event) => {
-  const handle = event.target.closest(HANDLE_SELECTOR);
+  const handle = event.target.closest(SWIPE_HANDLE_SELECTOR);
   // Кнопки и ссылки в заголовке нажимаются как обычно.
   if (!handle || event.button !== 0 || event.target.closest('button, a')) {
     return;
   }
   const panel = handle.closest('.picker__panel') || handle.closest('dialog.sheet');
-  drag = {
+  swipeDrag = {
     panel,
     pointerId: event.pointerId,
     startY: event.clientY,
@@ -39,33 +39,33 @@ document.addEventListener('pointerdown', (event) => {
 });
 
 document.addEventListener('pointermove', (event) => {
-  if (!drag || event.pointerId !== drag.pointerId) {
+  if (!swipeDrag || event.pointerId !== swipeDrag.pointerId) {
     return;
   }
-  drag.shift = Math.max(0, event.clientY - drag.startY);
-  drag.panel.style.transform = `translateY(${drag.shift}px)`;
+  swipeDrag.shift = Math.max(0, event.clientY - swipeDrag.startY);
+  swipeDrag.panel.style.transform = `translateY(${swipeDrag.shift}px)`;
 });
 
 // Не дотянули: inline-сдвиг снимается, и лист возвращается по своему transition из CSS.
 // Дотянули: у выпадашки сдвиг снимается в том же кадре, что ставится класс закрытия (переход идёт
 // из текущего места), у листа dialog сдвиг остаётся точкой старта анимации ухода, его снимает closeSheet.
-function finishDrag(event) {
-  if (!drag || event.pointerId !== drag.pointerId) {
+function finishSwipeDrag(event) {
+  if (!swipeDrag || event.pointerId !== swipeDrag.pointerId) {
     return;
   }
-  const { panel, shift } = drag;
-  const speed = shift / Math.max(1, event.timeStamp - drag.startTime);
-  const isFlick = shift > FLICK_MIN_SHIFT && speed > FLICK_SPEED;
-  const shouldClose = event.type === 'pointerup' && (shift > panel.offsetHeight * CLOSE_SHARE || isFlick);
-  drag = null;
+  const { panel, shift } = swipeDrag;
+  const speed = shift / Math.max(1, event.timeStamp - swipeDrag.startTime);
+  const isFlick = shift > SWIPE_FLICK_MIN_SHIFT && speed > SWIPE_FLICK_SPEED;
+  const shouldClose = event.type === 'pointerup' && (shift > panel.offsetHeight * SWIPE_CLOSE_SHARE || isFlick);
+  swipeDrag = null;
   panel.style.transition = '';
   if (!shouldClose || panel.matches('.picker__panel')) {
     panel.style.transform = '';
   }
   if (shouldClose) {
-    closePanel(panel);
+    closeSwipedPanel(panel);
   }
 }
 
-document.addEventListener('pointerup', finishDrag);
-document.addEventListener('pointercancel', finishDrag);
+document.addEventListener('pointerup', finishSwipeDrag);
+document.addEventListener('pointercancel', finishSwipeDrag);

@@ -12,13 +12,13 @@ const SAVED_DEFAULTS = {
   compare: ['marina-crest-residence', 'palm-garden-villas', 'azure-heights'],
 };
 // В сравнении не больше четырёх проектов: пятый вытесняет добавленный раньше всех.
-const COMPARE_LIMIT = 4;
+const SAVED_COMPARE_LIMIT = 4;
 
-const FAVORITE_LABEL = { on: 'Убрать из избранного', off: 'Добавить в избранное' };
+const SAVED_FAVORITE_LABEL = { on: 'Убрать из избранного', off: 'Добавить в избранное' };
 
 const SAVED_TOGGLES = [
-  { selector: '.project-card__favorite', list: 'favorites', activeClass: 'project-card__favorite--active', label: FAVORITE_LABEL },
-  { selector: '.compare__tool--favorite', list: 'favorites', activeClass: 'compare__tool--active', label: FAVORITE_LABEL },
+  { selector: '.project-card__favorite', list: 'favorites', activeClass: 'project-card__favorite--active', label: SAVED_FAVORITE_LABEL },
+  { selector: '.compare__tool--favorite', list: 'favorites', activeClass: 'compare__tool--active', label: SAVED_FAVORITE_LABEL },
   { selector: '.summary__favorite', list: 'favorites', activeClass: 'summary__tool--active', text: { on: 'В избранном', off: 'В избранное' } },
   { selector: '.project-card__compare, .summary__compare', list: 'compare', text: { on: 'В сравнении', off: 'К сравнению' } },
 ];
@@ -70,7 +70,7 @@ window.ProtoSaved = {
       return;
     }
     const ids = [...savedLists[name], id];
-    if (name === 'compare' && ids.length > COMPARE_LIMIT) {
+    if (name === 'compare' && ids.length > SAVED_COMPARE_LIMIT) {
       ids.shift();
     }
     changeSavedList(name, ids);
@@ -78,19 +78,19 @@ window.ProtoSaved = {
 };
 
 // Текст кнопки стоит последним после иконки.
-function swapText(button, text) {
+function setToggleText(button, text) {
   const textNode = [...button.childNodes].reverse().find((node) => node.nodeType === Node.TEXT_NODE && node.nodeValue.trim());
   if (textNode) {
     textNode.nodeValue = text;
   }
 }
 
-function objectIdOf(button) {
+function savedObjectIdOf(button) {
   return button.closest('[data-object]').dataset.object;
 }
 
 function renderToggle(toggle, button) {
-  const objectId = objectIdOf(button);
+  const objectId = savedObjectIdOf(button);
   const pressed = window.ProtoSaved.has(toggle.list, objectId);
   button.setAttribute('aria-pressed', String(pressed));
   if (toggle.activeClass) {
@@ -100,7 +100,7 @@ function renderToggle(toggle, button) {
     button.setAttribute('aria-label', `${pressed ? toggle.label.on : toggle.label.off}: ${OBJECTS_BY_ID.get(objectId).title}`);
   }
   if (toggle.text) {
-    swapText(button, pressed ? toggle.text.on : toggle.text.off);
+    setToggleText(button, pressed ? toggle.text.on : toggle.text.off);
   }
 }
 
@@ -135,7 +135,7 @@ document.addEventListener('click', (event) => {
   for (const toggle of SAVED_TOGGLES) {
     const button = event.target.closest(toggle.selector);
     if (button) {
-      window.ProtoSaved.toggle(toggle.list, objectIdOf(button));
+      window.ProtoSaved.toggle(toggle.list, savedObjectIdOf(button));
       return;
     }
   }

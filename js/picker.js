@@ -3,7 +3,7 @@
 // после выбора, по клику мимо и по Escape, и держит открытым один список за раз.
 // На телефоне и планшете список выезжает листом снизу; закрытие сначала уводит лист вниз.
 
-const CLOSE_DURATION = 240;
+const PICKER_CLOSE_DURATION = 240;
 
 function closePicker(picker) {
   if (!picker.open || picker.classList.contains('picker--closing')) {
@@ -17,7 +17,7 @@ function closePicker(picker) {
   window.setTimeout(() => {
     picker.open = false;
     picker.classList.remove('picker--closing');
-  }, CLOSE_DURATION);
+  }, PICKER_CLOSE_DURATION);
 }
 
 document.addEventListener('change', (event) => {

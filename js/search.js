@@ -18,7 +18,7 @@ let searchRestoringFocus = false;
 let searchFromKeyboard = false;
 let searchLastPointer = -Infinity;
 
-function element(tag, className, text) {
+function searchElement(tag, className, text) {
   const node = document.createElement(tag);
   node.className = className;
   if (text) {
@@ -27,40 +27,40 @@ function element(tag, className, text) {
   return node;
 }
 
-function facetRow(facet) {
-  const link = element('a', 'search-sheet__row');
+function searchFacetRow(facet) {
+  const link = searchElement('a', 'search-sheet__row');
   link.href = facet.url;
-  link.append(element('span', 'search-sheet__row-title', facet.title));
-  link.append(element('span', 'search-sheet__row-hint', `${facet.kind} · ${objectsCount(facet.count)}`));
+  link.append(searchElement('span', 'search-sheet__row-title', facet.title));
+  link.append(searchElement('span', 'search-sheet__row-hint', `${facet.kind} · ${objectsCount(facet.count)}`));
   return link;
 }
 
-function facetChip(facet) {
-  const link = element('a', 'search-sheet__chip', facet.title);
+function searchFacetChip(facet) {
+  const link = searchElement('a', 'search-sheet__chip', facet.title);
   link.href = facet.url;
-  link.append(element('span', 'search-sheet__chip-count', String(facet.count)));
+  link.append(searchElement('span', 'search-sheet__chip-count', String(facet.count)));
   link.setAttribute('aria-label', `${facet.title}, ${facet.kind.toLowerCase()}, ${objectsCount(facet.count)}`);
   return link;
 }
 
-function objectRow(item) {
-  const link = element('a', 'search-sheet__object');
+function searchObjectRow(item) {
+  const link = searchElement('a', 'search-sheet__object');
   link.href = item.url;
-  const image = element('img', 'search-sheet__image');
+  const image = searchElement('img', 'search-sheet__image');
   image.src = item.image;
   image.alt = '';
   image.loading = 'lazy';
-  const text = element('span', 'search-sheet__object-text');
-  text.append(element('span', 'search-sheet__row-title', item.title));
-  text.append(element('span', 'search-sheet__row-hint', `${item.price || PRICE_ON_REQUEST} · ${objectPlace(item)}`));
+  const text = searchElement('span', 'search-sheet__object-text');
+  text.append(searchElement('span', 'search-sheet__row-title', item.title));
+  text.append(searchElement('span', 'search-sheet__row-hint', `${item.price || PRICE_ON_REQUEST} · ${objectPlace(item)}`));
   link.append(image, text);
   return link;
 }
 
-function section(title, nodes, listClass) {
-  const block = element('section', 'search-sheet__section');
-  block.append(element('h2', 'search-sheet__label', title));
-  const list = element('div', listClass);
+function searchSection(title, nodes, listClass) {
+  const block = searchElement('section', 'search-sheet__section');
+  block.append(searchElement('h2', 'search-sheet__label', title));
+  const list = searchElement('div', listClass);
   list.append(...nodes);
   block.append(list);
   return block;
@@ -73,19 +73,19 @@ function renderSearch() {
 
   if (query === '') {
     // Пустое поле: справочник строками, в строку помещается число объектов.
-    sections.push(section('Характеристики', searchData.facets.slice(0, SEARCH_DIRECTORY_LIMIT).map(facetRow), 'search-sheet__rows'));
+    sections.push(searchSection('Характеристики', searchData.facets.slice(0, SEARCH_DIRECTORY_LIMIT).map(searchFacetRow), 'search-sheet__rows'));
   } else {
     const needle = foldText(query);
     const facets = searchData.facets.filter((facet) => foldText(facet.title).includes(needle)).slice(0, SEARCH_FACETS_LIMIT);
     const objects = searchData.objects.filter((item) => objectSearchText(item).includes(needle)).slice(0, SEARCH_OBJECTS_LIMIT);
     if (facets.length) {
-      sections.push(section('Характеристики', facets.map(facetChip), 'search-sheet__chips'));
+      sections.push(searchSection('Характеристики', facets.map(searchFacetChip), 'search-sheet__chips'));
     }
     if (objects.length) {
-      sections.push(section('Объекты', objects.map(objectRow), 'search-sheet__rows'));
+      sections.push(searchSection('Объекты', objects.map(searchObjectRow), 'search-sheet__rows'));
     }
     if (!sections.length) {
-      sections.push(element('p', 'search-sheet__note', SEARCH_NOTHING));
+      sections.push(searchElement('p', 'search-sheet__note', SEARCH_NOTHING));
     }
   }
   results.replaceChildren(...sections);
