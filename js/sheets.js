@@ -3,7 +3,6 @@
 // открывается модально. Выезд анимирует CSS, уход тоже, но запускается отсюда: класс sheet--closing,
 // и dialog закрывается, когда анимация доиграла. Возврат фокуса даёт сам dialog.
 
-const SHEET_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
 // Запас на случай, если animationend не придёт: анимация ухода длится 240 мс.
 const SHEET_CLOSE_FALLBACK = 400;
 
@@ -11,7 +10,7 @@ function closeSheet(sheet) {
   if (!sheet.open || sheet.classList.contains('sheet--closing')) {
     return;
   }
-  if (SHEET_REDUCED_MOTION.matches) {
+  if (REDUCED_MOTION.matches) {
     sheet.close();
     return;
   }

@@ -10,7 +10,7 @@ function buildProjectCard(template, item, { shortNote = false } = {}) {
   const badge = card.querySelector('.project-card__badge');
   badge.textContent = item.keys === 'done' ? 'Сдан' : `Ключи: ${item.keys}`;
   badge.classList.toggle('project-card__badge--done', item.keys === 'done');
-  card.querySelector('.project-card__place').textContent = `${item.country}, ${item.city}`;
+  card.querySelector('.project-card__place').textContent = objectPlace(item);
   card.querySelector('.project-card__link').textContent = item.title;
   const [developer, type] = card.querySelectorAll('.project-card__fact-value');
   developer.textContent = item.developer;
@@ -18,7 +18,7 @@ function buildProjectCard(template, item, { shortNote = false } = {}) {
   const price = card.querySelector('.project-card__price-value');
   const note = card.querySelector('.project-card__price-note');
   if (!item.price) {
-    price.textContent = 'Цена по запросу';
+    price.textContent = PRICE_ON_REQUEST;
     price.classList.add('project-card__price-value--request');
     note.remove();
     return card;

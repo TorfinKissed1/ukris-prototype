@@ -19,10 +19,6 @@ function catalogNumber(value) {
   return digits ? Number(digits) : null;
 }
 
-function catalogFoldText(text) {
-  return text.toLowerCase().replace(/ё/g, 'е');
-}
-
 // Название значения фильтра берём из данных: в выпадашке города есть не все города.
 function catalogLabel(name, value) {
   const field = { country: 'country', city: 'city', type: 'type' }[name];
@@ -45,7 +41,6 @@ function catalogLabel(name, value) {
 function catalogMatches(item, filters) {
   const min = filters.budget_min === '' ? null : filters.budget_min;
   const max = filters.budget_max === '' ? null : filters.budget_max;
-  const haystack = catalogFoldText([item.title, item.country, item.city, item.developer, item.type].join(' '));
   return (!filters.country || item.countryId === filters.country)
     && (!filters.city || item.cityId === filters.city)
     && (!filters.type || item.typeId === filters.type)
@@ -53,19 +48,7 @@ function catalogMatches(item, filters) {
     // Цена по запросу под бюджет не попадает: сравнить не с чем.
     && (min === null || (item.priceUsd !== null && item.priceUsd >= min))
     && (max === null || (item.priceUsd !== null && item.priceUsd <= max))
-    && (!filters.q || haystack.includes(catalogFoldText(filters.q)));
-}
-
-function catalogCountText(count) {
-  const tens = count % 100;
-  const units = count % 10;
-  if (units === 1 && tens !== 11) {
-    return `Найден ${count} объект`;
-  }
-  if (units >= 2 && units <= 4 && (tens < 12 || tens > 14)) {
-    return `Найдено ${count} объекта`;
-  }
-  return `Найдено ${count} объектов`;
+    && (!filters.q || objectSearchText(item).includes(foldText(filters.q)));
 }
 
 function catalogUrl(params) {
@@ -183,7 +166,7 @@ function applyCatalogFilters() {
     ? `Новостройки ${CATALOG_COUNTRY_IN[filters.country] || countryName}`
     : 'Все новостройки';
   document.querySelector('.catalog__crumbs .crumbs__current').textContent = countryName;
-  document.querySelector('.catalog__count').textContent = catalogCountText(found.length);
+  document.querySelector('.catalog__count').textContent = `${plural(found.length, 'Найден', 'Найдено', 'Найдено')} ${objectsCount(found.length)}`;
 
   list.hidden = !found.length;
   document.querySelector('.catalog__content .empty').hidden = Boolean(found.length);

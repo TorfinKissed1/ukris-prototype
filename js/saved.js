@@ -77,13 +77,6 @@ window.ProtoSaved = {
   },
 };
 
-// В подписи после двоеточия может стоять название объекта («Убрать из избранного: Harbour View»), оно сохраняется.
-function swapLabel(button, label) {
-  const current = button.getAttribute('aria-label') || '';
-  const objectName = current.includes(': ') ? current.slice(current.indexOf(': ')) : '';
-  button.setAttribute('aria-label', label + objectName);
-}
-
 // Текст кнопки стоит последним после иконки.
 function swapText(button, text) {
   const textNode = [...button.childNodes].reverse().find((node) => node.nodeType === Node.TEXT_NODE && node.nodeValue.trim());
@@ -97,13 +90,14 @@ function objectIdOf(button) {
 }
 
 function renderToggle(toggle, button) {
-  const pressed = window.ProtoSaved.has(toggle.list, objectIdOf(button));
+  const objectId = objectIdOf(button);
+  const pressed = window.ProtoSaved.has(toggle.list, objectId);
   button.setAttribute('aria-pressed', String(pressed));
   if (toggle.activeClass) {
     button.classList.toggle(toggle.activeClass, pressed);
   }
   if (toggle.label) {
-    swapLabel(button, pressed ? toggle.label.on : toggle.label.off);
+    button.setAttribute('aria-label', `${pressed ? toggle.label.on : toggle.label.off}: ${OBJECTS_BY_ID.get(objectId).title}`);
   }
   if (toggle.text) {
     swapText(button, pressed ? toggle.text.on : toggle.text.off);

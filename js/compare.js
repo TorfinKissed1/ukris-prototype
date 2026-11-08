@@ -2,16 +2,12 @@
 // есть в разметке, переиспользуются, остальные собираются из шаблона #compare-column и
 // js/mock-data.js. Без скрипта страница показывает колонки из разметки.
 
-const COMPARE_FADE = 200;
-
 const compareTable = document.querySelector('.compare__table');
 const compareHeadRow = compareTable.tHead.rows[0];
 const compareBoard = document.querySelector('.compare__board:not(.compare__board--empty)');
 const compareEmpty = document.querySelector('.compare__board--empty');
 const compareClear = document.querySelector('.compare__clear');
 const compareTemplate = document.getElementById('compare-column');
-const compareObjects = new Map(window.MOCK_DATA.objects.map((item) => [item.id, item]));
-const compareMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // Колонки из разметки: заголовок и ячейки по полям, чтобы вернуть их на место без пересборки.
 const compareColumns = new Map();
@@ -24,20 +20,19 @@ const compareColumns = new Map();
 });
 
 function compareFieldValue(item, field) {
-  return field === 'place' ? `${item.country}, ${item.city}` : item[field];
+  return field === 'place' ? objectPlace(item) : item[field];
 }
 
 function buildCompareColumn(item) {
   const head = compareTemplate.content.firstElementChild.cloneNode(true);
   head.dataset.object = item.id;
   head.querySelector('.compare__image').src = item.image;
-  head.querySelector('.compare__price').textContent = item.price || 'Цена по запросу';
+  head.querySelector('.compare__price').textContent = item.price || PRICE_ON_REQUEST;
   // У цены в долларах строка пересчёта пустая, но остаётся: кнопки колонок на одной высоте.
   if (item.priceNote.startsWith('≈')) {
     head.querySelector('.compare__note').textContent = item.priceNote.split(',')[0];
   }
   head.querySelector('.compare__name').textContent = item.title;
-  head.querySelector('.compare__tool--favorite').setAttribute('aria-label', `Добавить в избранное: ${item.title}`);
   head.querySelector('.compare__tool--remove').setAttribute('aria-label', `Убрать из сравнения: ${item.title}`);
 
   const cells = {};
@@ -51,14 +46,14 @@ function buildCompareColumn(item) {
 }
 
 function renderCompare() {
-  const ids = window.ProtoSaved.ids('compare').filter((id) => compareObjects.has(id));
+  const ids = window.ProtoSaved.ids('compare').filter((id) => OBJECTS_BY_ID.has(id));
   compareBoard.hidden = !ids.length;
   compareClear.hidden = !ids.length;
   compareEmpty.hidden = Boolean(ids.length);
 
   const columns = ids.map((id) => {
     if (!compareColumns.has(id)) {
-      compareColumns.set(id, buildCompareColumn(compareObjects.get(id)));
+      compareColumns.set(id, buildCompareColumn(OBJECTS_BY_ID.get(id)));
     }
     return compareColumns.get(id);
   });
@@ -71,23 +66,6 @@ function renderCompare() {
   });
   // Кнопки сердечка в новых колонках получают состояние из избранного.
   document.dispatchEvent(new CustomEvent('saved:render'));
-}
-
-// Колонка или вся таблица гаснут, и только потом список меняется: таблица не перескакивает резко.
-function fadeOut(elements) {
-  if (compareMotion.matches) {
-    return Promise.resolve();
-  }
-  const animations = elements.map((element) => element.animate([{ opacity: 1 }, { opacity: 0 }], { duration: COMPARE_FADE, fill: 'forwards' }));
-  return Promise.all(animations.map((animation) => animation.finished)).then(() => {
-    animations.forEach((animation) => animation.cancel());
-  });
-}
-
-function fadeIn(element) {
-  if (!compareMotion.matches) {
-    element.animate([{ opacity: 0 }, { opacity: 1 }], { duration: COMPARE_FADE });
-  }
 }
 
 document.addEventListener('click', (event) => {

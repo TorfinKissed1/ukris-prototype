@@ -3,11 +3,12 @@
 // объектов, ниже объекты по словам. На компьютере и без скрипта строка поиска работает как
 // обычная форма и отправляет запрос в каталог. Данные тестовые, из js/mock-data.js.
 
-const SEARCH_MEDIA = window.matchMedia('(max-width: 1024px)');
 const SEARCH_SOURCES = '.quickbar__input, .finder__query-input';
 // Подсказок-характеристик не больше трёх: это подсказка, куда свернуть поиск, а не второй фильтр.
 const SEARCH_FACETS_LIMIT = 3;
 const SEARCH_OBJECTS_LIMIT = 6;
+// Пустое поле: справочник строками, а не подсказка к набранному, поэтому пунктов больше.
+const SEARCH_DIRECTORY_LIMIT = 6;
 const SEARCH_NOTHING = 'Ничего не нашлось. Попробуйте другое слово, город или тип объекта.';
 
 const searchSheet = document.getElementById('search');
@@ -16,27 +17,6 @@ let searchSource = null;
 let searchRestoringFocus = false;
 let searchFromKeyboard = false;
 let searchLastPointer = -Infinity;
-
-// «ё» сравнивается как «е»: «Орел» находит Орёл.
-function foldText(text) {
-  return text.toLowerCase().replace(/ё/g, 'е');
-}
-
-function plural(count, one, few, many) {
-  const tens = count % 100;
-  const units = count % 10;
-  if (tens >= 11 && tens <= 14) {
-    return many;
-  }
-  if (units === 1) {
-    return one;
-  }
-  return units >= 2 && units <= 4 ? few : many;
-}
-
-function objectsCount(count) {
-  return `${count} ${plural(count, 'объект', 'объекта', 'объектов')}`;
-}
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -72,7 +52,7 @@ function objectRow(item) {
   image.loading = 'lazy';
   const text = element('span', 'search-sheet__object-text');
   text.append(element('span', 'search-sheet__row-title', item.title));
-  text.append(element('span', 'search-sheet__row-hint', `${item.price || 'Цена по запросу'} · ${item.country}, ${item.city}`));
+  text.append(element('span', 'search-sheet__row-hint', `${item.price || PRICE_ON_REQUEST} · ${objectPlace(item)}`));
   link.append(image, text);
   return link;
 }
@@ -86,11 +66,6 @@ function section(title, nodes, listClass) {
   return block;
 }
 
-function matchesObject(item, needle) {
-  const haystack = foldText([item.title, item.country, item.city, item.developer, item.type].join(' '));
-  return haystack.includes(needle);
-}
-
 function renderSearch() {
   const query = searchSheet.querySelector('.search-sheet__input').value.trim();
   const results = searchSheet.querySelector('.search-sheet__results');
@@ -98,11 +73,11 @@ function renderSearch() {
 
   if (query === '') {
     // Пустое поле: справочник строками, в строку помещается число объектов.
-    sections.push(section('Характеристики', searchData.facets.slice(0, SEARCH_OBJECTS_LIMIT).map(facetRow), 'search-sheet__rows'));
+    sections.push(section('Характеристики', searchData.facets.slice(0, SEARCH_DIRECTORY_LIMIT).map(facetRow), 'search-sheet__rows'));
   } else {
     const needle = foldText(query);
     const facets = searchData.facets.filter((facet) => foldText(facet.title).includes(needle)).slice(0, SEARCH_FACETS_LIMIT);
-    const objects = searchData.objects.filter((item) => matchesObject(item, needle)).slice(0, SEARCH_OBJECTS_LIMIT);
+    const objects = searchData.objects.filter((item) => objectSearchText(item).includes(needle)).slice(0, SEARCH_OBJECTS_LIMIT);
     if (facets.length) {
       sections.push(section('Характеристики', facets.map(facetChip), 'search-sheet__chips'));
     }
@@ -143,7 +118,7 @@ if (searchSheet) {
 
   document.addEventListener('click', (event) => {
     const source = event.target.closest(SEARCH_SOURCES);
-    if (source && SEARCH_MEDIA.matches) {
+    if (source && MOBILE_MEDIA.matches) {
       event.preventDefault();
       openSearch(source, false);
     }
@@ -152,7 +127,7 @@ if (searchSheet) {
   // Фокус без касания перед ним это переход с клавиатуры (Tab): тоже открываем лист.
   document.addEventListener('focusin', (event) => {
     const source = event.target.closest(SEARCH_SOURCES);
-    if (!source || !SEARCH_MEDIA.matches || searchRestoringFocus) {
+    if (!source || !MOBILE_MEDIA.matches || searchRestoringFocus) {
       return;
     }
     openSearch(source, event.timeStamp - searchLastPointer > 1000);

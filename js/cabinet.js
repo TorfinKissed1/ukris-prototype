@@ -1,10 +1,6 @@
 // Избранное и сравнение в кабинете на тестовых данных: списки строятся по saved.js. Карточки
 // из разметки переиспользуются, остальные собираются из шаблонов (js/cards.js) и js/mock-data.js.
 
-const CABINET_FADE = 200;
-const cabinetObjects = new Map(window.MOCK_DATA.objects.map((item) => [item.id, item]));
-const cabinetMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
 function buildFavoriteCard(template, item) {
   const card = buildProjectCard(template, item, { shortNote: true });
   card.querySelector('.cabinet__remove').setAttribute('aria-label', `Убрать из избранного: ${item.title}`);
@@ -15,7 +11,7 @@ function buildSavedItem(template, item) {
   const row = template.content.firstElementChild.cloneNode(true);
   row.dataset.object = item.id;
   row.querySelector('.saved__image').src = item.image;
-  row.querySelector('.saved__place').textContent = `${item.country}, ${item.city}`;
+  row.querySelector('.saved__place').textContent = objectPlace(item);
   row.querySelector('.saved__name').textContent = item.title;
   return row;
 }
@@ -29,18 +25,11 @@ const cabinetLists = [
   return { ...config, container, items, empty: config.section.querySelector('.empty'), template: document.getElementById(config.template) };
 });
 
-function cabinetFade(element, keyframes) {
-  if (cabinetMotion.matches) {
-    return Promise.resolve();
-  }
-  return element.animate(keyframes, { duration: CABINET_FADE }).finished;
-}
-
 function renderCabinetList(config) {
-  const ids = window.ProtoSaved.ids(config.list).filter((id) => cabinetObjects.has(id));
+  const ids = window.ProtoSaved.ids(config.list).filter((id) => OBJECTS_BY_ID.has(id));
   const nodes = ids.map((id) => {
     if (!config.items.has(id)) {
-      config.items.set(id, config.build(config.template, cabinetObjects.get(id)));
+      config.items.set(id, config.build(config.template, OBJECTS_BY_ID.get(id)));
     }
     return config.items.get(id);
   });
@@ -51,7 +40,7 @@ function renderCabinetList(config) {
   const emptyWasHidden = config.empty.hidden;
   config.empty.hidden = Boolean(ids.length);
   if (emptyWasHidden && !config.empty.hidden) {
-    cabinetFade(config.empty, [{ opacity: 0 }, { opacity: 1 }]);
+    fadeIn(config.empty);
   }
   document.dispatchEvent(new CustomEvent('saved:render'));
 }
@@ -60,13 +49,7 @@ function renderCabinetList(config) {
 function updateCabinetList(config) {
   const ids = window.ProtoSaved.ids(config.list);
   const leaving = [...config.container.children].filter((node) => !ids.includes(node.dataset.object));
-  const fades = leaving.map((node) => cabinetFade(node, [{ opacity: 1 }, { opacity: 0 }]).then(() => {
-    node.style.opacity = '0';
-  }));
-  Promise.all(fades).then(() => {
-    leaving.forEach((node) => node.style.removeProperty('opacity'));
-    renderCabinetList(config);
-  });
+  fadeOut(leaving).then(() => renderCabinetList(config));
 }
 
 document.addEventListener('click', (event) => {

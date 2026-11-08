@@ -3,8 +3,6 @@
 // после выбора, по клику мимо и по Escape, и держит открытым один список за раз.
 // На телефоне и планшете список выезжает листом снизу; закрытие сначала уводит лист вниз.
 
-const SHEET_MEDIA = window.matchMedia('(max-width: 1024px)');
-const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
 const CLOSE_DURATION = 240;
 
 function closePicker(picker) {
@@ -43,7 +41,7 @@ document.addEventListener('click', (event) => {
     return;
   }
   const ownButton = openPicker.querySelector('.picker__button').contains(event.target);
-  if (!SHEET_MEDIA.matches && !ownButton) {
+  if (!MOBILE_MEDIA.matches && !ownButton) {
     return;
   }
   event.preventDefault();
