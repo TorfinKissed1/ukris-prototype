@@ -288,6 +288,14 @@
   color: var(--color-text-muted);
 }
 
+/* В карточке шапки таблицы нет, и голое «14» без подписи ни о чём не говорит. */
+.admin-table__label {
+  display: none;
+  margin-bottom: var(--space-xs);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
 .admin-table__link {
   font-weight: 600;
   color: var(--color-brand);
@@ -373,6 +381,10 @@
     min-width: 0;
     padding: 0;
     border: 0;
+  }
+
+  .admin-table__label {
+    display: block;
   }
 
   .admin-table__cell--id {
