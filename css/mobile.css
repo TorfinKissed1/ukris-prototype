@@ -208,6 +208,11 @@
 }
 
 @media (max-width: 400px) {
+  /* Пять пунктов по 64 px на 320: «Избранное» и «Сравнение» 11-м кеглем не влезали и обрезались. */
+  .tabbar__item {
+    font-size: 10px;
+  }
+
   .quickbar__filters-text {
     display: none;
   }
