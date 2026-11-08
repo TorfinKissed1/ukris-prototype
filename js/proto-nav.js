@@ -13,7 +13,6 @@ const PROTO_PAGES = [
   ['about.html', 'О проекте'],
   ['privacy.html', 'Политика'],
   ['consent.html', 'Согласие'],
-  ['disclaimer.html', 'Оговорка'],
   ['404.html', '404'],
 ];
 
