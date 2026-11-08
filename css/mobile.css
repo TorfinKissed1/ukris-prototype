@@ -41,11 +41,8 @@
   }
 
   .tabbar__item--active {
-    color: var(--color-brand);
-  }
-
-  .tabbar__item--active {
     font-weight: 700;
+    color: var(--color-brand);
   }
 
   .tabbar__icon {

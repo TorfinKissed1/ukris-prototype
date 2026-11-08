@@ -1,4 +1,4 @@
-/* Брейкпоинты проекта: 1240, 1024, 768, 480. В @media переменные не работают, поэтому числа. */
+/* Брейкпоинты проекта: 1320, 1240, 1024, 768, 480, 400. В @media переменные не работают, поэтому числа. */
 :root {
   --color-ink: #062b30;
   --color-brand: #003f47;
@@ -14,7 +14,6 @@
   --color-text-on-dark-muted: rgba(255, 255, 255, 0.68);
   --color-border: #ddd8cc;
   --color-border-on-dark: rgba(255, 255, 255, 0.16);
-  --color-field-on-dark: rgba(255, 255, 255, 0.06);
   --color-overlay: rgba(6, 43, 48, 0.78);
   --color-overlay-clear: rgba(6, 43, 48, 0);
   --color-backdrop: rgba(0, 63, 71, 0.18);
@@ -293,18 +292,6 @@ textarea {
   }
 }
 
-.button--soft {
-  color: var(--color-brand);
-  background: var(--color-brand-soft);
-}
-
-@media (hover: hover) {
-  .button--soft:hover {
-    color: var(--color-text-on-dark);
-    background: var(--color-brand);
-  }
-}
-
 .button--accent {
   color: var(--color-ink);
   background: var(--color-accent);
@@ -314,10 +301,6 @@ textarea {
   .button--accent:hover {
     background: var(--color-accent-hover);
   }
-}
-
-.button--block {
-  width: 100%;
 }
 
 /* Круглая кнопка с одной иконкой: закрыть, меню, инструменты шапки. */

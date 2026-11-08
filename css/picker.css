@@ -193,28 +193,6 @@
   display: none;
 }
 
-/* На тёмном фоне формы подбора. */
-.picker--dark .picker__button {
-  color: var(--color-text-on-dark);
-  background: var(--color-field-on-dark);
-  border-color: var(--color-border-on-dark);
-}
-
-.picker--dark[open] .picker__button {
-  border-color: var(--color-text-on-dark);
-}
-
-@media (hover: hover) {
-  .picker--dark .picker__button:hover {
-    border-color: var(--color-text-on-dark);
-  }
-}
-
-.picker--dark .picker__label,
-.picker--dark .picker__chevron {
-  color: var(--color-text-on-dark-muted);
-}
-
 /* В строке инструментов каталога: подпись и значение в одну строку. */
 .picker--inline .picker__button {
   min-height: 44px;
@@ -236,7 +214,7 @@
   left: auto;
 }
 
-/* На телефоне и планшете список выезжает снизу листом с ручкой, заголовком и крестиком.
+/* На телефоне и планшете список выезжает снизу листом с ручкой и заголовком, без крестика.
    Плавный уход вниз делает js/picker.js (класс picker--closing), без скрипта лист закрывается сразу. */
 @media (max-width: 1024px) {
   .picker__panel {

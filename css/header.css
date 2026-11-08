@@ -79,10 +79,6 @@
   border-radius: var(--radius-round);
 }
 
-.header__nav-head {
-  display: none;
-}
-
 .header__link {
   display: inline-flex;
   align-items: center;
