@@ -235,7 +235,7 @@
   }
 
   .compare__board {
-    padding: var(--space-m);
+    padding: var(--space-l) var(--space-m);
     border-radius: var(--radius-m);
   }
 
@@ -266,7 +266,10 @@
   }
 
   .compare__group {
-    padding-top: var(--space-l);
     font-size: var(--fs-body);
+  }
+
+  .compare__label {
+    padding-top: var(--space-l);
   }
 }

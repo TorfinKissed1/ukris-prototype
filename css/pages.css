@@ -229,7 +229,12 @@
 }
 
 /* ============ not-found (страница 404) ============ */
+/* Экран высотой в окно без шапки: блок ровно посередине, подвал виден только после прокрутки. */
 .not-found {
+  --not-found-offset: var(--header-height);
+  display: flex;
+  align-items: center;
+  min-height: calc(100dvh - var(--not-found-offset));
   padding: var(--space-section) 0;
 }
 
@@ -265,6 +270,13 @@
   justify-content: center;
   gap: var(--space-s);
   margin-top: var(--space-s);
+}
+
+/* До 1024 px вместо шапки строка поиска сверху и нижняя панель. */
+@media (max-width: 1024px) {
+  .not-found {
+    --not-found-offset: calc(var(--quickbar-height) + var(--tabbar-height));
+  }
 }
 
 @media (max-width: 768px) {
