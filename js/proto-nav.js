@@ -8,6 +8,7 @@ const PROTO_PAGES = [
   ['compare.html', 'Сравнение'],
   ['login.html', 'Вход'],
   ['register.html', 'Регистрация'],
+  ['code.html', 'Код из письма'],
   ['cabinet.html', 'Кабинет'],
   ['about.html', 'О проекте'],
   ['privacy.html', 'Политика'],
@@ -68,3 +69,14 @@ function buildProtoNav() {
 }
 
 buildProtoNav();
+
+// Статичный хостинг отвечает на POST ошибкой 405, поэтому форма входа, кода и кабинета просто переводит
+// на свой адрес, ничего не отправляя. Подключён после form-check.js: неверные формы он уже остановил.
+document.addEventListener('submit', (event) => {
+  const form = event.target;
+  if (event.defaultPrevented || form.method !== 'post' || form.getAttribute('action').startsWith('#')) {
+    return;
+  }
+  event.preventDefault();
+  location.href = form.action;
+});

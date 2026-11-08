@@ -29,6 +29,30 @@
   text-align: center;
 }
 
+.auth__back {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: var(--space-s);
+  min-height: 44px;
+  margin: calc(var(--space-s) * -1) 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+.auth__text {
+  margin-top: calc(var(--space-s) * -1);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.auth__email {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 .auth__form {
   display: flex;
   flex-direction: column;
@@ -38,6 +62,18 @@
 .auth__submit {
   width: 100%;
   margin-top: var(--space-xs);
+}
+
+.auth__code {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.auth__resend {
+  display: flex;
+  justify-content: center;
 }
 
 .auth__switch {
@@ -310,6 +346,7 @@
 }
 
 @media (hover: hover) {
+  .auth__back:hover,
   .auth__link:hover,
   .cabinet__more:hover,
   .saved__name:hover,
