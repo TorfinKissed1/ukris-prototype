@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Личный кабинет - УКРИС</title>
-  <meta name="description" content="Избранное, сравнение, мои заявки и профиль.">
+  <meta name="description" content="Профиль, избранное, сравнение и мои заявки.">
   <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,18 +18,19 @@
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
   <link rel="stylesheet" href="../css/pages.css?v=def27432">
   <link rel="stylesheet" href="../css/catalog.css?v=7d0eba01">
-  <link rel="stylesheet" href="../css/cabinet.css?v=dd25acdb">
+  <link rel="stylesheet" href="../css/cabinet.css?v=b98be6b5">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/mock-data.js?v=b95944d0" defer></script>
   <script src="../js/shared.js?v=95e16ded" defer></script>
   <script src="../js/picker.js?v=65b1f059" defer></script>
   <script src="../js/to-top.js?v=b1b7b8ee" defer></script>
-  <script src="../js/sheets.js?v=d992c9a9" defer></script>
+  <script src="../js/sheets.js?v=b64c9f81" defer></script>
   <script src="../js/saved.js?v=08c6e2dc" defer></script>
   <script src="../js/cards.js?v=a2b7c84a" defer></script>
   <script src="../js/cabinet.js?v=201a743c" defer></script>
   <script src="../js/search.js?v=49447ae2" defer></script>
   <script src="../js/swipe.js?v=8f6b7f82" defer></script>
+  <script src="../js/phone-mask.js?v=10586a5a" defer></script>
   <script src="../js/form-check.js?v=85ef2ca1" defer></script>
   <script src="../js/proto-nav.js?v=5bca1202" defer></script>
 </head>
@@ -104,14 +105,54 @@
 
       <div class="cabinet">
         <nav class="cabinet__nav" aria-label="Разделы кабинета">
+          <a class="cabinet__link" href="#profil"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-user"></use></svg>Профиль</a>
           <a class="cabinet__link" href="#izbrannoe"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-heart"></use></svg>Избранное<span class="cabinet__count">3</span></a>
           <a class="cabinet__link" href="#sravnenie"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-compare"></use></svg>Сравнение<span class="cabinet__count">3</span></a>
           <a class="cabinet__link" href="#zayavki"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-list"></use></svg>Мои заявки<span class="cabinet__count">3</span></a>
-          <a class="cabinet__link" href="#profil"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-user"></use></svg>Профиль</a>
           <a class="cabinet__link cabinet__link--exit" href="login.html"><svg class="icon cabinet__link-icon" aria-hidden="true"><use href="#i-logout"></use></svg>Выйти</a>
         </nav>
 
         <div class="cabinet__content">
+          <section class="cabinet__section" id="profil" aria-labelledby="profil-title">
+            <div class="cabinet__head">
+              <h2 class="cabinet__title" id="profil-title">Профиль</h2>
+            </div>
+            <form class="form cabinet__profile" action="cabinet.html#profil" method="post">
+              <div class="field form__field">
+                <label class="field__label" for="profile-name">Имя</label>
+                <input class="field__control" id="profile-name" type="text" name="name" autocomplete="name" value="Анна">
+              </div>
+              <div class="field form__field">
+                <label class="field__label" for="profile-phone">Телефон</label>
+                <input class="field__control" id="profile-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" value="+7 (925) 123-45-67" placeholder="+7 (___) ___-__-__" data-phone-mask>
+              </div>
+              <div class="field form__field form__field--wide">
+                <span class="field__label">Электронная почта</span>
+                <p class="cabinet__value">anna.k@example.com</p>
+              </div>
+              <fieldset class="field form__field form__field--wide">
+                <legend class="field__label">Как с вами связаться</legend>
+                <div class="field__options">
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
+                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
+                </div>
+              </fieldset>
+              <div class="field form__field form__field--wide">
+                <label class="field__label" for="profile-contact">Контакт</label>
+                <input class="field__control" id="profile-contact" type="text" name="contact" value="@anna_k" placeholder="@username, номер или почта">
+              </div>
+              <button class="button button--primary form__submit" type="submit">Сохранить</button>
+            </form>
+            <a class="button button--outline cabinet__logout" href="login.html">Выйти</a>
+
+            <div class="cabinet__danger">
+              <h3 class="cabinet__danger-title">Удаление аккаунта</h3>
+              <p class="cabinet__note">Это приведёт к удалению аккаунта и данных, связанных с ним. Действие необратимо.</p>
+              <a class="button button--outline cabinet__delete" href="#delete-account" data-sheet-open="delete-account" aria-haspopup="dialog">Удалить аккаунт</a>
+            </div>
+          </section>
+
           <section class="cabinet__section" id="izbrannoe" aria-labelledby="izbrannoe-title">
             <div class="cabinet__head">
               <h2 class="cabinet__title" id="izbrannoe-title">Избранное</h2>
@@ -285,41 +326,6 @@
               </tbody>
             </table>
           </section>
-
-          <section class="cabinet__section" id="profil" aria-labelledby="profil-title">
-            <div class="cabinet__head">
-              <h2 class="cabinet__title" id="profil-title">Профиль</h2>
-            </div>
-            <form class="form cabinet__profile" action="cabinet.html#profil" method="post">
-              <div class="field form__field">
-                <label class="field__label" for="profile-name">Имя</label>
-                <input class="field__control" id="profile-name" type="text" name="name" autocomplete="name" value="Анна">
-              </div>
-              <div class="field form__field">
-                <span class="field__label">Электронная почта</span>
-                <p class="cabinet__value">anna.k@example.com</p>
-              </div>
-              <fieldset class="field form__field form__field--wide">
-                <legend class="field__label">Как с вами связаться</legend>
-                <div class="field__options">
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
-                  <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
-                </div>
-              </fieldset>
-              <div class="field form__field form__field--wide">
-                <label class="field__label" for="profile-contact">Контакт</label>
-                <input class="field__control" id="profile-contact" type="text" name="contact" value="@anna_k" placeholder="@username, номер или почта">
-              </div>
-              <button class="button button--primary form__submit" type="submit">Сохранить</button>
-            </form>
-
-            <div class="cabinet__danger">
-              <h3 class="cabinet__danger-title">Удаление аккаунта</h3>
-              <p class="cabinet__note">Это приведёт к удалению аккаунта и данных, связанных с ним. Действие необратимо.</p>
-              <a class="button button--outline cabinet__delete" href="#delete-account" data-sheet-open="delete-account" aria-haspopup="dialog">Удалить аккаунт</a>
-            </div>
-          </section>
         </div>
       </div>
     </div>
@@ -390,6 +396,9 @@
     <div class="sheet__head"><h2 class="sheet__title" id="menu-title" tabindex="-1">Меню</h2></div>
     <ul class="sheet__options">
       <li><a class="sheet__option" href="cabinet.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-user"></use></svg>Личный кабинет</a></li>
+      <li><a class="sheet__option" href="cabinet.html#izbrannoe"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-heart"></use></svg>Избранное</a></li>
+      <li><a class="sheet__option" href="cabinet.html#sravnenie"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-compare"></use></svg>Сравнение</a></li>
+      <li><a class="sheet__option" href="cabinet.html#zayavki"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-list"></use></svg>Мои заявки</a></li>
       <li><a class="sheet__option" href="about.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-world"></use></svg>О проекте</a></li>
       <li><a class="sheet__option" href="about.html#kontakty"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-phone"></use></svg>Контакты</a></li>
       <li><a class="sheet__option" href="https://t.me/davydova_ps"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-telegram"></use></svg>Написать в Telegram</a></li>

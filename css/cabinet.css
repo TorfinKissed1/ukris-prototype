@@ -208,6 +208,11 @@
   font-weight: 600;
 }
 
+/* На компьютере «Выйти» в боковом меню. */
+.cabinet__logout {
+  display: none;
+}
+
 .cabinet__danger {
   display: flex;
   flex-direction: column;
@@ -367,7 +372,7 @@
   }
 }
 
-/* До 1024 px меню кабинета становится строкой кнопок, которая листается вбок внутри себя. */
+/* До 1024 px разделы кабинета открываются из листа «Меню», боковое меню не нужно. */
 @media (max-width: 1024px) {
   /* Вместо шапки сверху строка поиска, снизу нижняя панель. */
   .auth {
@@ -382,28 +387,16 @@
   }
 
   .cabinet__nav {
-    position: static;
-    flex: none;
-    flex-direction: row;
-    gap: var(--space-s);
-    overflow-x: auto;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    scrollbar-width: none;
+    display: none;
   }
 
-  .cabinet__link {
-    flex: none;
-    min-height: 44px;
-    padding: 0 var(--space-m);
-    white-space: nowrap;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-round);
+  /* Строка поиска сверху прилипает и закрыла бы заголовок раздела при переходе по якорю. */
+  .cabinet__section {
+    scroll-margin-top: calc(var(--quickbar-height) + var(--space-m));
   }
 
-  .cabinet__count {
-    margin-left: 0;
+  .cabinet__logout {
+    display: inline-flex;
   }
 }
 

@@ -77,6 +77,13 @@ document.addEventListener('click', (event) => {
     return;
   }
 
+  // Раздел этой же страницы: браузер только прокрутит к нему, а лист остался бы открытым.
+  const sectionLink = event.target.closest('.sheet__option[href*="#"]');
+  if (sectionLink && sectionLink.pathname === location.pathname) {
+    closeSheet(sectionLink.closest('dialog'));
+    return;
+  }
+
   // Нажатие на затемнение вокруг листа приходит на сам dialog.
   if (event.target.matches('dialog.sheet[open]')) {
     closeSheet(event.target);
