@@ -284,6 +284,7 @@
 /* ============ modal (содержимое окна заявки) ============
    Само окно это лист dialog.sheet--window из mobile.css: он открывает, закрывает и анимирует. */
 .modal {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
@@ -294,6 +295,18 @@
   padding: var(--space-xl);
   background: var(--color-bg);
   border-radius: var(--radius-l);
+}
+
+/* Заявка принята: окно с длинной формой не длиннее экрана, галочка видна посередине без прокрутки. */
+.modal--sent {
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Крестик остаётся над слоем «Успешно отправлено». */
+.modal--sent .icon-button {
+  position: relative;
+  z-index: 2;
 }
 
 .modal__head {

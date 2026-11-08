@@ -46,6 +46,7 @@
 }
 
 .lead-form__form {
+  position: relative;
   padding: var(--space-xl);
   background: var(--color-bg);
   border-radius: var(--radius-l);
@@ -87,6 +88,58 @@
   /* Кнопка «Написать в Telegram» во всю ширину. */
   .lead-form__intro {
     align-items: stretch;
+  }
+}
+
+/* ============ sent-note (заявка принята) ============
+   Слой поверх формы или окна: размер остаётся прежним, содержимое под ним уже не видно. */
+.sent-note {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-m);
+  padding: var(--space-l);
+  background: var(--color-bg);
+  border-radius: inherit;
+  animation: sent-note-in 0.3s ease;
+}
+
+.sent-note__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  color: var(--color-text-on-dark);
+  background: var(--color-accent);
+  border-radius: var(--radius-round);
+}
+
+.sent-note__mark .icon {
+  width: 36px;
+  height: 36px;
+  stroke-width: 2.4;
+}
+
+.sent-note__text {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  text-align: center;
+}
+
+@keyframes sent-note-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sent-note {
+    animation: none;
   }
 }
 
