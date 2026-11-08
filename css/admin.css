@@ -669,6 +669,11 @@
   height: 20px;
 }
 
+/* Safari на iPhone ставит значение даты по центру поля, а все соседние поля читаются слева. */
+.admin-body input.field-box__input::-webkit-date-and-time-value {
+  text-align: left;
+}
+
 /* Поле с файлом и многострочное поле того же вида, что и обычное: подпись внутри рамки. */
 .admin-file {
   cursor: pointer;
@@ -802,6 +807,15 @@
 
 /* До 1024 px бокового меню нет: сверху строка с логотипом, разделы в нижнем листе. */
 @media (max-width: 1024px) {
+  .admin-body {
+    --control-height: 56px;
+  }
+
+  .admin-body .field-box,
+  .admin-body .picker__text {
+    gap: var(--space-xs);
+  }
+
   .admin {
     flex-direction: column;
   }
