@@ -4,11 +4,8 @@
 const PROTO_PAGES = [
   ['index.html', 'Главная'],
   ['catalog.html', 'Каталог'],
-  ['catalog-empty.html', 'Каталог: пусто'],
   ['object.html', 'Объект'],
   ['compare.html', 'Сравнение'],
-  ['compare-few.html', 'Сравнение: один объект'],
-  ['compare-empty.html', 'Сравнение: пусто'],
   ['login.html', 'Вход'],
   ['register.html', 'Регистрация'],
   ['cabinet.html', 'Кабинет'],

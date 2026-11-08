@@ -80,6 +80,11 @@ html {
   display: none;
 }
 
+/* Атрибут hidden прячет и блоки со своим display (flex, grid): их показывает и прячет скрипт. */
+[hidden] {
+  display: none !important;
+}
+
 /* Якорь не уезжает под закреплённую шапку. */
 [id] {
   scroll-margin-top: 96px;

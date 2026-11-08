@@ -152,7 +152,10 @@
   line-height: 1.3;
 }
 
+/* Строка пересчёта есть в каждой колонке, у цены в долларах пустая: кнопки соседних колонок
+   стоят на одной высоте. По той же причине название всегда занимает две строки. */
 .compare__note {
+  min-height: 1lh;
   font-size: var(--fs-xs);
   color: var(--color-text-muted);
 }
@@ -161,6 +164,7 @@
 .compare__name {
   display: -webkit-box;
   overflow: hidden;
+  min-height: 2lh;
   margin-top: var(--space-s);
   font-size: var(--fs-small);
   font-weight: 600;
@@ -233,6 +237,11 @@
   .compare__board {
     padding: var(--space-m);
     border-radius: var(--radius-m);
+  }
+
+  /* Кнопка «Перейти в каталог» во всю ширину панели. */
+  .compare__board--empty {
+    align-items: stretch;
   }
 
   .compare__object,

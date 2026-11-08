@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="../css/base.css?v=1236e408">
+  <link rel="stylesheet" href="../css/base.css?v=2c080440">
   <link rel="stylesheet" href="../css/header.css?v=aea5e515">
   <link rel="stylesheet" href="../css/blocks.css?v=ccd6046c">
   <link rel="stylesheet" href="../css/form.css?v=a7cdcdc3">
@@ -17,18 +17,20 @@
   <link rel="stylesheet" href="../css/mobile.css?v=9ee0e4c7">
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
   <link rel="stylesheet" href="../css/pages.css?v=4e271515">
-  <link rel="stylesheet" href="../css/catalog.css?v=8e1a27bc">
+  <link rel="stylesheet" href="../css/catalog.css?v=7d0eba01">
   <link rel="stylesheet" href="../css/cabinet.css?v=219d60d0">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/picker.js?v=afb4141a" defer></script>
   <script src="../js/to-top.js?v=fa881674" defer></script>
   <script src="../js/sheets.js?v=b5494c03" defer></script>
-  <script src="../js/search-data.js?v=61be7fb3" defer></script>
-  <script src="../js/search.js?v=34b72acf" defer></script>
+  <script src="../js/mock-data.js?v=b95944d0" defer></script>
+  <script src="../js/saved.js?v=add68f41" defer></script>
+  <script src="../js/cards.js?v=643e99de" defer></script>
+  <script src="../js/cabinet.js?v=ab68d7e5" defer></script>
+  <script src="../js/search.js?v=5f2d6c56" defer></script>
   <script src="../js/swipe.js?v=81f2aeee" defer></script>
   <script src="../js/form-check.js?v=4cb2a264" defer></script>
-  <script src="../js/toggles.js?v=a930f124" defer></script>
-  <script src="../js/proto-nav.js?v=18a9a222" defer></script>
+  <script src="../js/proto-nav.js?v=6fb3b34d" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -115,7 +117,7 @@
               <a class="cabinet__more" href="catalog.html">Перейти в каталог</a>
             </div>
             <div class="projects projects--narrow">
-              <article class="project-card">
+              <article class="project-card" data-object="marina-crest-residence">
                 <div class="project-card__media">
                   <img class="project-card__image" src="../img/dubai-pool.webp" alt="Marina Crest Residence, Дубай" width="1200" height="750">
                   <div class="project-card__badges">
@@ -138,7 +140,7 @@
                   </div>
                 </div>
               </article>
-              <article class="project-card">
+              <article class="project-card" data-object="palm-garden-villas">
                 <div class="project-card__media">
                   <img class="project-card__image" src="../img/villa-palms.webp" alt="Palm Garden Villas, Абу-Даби" width="1200" height="750">
                   <div class="project-card__badges">
@@ -161,7 +163,7 @@
                   </div>
                 </div>
               </article>
-              <article class="project-card">
+              <article class="project-card" data-object="saadiyat-shore">
                 <div class="project-card__media">
                   <img class="project-card__image" src="../img/interior-sea.webp" alt="Saadiyat Shore, Абу-Даби" width="1200" height="750">
                   <div class="project-card__badges">
@@ -185,6 +187,35 @@
                 </div>
               </article>
             </div>
+            <div class="empty" hidden>
+              <p class="empty__text">В избранном пока ничего нет</p>
+              <div class="empty__actions"><a class="button button--primary" href="catalog.html">Перейти в каталог</a></div>
+            </div>
+            <template id="favorite-card">
+              <article class="project-card">
+                <div class="project-card__media">
+                  <img class="project-card__image" src="" alt="" width="1200" height="750">
+                  <div class="project-card__badges">
+                    <span class="project-card__badge"></span>
+                    <button class="project-card__favorite" type="button" aria-label="Добавить в избранное" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <div>
+                    <p class="project-card__place"></p>
+                    <h3 class="project-card__title"><a class="project-card__link" href="object.html"></a></h3>
+                  </div>
+                  <dl class="project-card__facts">
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value"></dd></div>
+                    <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value"></dd></div>
+                  </dl>
+                  <div class="project-card__footer">
+                    <p class="project-card__price"><span class="project-card__price-value"></span><span class="project-card__price-note"></span></p>
+                    <button class="button button--outline cabinet__remove" type="button" aria-label="Убрать из избранного"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>Убрать</button>
+                  </div>
+                </div>
+              </article>
+            </template>
           </section>
 
           <section class="cabinet__section" id="sravnenie" aria-labelledby="sravnenie-title">
@@ -193,19 +224,29 @@
               <a class="cabinet__more" href="compare.html">Открыть сравнение</a>
             </div>
             <ul class="saved">
-              <li class="saved__item">
+              <li class="saved__item" data-object="marina-crest-residence">
                 <img class="saved__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
                 <div class="saved__text"><p class="saved__place">ОАЭ, Дубай</p><a class="saved__name" href="object.html">Marina Crest Residence</a></div>
               </li>
-              <li class="saved__item">
+              <li class="saved__item" data-object="palm-garden-villas">
                 <img class="saved__image" src="../img/villa-palms.webp" alt="" width="1200" height="750">
                 <div class="saved__text"><p class="saved__place">ОАЭ, Абу-Даби</p><a class="saved__name" href="object.html">Palm Garden Villas</a></div>
               </li>
-              <li class="saved__item">
+              <li class="saved__item" data-object="azure-heights">
                 <img class="saved__image" src="../img/interior-city.webp" alt="" width="960" height="600">
                 <div class="saved__text"><p class="saved__place">ОАЭ, Дубай</p><a class="saved__name" href="object.html">Azure Heights</a></div>
               </li>
             </ul>
+            <div class="empty" hidden>
+              <p class="empty__text">Добавьте объекты для сравнения</p>
+              <div class="empty__actions"><a class="button button--primary" href="catalog.html">Перейти в каталог</a></div>
+            </div>
+            <template id="saved-item">
+              <li class="saved__item">
+                <img class="saved__image" src="" alt="" width="1200" height="750">
+                <div class="saved__text"><p class="saved__place"></p><a class="saved__name" href="object.html"></a></div>
+              </li>
+            </template>
           </section>
 
           <section class="cabinet__section" id="zayavki" aria-labelledby="zayavki-title">

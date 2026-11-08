@@ -1,7 +1,7 @@
 // Поиск на весь экран на телефоне и планшете (до 1024 px). Нажатие на строку поиска открывает
 // лист #search: сверху характеристики из справочника (страна, город, тип, застройщик) с числом
 // объектов, ниже объекты по словам. На компьютере и без скрипта строка поиска работает как
-// обычная форма и отправляет запрос в каталог. Данные тестовые, из js/search-data.js.
+// обычная форма и отправляет запрос в каталог. Данные тестовые, из js/mock-data.js.
 
 const SEARCH_MEDIA = window.matchMedia('(max-width: 1024px)');
 const SEARCH_SOURCES = '.quickbar__input, .finder__query-input';
@@ -11,7 +11,7 @@ const SEARCH_OBJECTS_LIMIT = 6;
 const SEARCH_NOTHING = 'Ничего не нашлось. Попробуйте другое слово, город или тип объекта.';
 
 const searchSheet = document.getElementById('search');
-const searchData = window.SEARCH_DATA || { facets: [], objects: [] };
+const searchData = window.MOCK_DATA;
 let searchSource = null;
 let searchRestoringFocus = false;
 let searchFromKeyboard = false;
@@ -72,7 +72,7 @@ function objectRow(item) {
   image.loading = 'lazy';
   const text = element('span', 'search-sheet__object-text');
   text.append(element('span', 'search-sheet__row-title', item.title));
-  text.append(element('span', 'search-sheet__row-hint', `${item.price} · ${item.country}, ${item.city}`));
+  text.append(element('span', 'search-sheet__row-hint', `${item.price || 'Цена по запросу'} · ${item.country}, ${item.city}`));
   link.append(image, text);
   return link;
 }

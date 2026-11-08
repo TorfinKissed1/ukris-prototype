@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="../css/base.css?v=1236e408">
+  <link rel="stylesheet" href="../css/base.css?v=2c080440">
   <link rel="stylesheet" href="../css/header.css?v=aea5e515">
   <link rel="stylesheet" href="../css/blocks.css?v=ccd6046c">
   <link rel="stylesheet" href="../css/form.css?v=a7cdcdc3">
@@ -17,17 +17,18 @@
   <link rel="stylesheet" href="../css/mobile.css?v=9ee0e4c7">
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
   <link rel="stylesheet" href="../css/pages.css?v=4e271515">
-  <link rel="stylesheet" href="../css/compare.css?v=9684addf">
+  <link rel="stylesheet" href="../css/compare.css?v=dc31934c">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/picker.js?v=afb4141a" defer></script>
   <script src="../js/to-top.js?v=fa881674" defer></script>
   <script src="../js/sheets.js?v=b5494c03" defer></script>
-  <script src="../js/search-data.js?v=61be7fb3" defer></script>
-  <script src="../js/search.js?v=34b72acf" defer></script>
+  <script src="../js/mock-data.js?v=b95944d0" defer></script>
+  <script src="../js/saved.js?v=add68f41" defer></script>
+  <script src="../js/compare.js?v=1b2c2393" defer></script>
+  <script src="../js/search.js?v=5f2d6c56" defer></script>
   <script src="../js/swipe.js?v=81f2aeee" defer></script>
   <script src="../js/form-check.js?v=4cb2a264" defer></script>
-  <script src="../js/toggles.js?v=a930f124" defer></script>
-  <script src="../js/proto-nav.js?v=18a9a222" defer></script>
+  <script src="../js/proto-nav.js?v=6fb3b34d" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -105,12 +106,12 @@
             <table class="compare__table">
               <thead>
                 <tr>
-                  <th class="compare__object" scope="col">
+                  <th class="compare__object" scope="col" data-object="marina-crest-residence">
                     <div class="compare__media">
                       <img class="compare__image" src="../img/dubai-pool.webp" alt="" width="1200" height="750">
                       <div class="compare__tools">
-                        <button class="compare__tool compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
-                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                        <button class="compare__tool compare__tool--favorite compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool compare__tool--remove" type="button" aria-label="Убрать из сравнения: Marina Crest Residence"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
                       </div>
                     </div>
                     <p class="compare__price">от 1 506 000 AED</p>
@@ -118,12 +119,12 @@
                     <a class="compare__name" href="object.html">Marina Crest Residence</a>
                     <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
                   </th>
-                  <th class="compare__object" scope="col">
+                  <th class="compare__object" scope="col" data-object="palm-garden-villas">
                     <div class="compare__media">
                       <img class="compare__image" src="../img/villa-palms.webp" alt="" width="1200" height="750">
                       <div class="compare__tools">
-                        <button class="compare__tool compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
-                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                        <button class="compare__tool compare__tool--favorite compare__tool--active" type="button" aria-pressed="true" aria-label="Убрать из избранного: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool compare__tool--remove" type="button" aria-label="Убрать из сравнения: Palm Garden Villas"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
                       </div>
                     </div>
                     <p class="compare__price">от 4 200 000 AED</p>
@@ -131,15 +132,16 @@
                     <a class="compare__name" href="object.html">Palm Garden Villas</a>
                     <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
                   </th>
-                  <th class="compare__object" scope="col">
+                  <th class="compare__object" scope="col" data-object="azure-heights">
                     <div class="compare__media">
                       <img class="compare__image" src="../img/interior-city.webp" alt="" width="960" height="600">
                       <div class="compare__tools">
-                        <button class="compare__tool" type="button" aria-pressed="false" aria-label="Добавить в избранное: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
-                        <button class="compare__tool" type="button" aria-label="Убрать из сравнения: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                        <button class="compare__tool compare__tool--favorite" type="button" aria-pressed="false" aria-label="Добавить в избранное: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                        <button class="compare__tool compare__tool--remove" type="button" aria-label="Убрать из сравнения: Azure Heights"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
                       </div>
                     </div>
                     <p class="compare__price">от 295 000 $</p>
+                    <p class="compare__note"></p>
                     <a class="compare__name" href="object.html">Azure Heights</a>
                     <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
                   </th>
@@ -148,25 +150,25 @@
               <tbody>
                 <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Основное</span></th></tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Страна и город</span></th></tr>
-                <tr>
+                <tr data-field="place">
                   <td class="compare__cell">ОАЭ, Дубай</td>
                   <td class="compare__cell">ОАЭ, Абу-Даби</td>
                   <td class="compare__cell">ОАЭ, Дубай</td>
                 </tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Застройщик</span></th></tr>
-                <tr>
+                <tr data-field="developer">
                   <td class="compare__cell">Crest Development</td>
                   <td class="compare__cell">Sand Line Properties</td>
                   <td class="compare__cell">Bayline Estates</td>
                 </tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Площадь от</span></th></tr>
-                <tr>
+                <tr data-field="area">
                   <td class="compare__cell">42 м²</td>
                   <td class="compare__cell">310 м²</td>
                   <td class="compare__cell">36 м²</td>
                 </tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Передача ключей</span></th></tr>
-                <tr>
+                <tr data-field="keysText">
                   <td class="compare__cell">IV квартал 2027</td>
                   <td class="compare__cell">II квартал 2028</td>
                   <td class="compare__cell">IV квартал 2026</td>
@@ -174,20 +176,20 @@
 
                 <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Оплата</span></th></tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Первый взнос</span></th></tr>
-                <tr>
+                <tr data-field="firstPayment">
                   <td class="compare__cell">20%</td>
                   <td class="compare__cell">10%</td>
                   <td class="compare__cell">30%</td>
                 </tr>
                 <tr><th class="compare__label" colspan="3" scope="colgroup"><span class="compare__sticky">Рассрочка</span></th></tr>
-                <tr>
+                <tr data-field="installment">
                   <td class="compare__cell">50% за время стройки, раз в квартал; 30% при передаче ключей</td>
                   <td class="compare__cell">60% за время стройки, каждый месяц; 30% при передаче ключей</td>
                   <td class="compare__cell">40% до сдачи дома; 30% при передаче ключей</td>
                 </tr>
 
                 <tr><th class="compare__group" colspan="3" scope="colgroup"><span class="compare__sticky">Комментарий эксперта</span></th></tr>
-                <tr>
+                <tr data-field="comment">
                   <td class="compare__cell compare__cell--comment">Под сдачу в аренду: в районе спрос круглый год. Застройщик сдавал дома в Dubai Marina без переноса сроков.</td>
                   <td class="compare__cell compare__cell--comment">Для жизни или долгого владения. Высокий порог входа, зато первый взнос небольшой.</td>
                   <td class="compare__cell compare__cell--comment">Дом почти готов, доход от аренды начнётся раньше остальных. Студии легко перепродать.</td>
@@ -196,6 +198,27 @@
             </table>
           </div>
         </div>
+
+        <div class="compare__board compare__board--empty" hidden>
+          <p class="compare__empty-title">Добавьте объекты для сравнения</p>
+          <a class="button button--primary" href="catalog.html">Перейти в каталог</a>
+        </div>
+
+        <template id="compare-column">
+          <th class="compare__object" scope="col">
+            <div class="compare__media">
+              <img class="compare__image" src="" alt="" width="1200" height="750">
+              <div class="compare__tools">
+                <button class="compare__tool compare__tool--favorite" type="button" aria-pressed="false" aria-label="Добавить в избранное"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                <button class="compare__tool compare__tool--remove" type="button" aria-label="Убрать из сравнения"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+              </div>
+            </div>
+            <p class="compare__price"></p>
+            <p class="compare__note"></p>
+            <a class="compare__name" href="object.html"></a>
+            <a class="button button--primary compare__action" href="object.html#usloviya">Запросить условия</a>
+          </th>
+        </template>
       </div>
     </div>
   </main>

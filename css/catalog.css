@@ -320,6 +320,12 @@
 }
 
 @media (max-width: 768px) {
+  /* На телефоне кнопки пустого состояния во всю ширину, одна под другой. */
+  .empty__actions {
+    flex-direction: column;
+    align-self: stretch;
+  }
+
   .modal {
     max-width: none;
     min-height: 100%;

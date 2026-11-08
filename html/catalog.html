@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="../css/base.css?v=1236e408">
+  <link rel="stylesheet" href="../css/base.css?v=2c080440">
   <link rel="stylesheet" href="../css/header.css?v=aea5e515">
   <link rel="stylesheet" href="../css/search.css?v=e163175e">
   <link rel="stylesheet" href="../css/blocks.css?v=ccd6046c">
@@ -17,17 +17,19 @@
   <link rel="stylesheet" href="../css/picker.css?v=79336419">
   <link rel="stylesheet" href="../css/mobile.css?v=9ee0e4c7">
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
-  <link rel="stylesheet" href="../css/catalog.css?v=8e1a27bc">
+  <link rel="stylesheet" href="../css/catalog.css?v=7d0eba01">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/picker.js?v=afb4141a" defer></script>
   <script src="../js/to-top.js?v=fa881674" defer></script>
   <script src="../js/sheets.js?v=b5494c03" defer></script>
-  <script src="../js/search-data.js?v=61be7fb3" defer></script>
-  <script src="../js/search.js?v=34b72acf" defer></script>
+  <script src="../js/mock-data.js?v=b95944d0" defer></script>
+  <script src="../js/saved.js?v=add68f41" defer></script>
+  <script src="../js/cards.js?v=643e99de" defer></script>
+  <script src="../js/catalog.js?v=59bb906d" defer></script>
+  <script src="../js/search.js?v=5f2d6c56" defer></script>
   <script src="../js/swipe.js?v=81f2aeee" defer></script>
   <script src="../js/form-check.js?v=4cb2a264" defer></script>
-  <script src="../js/toggles.js?v=a930f124" defer></script>
-  <script src="../js/proto-nav.js?v=18a9a222" defer></script>
+  <script src="../js/proto-nav.js?v=6fb3b34d" defer></script>
 </head>
 <body>
   <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
@@ -186,8 +188,8 @@
       <div class="catalog__content">
         <div class="catalog__toolbar">
             <div class="chips catalog__chips">
-              <a class="chips__item" href="catalog.html" aria-label="Убрать фильтр: ОАЭ">ОАЭ<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
-              <a class="chips__reset" href="catalog.html">Сбросить все</a>
+              <a class="chips__item" href="catalog.html?country=" aria-label="Убрать фильтр: ОАЭ">ОАЭ<span class="chips__remove"><svg class="icon chips__icon" aria-hidden="true"><use href="#i-close"></use></svg></span></a>
+              <a class="chips__reset" href="catalog.html?country=">Сбросить все</a>
             </div>
             <div class="catalog__tools">
               <a class="button button--outline catalog__sort-button" href="#sort" data-sheet-open="sort" aria-haspopup="dialog">Сначала новые<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></a>
@@ -210,7 +212,7 @@
           </div>
 
           <div class="projects projects--narrow">
-            <article class="project-card">
+            <article class="project-card" data-object="marina-crest-residence">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/dubai-pool.webp" alt="Marina Crest Residence, Дубай" width="1200" height="750">
                 <div class="project-card__badges">
@@ -234,7 +236,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="palm-garden-villas">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/villa-palms.webp" alt="Palm Garden Villas, Абу-Даби" width="1200" height="750">
                 <div class="project-card__badges">
@@ -258,7 +260,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="harbour-view">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/interior-dubai.webp" alt="Harbour View, Дубай" width="1200" height="750">
                 <div class="project-card__badges">
@@ -282,7 +284,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="creek-point-tower">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/towers-park.webp" alt="Creek Point Tower, Дубай" width="960" height="600">
                 <div class="project-card__badges">
@@ -306,7 +308,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="saadiyat-shore">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/interior-sea.webp" alt="Saadiyat Shore, Абу-Даби" width="1200" height="750" loading="lazy">
                 <div class="project-card__badges">
@@ -330,7 +332,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="oasis-lane-townhouses">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/villa-sea.webp" alt="Oasis Lane Townhouses, Дубай" width="1200" height="724" loading="lazy">
                 <div class="project-card__badges">
@@ -354,7 +356,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="azure-heights">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/interior-city.webp" alt="Azure Heights, Дубай" width="960" height="600" loading="lazy">
                 <div class="project-card__badges">
@@ -378,7 +380,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="yas-bay-lofts">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/dubai-pool.webp" alt="Yas Bay Lofts, Абу-Даби" width="1200" height="750" loading="lazy">
                 <div class="project-card__badges">
@@ -402,7 +404,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="palm-vista-villas">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/villa-palms.webp" alt="Palm Vista Villas, Дубай" width="1200" height="750" loading="lazy">
                 <div class="project-card__badges">
@@ -426,7 +428,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="business-bay-one">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/towers-park.webp" alt="Business Bay One, Дубай" width="960" height="600" loading="lazy">
                 <div class="project-card__badges">
@@ -450,7 +452,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="reem-island-gardens">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/interior-sea.webp" alt="Reem Island Gardens, Абу-Даби" width="1200" height="750" loading="lazy">
                 <div class="project-card__badges">
@@ -474,7 +476,7 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-object="jumeirah-park-residences">
               <div class="project-card__media">
                 <img class="project-card__image" src="../img/interior-dubai.webp" alt="Jumeirah Park Residences, Дубай" width="1200" height="750" loading="lazy">
                 <div class="project-card__badges">
@@ -499,6 +501,41 @@
             </article>
           </div>
 
+          <section class="empty" aria-labelledby="empty-title" hidden>
+            <h2 class="empty__title" id="empty-title">Объекты не найдены</h2>
+            <p class="empty__text">По этим условиям в каталоге пока нет проектов. Измените фильтры или оставьте заявку: подберём варианты под ваш бюджет вручную.</p>
+            <div class="empty__actions">
+              <a class="button button--primary" href="#podbor-modal" data-sheet-open="podbor-modal" aria-haspopup="dialog">Оставить заявку на подбор</a>
+              <a class="button button--outline" href="catalog.html?country=">Сбросить фильтры</a>
+            </div>
+          </section>
+
+          <template id="catalog-card">
+            <article class="project-card">
+              <div class="project-card__media">
+                <img class="project-card__image" src="" alt="" width="1200" height="750">
+                <div class="project-card__badges">
+                  <span class="project-card__badge"></span>
+                  <button class="project-card__favorite" type="button" aria-label="Добавить в избранное" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__place"></p>
+                  <h2 class="project-card__title"><a class="project-card__link" href="object.html"></a></h2>
+                </div>
+                <dl class="project-card__facts">
+                  <div class="project-card__fact"><dt class="project-card__fact-label">Застройщик</dt><dd class="project-card__fact-value"></dd></div>
+                  <div class="project-card__fact"><dt class="project-card__fact-label">Тип</dt><dd class="project-card__fact-value"></dd></div>
+                </dl>
+                <div class="project-card__footer">
+                  <p class="project-card__price"><span class="project-card__price-value"></span><span class="project-card__price-note"></span></p>
+                  <button class="button button--outline project-card__compare" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-compare"></use></svg>К сравнению</button>
+                </div>
+              </div>
+            </article>
+          </template>
+
           <nav class="pagination" aria-label="Страницы каталога">
             <span class="pagination__link pagination__link--disabled" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Назад</span>
             <a class="pagination__link pagination__link--current" href="catalog.html?country=oae" aria-current="page">1</a>
@@ -508,6 +545,84 @@
       </div>
     </div>
   </main>
+
+  <dialog class="sheet sheet--window" id="podbor-modal" aria-labelledby="podbor-modal-title">
+    <div class="modal">
+      <div class="modal__head">
+        <div>
+          <h2 class="modal__title sheet__title" id="podbor-modal-title" tabindex="-1">Получить подборку</h2>
+        </div>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <form class="form" action="#podbor-modal" method="post">
+        <div class="trap" aria-hidden="true">
+          <label for="modal-company-website">Сайт компании</label>
+          <input id="modal-company-website" type="text" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        <details class="picker form__field">
+          <summary class="picker__button">
+            <span class="picker__text"><span class="picker__label">Страна</span><span class="picker__value">Пока не определился</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Страна</span></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="" checked><span class="picker__option-text">Пока не определился</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="oae"><span class="picker__option-text">ОАЭ</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="turkey"><span class="picker__option-text">Турция</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="country" value="thailand"><span class="picker__option-text">Таиланд</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <label class="field-box form__field">
+          <span class="field-box__label">Бюджет в $, необязательно</span>
+          <input class="field-box__input" type="text" name="budget_usd" inputmode="numeric" autocomplete="off">
+        </label>
+        <details class="picker form__field form__field--wide">
+          <summary class="picker__button">
+            <span class="picker__text"><span class="picker__label">Цель покупки</span><span class="picker__value">Сдавать в аренду</span></span>
+            <svg class="icon picker__chevron" aria-hidden="true"><use href="#i-chevron"></use></svg>
+          </summary>
+          <div class="picker__panel">
+            <div class="picker__head"><span class="picker__grabber" aria-hidden="true"></span><span class="picker__title">Цель покупки</span></div>
+            <ul class="picker__list">
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="rent" checked><span class="picker__option-text">Сдавать в аренду</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="resale"><span class="picker__option-text">Перепродать после сдачи</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="living"><span class="picker__option-text">Жить самому</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+              <li><label class="picker__option"><input class="picker__input" type="radio" name="goal" value="capital"><span class="picker__option-text">Сохранить капитал</span><svg class="icon picker__check" aria-hidden="true"><use href="#i-check"></use></svg></label></li>
+            </ul>
+          </div>
+        </details>
+        <fieldset class="field form__field form__field--wide">
+          <legend class="field__label">Как с вами связаться</legend>
+          <div class="field__options">
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="telegram" checked><span class="field__option-label">Telegram</span></label>
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="phone"><span class="field__option-label">Телефон</span></label>
+            <label class="field__option"><input class="field__option-input" type="radio" name="channel" value="email"><span class="field__option-label">Email</span></label>
+          </div>
+        </fieldset>
+        <div class="field form__field form__field--wide">
+          <label class="field__label" for="modal-contact">Контакт</label>
+          <input class="field__control" id="modal-contact" type="text" name="contact" required data-error-required="Укажите контакт для связи" placeholder="@username, номер или почта">
+        </div>
+        <div class="field form__field">
+          <label class="field__label" for="modal-name">Имя <span class="field__optional">(необязательно)</span></label>
+          <input class="field__control" id="modal-name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field form__field form__field--wide">
+          <label class="field__label" for="modal-comment">Комментарий <span class="field__optional">(необязательно)</span></label>
+          <textarea class="field__control field__control--textarea" id="modal-comment" name="comment" rows="3"></textarea>
+        </div>
+        <div class="field form__field form__field--wide modal__consent">
+          <label class="field__check">
+            <input class="field__check-input" type="checkbox" name="consent" required>
+            <span>Даю согласие на обработку <a class="field__check-link" href="consent.html">персональных данных</a></span>
+          </label>
+        </div>
+        <button class="button button--primary form__submit modal__submit" type="submit">Отправить заявку</button>
+      </form>
+    </div>
+  </dialog>
 
   <footer class="footer">
     <div class="container">
