@@ -38,6 +38,14 @@ function objectsCount(count) {
   return `${count} ${plural(count, 'объект', 'объекта', 'объектов')}`;
 }
 
+// form.reset() не трогает подписи выпадашек: они написаны в кнопке отдельным текстом.
+function syncPickerLabels(form) {
+  form.querySelectorAll('.picker').forEach((picker) => {
+    const option = picker.querySelector('.picker__input:checked').closest('.picker__option');
+    picker.querySelector('.picker__value').textContent = option.querySelector('.picker__option-text').textContent;
+  });
+}
+
 // Элементы гаснут, и только потом вызывающий меняет список: таблица и сетка не перескакивают резко.
 function fadeOut(elements) {
   if (REDUCED_MOTION.matches) {

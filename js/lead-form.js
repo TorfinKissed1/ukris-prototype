@@ -3,11 +3,7 @@
 
 function resetLeadForm(form) {
   form.reset();
-  // reset не трогает подписи выпадашек: они написаны в кнопке отдельным текстом.
-  form.querySelectorAll('.picker').forEach((picker) => {
-    const option = picker.querySelector('.picker__input:checked').closest('.picker__option');
-    picker.querySelector('.picker__value').textContent = option.querySelector('.picker__option-text').textContent;
-  });
+  syncPickerLabels(form);
 }
 
 function buildLeadSentNote() {
