@@ -76,10 +76,6 @@ function format(rest) {
 }
 
 function caretAfterDigit(formatted, count) {
-  if (count <= 0) {
-    return formatted.length ? PREFIX.length : 0;
-  }
-
   let seen = 0;
 
   for (let i = 0; i < formatted.length; i++) {

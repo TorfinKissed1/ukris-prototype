@@ -13,6 +13,7 @@ function buildFavoriteCard(template, item) {
 
 function buildSavedItem(template, item) {
   const row = template.content.firstElementChild.cloneNode(true);
+  row.dataset.object = item.id;
   row.querySelector('.saved__image').src = item.image;
   row.querySelector('.saved__place').textContent = `${item.country}, ${item.city}`;
   row.querySelector('.saved__name').textContent = item.title;
@@ -39,9 +40,7 @@ function renderCabinetList(config) {
   const ids = window.ProtoSaved.ids(config.list).filter((id) => cabinetObjects.has(id));
   const nodes = ids.map((id) => {
     if (!config.items.has(id)) {
-      const node = config.build(config.template, cabinetObjects.get(id));
-      node.dataset.object = id;
-      config.items.set(id, node);
+      config.items.set(id, config.build(config.template, cabinetObjects.get(id)));
     }
     return config.items.get(id);
   });

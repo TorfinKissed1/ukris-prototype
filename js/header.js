@@ -5,15 +5,9 @@ const header = document.querySelector('[data-header]');
 const quickbar = document.querySelector('[data-quickbar]');
 const firstScreen = document.querySelector('[data-first-screen]');
 
-if (firstScreen) {
-  const observer = new IntersectionObserver(([entry]) => {
-    const passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-    if (header) {
-      header.classList.toggle('header--scrolled', passed);
-    }
-    if (quickbar) {
-      quickbar.classList.toggle('quickbar--shown', passed);
-    }
-  });
-  observer.observe(firstScreen);
-}
+const observer = new IntersectionObserver(([entry]) => {
+  const passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+  header.classList.toggle('header--scrolled', passed);
+  quickbar.classList.toggle('quickbar--shown', passed);
+});
+observer.observe(firstScreen);

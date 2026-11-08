@@ -29,7 +29,7 @@ function catalogLabel(name, value) {
   if (field) {
     return catalogObjects.find((item) => item[`${field}Id`] === value)?.[field] || value;
   }
-  const money = (amount) => `${catalogNumber(amount).toLocaleString('ru-RU')} $`;
+  const money = (amount) => `${amount.toLocaleString('ru-RU')} $`;
   if (name === 'budget_min') {
     return `От ${money(value)}`;
   }
@@ -43,8 +43,8 @@ function catalogLabel(name, value) {
 }
 
 function catalogMatches(item, filters) {
-  const min = catalogNumber(filters.budget_min);
-  const max = catalogNumber(filters.budget_max);
+  const min = filters.budget_min === '' ? null : filters.budget_min;
+  const max = filters.budget_max === '' ? null : filters.budget_max;
   const haystack = catalogFoldText([item.title, item.country, item.city, item.developer, item.type].join(' '));
   return (!filters.country || item.countryId === filters.country)
     && (!filters.city || item.cityId === filters.city)
@@ -75,23 +75,24 @@ function catalogUrl(params) {
 
 // Выпадашки и поля фильтров на странице и в окне подбора показывают то, что в адресе.
 function syncCatalogFields(filters) {
-  for (const name of ['country', 'city', 'type', 'keys']) {
+  document.querySelectorAll('.picker').forEach((picker) => {
+    const name = picker.querySelector('.picker__input')?.name;
+    if (!['country', 'city', 'type', 'keys'].includes(name)) {
+      return;
+    }
     const value = filters[name] || '';
-    document.querySelectorAll(`.picker__input[name="${name}"]`).forEach((input) => {
+    picker.querySelectorAll('.picker__input').forEach((input) => {
       input.checked = input.value === value;
     });
-    document.querySelectorAll('.picker').forEach((picker) => {
-      if (!picker.querySelector(`.picker__input[name="${name}"]`)) {
-        return;
-      }
-      const checked = picker.querySelector('.picker__input:checked');
-      picker.querySelector('.picker__value').textContent = checked
-        ? checked.closest('.picker__option').querySelector('.picker__option-text').textContent
-        : catalogLabel(name, value);
-    });
-  }
+    // Значения из адреса может не быть среди вариантов (Пхукет в выпадашке городов ОАЭ): подпись из данных.
+    const checked = picker.querySelector('.picker__input:checked');
+    picker.querySelector('.picker__value').textContent = checked
+      ? checked.closest('.picker__option').querySelector('.picker__option-text').textContent
+      : catalogLabel(name, value);
+  });
   document.querySelectorAll('input[name="budget_min"]').forEach((input) => { input.value = filters.budget_min || ''; });
   document.querySelectorAll('input[name="budget_max"]').forEach((input) => { input.value = filters.budget_max || ''; });
+  // В окне подбора одно поле бюджета: подставляем верхнюю границу фильтра.
   document.querySelectorAll('input[name="budget_usd"]').forEach((input) => { input.value = filters.budget_max || ''; });
   document.querySelectorAll('.finder__query-input, .quickbar__input').forEach((input) => { input.value = filters.q || ''; });
 }
@@ -163,6 +164,9 @@ function applyCatalogFilters() {
     return;
   }
   const filters = Object.fromEntries(CATALOG_FILTERS.map((name) => [name, (catalogParams.get(name) || '').trim()]));
+  // Бюджет без цифр («abc») считается пустым, а не ломает подписи таблеток.
+  filters.budget_min = catalogNumber(filters.budget_min) ?? '';
+  filters.budget_max = catalogNumber(filters.budget_max) ?? '';
   const sort = CATALOG_SORTS[catalogParams.get('sort')] ? catalogParams.get('sort') : '';
   const found = catalogObjects.filter((item) => catalogMatches(item, filters));
   if (sort) {
