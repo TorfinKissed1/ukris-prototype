@@ -22,6 +22,7 @@ const PROTO_PAGES = [
   ['admin-references.html', 'Панель: справочники'],
   ['admin-rates.html', 'Панель: курсы'],
   ['admin-users.html', 'Панель: пользователи'],
+  ['admin-docs.html', 'Панель: документы'],
   ['admin-settings.html', 'Панель: настройки'],
 ];
 
