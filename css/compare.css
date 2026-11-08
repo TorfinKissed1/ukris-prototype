@@ -253,7 +253,15 @@
     aspect-ratio: 1;
   }
 
+  /* «Запросить условия» в одну строку в колонке 168 px. */
+  .compare__action {
+    padding: 0 var(--space-s);
+    font-size: var(--fs-xs);
+  }
+
+  /* Цена в узкой колонке бывает в две строки: место под две строки у всех, кнопки на одной высоте. */
   .compare__price {
+    min-height: 2lh;
     font-size: var(--fs-body);
   }
 

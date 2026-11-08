@@ -1,11 +1,19 @@
 /* ============ directions ============ */
+/* Flex, а не сетка: направлений три, и в ряду на два места третье растягивается на всю ширину,
+   а не стоит одно с пустотой справа. */
 .directions__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-m);
 }
 
+.directions__item {
+  display: flex;
+  flex: 1 1 280px;
+}
+
 .direction {
+  flex: 1;
   display: grid;
   min-height: 400px;
   overflow: hidden;

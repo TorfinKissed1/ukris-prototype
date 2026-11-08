@@ -197,10 +197,11 @@
   gap: var(--space-m) var(--space-l);
 }
 
+/* Основа под самое длинное значение («Строительство»), чтобы оно не вылезало из ячейки. */
 .summary__fact {
   display: flex;
   flex-direction: column;
-  flex: 1 1 110px;
+  flex: 1 1 124px;
   min-width: 0;
 }
 
@@ -224,9 +225,11 @@
   flex: 1 1 100%;
 }
 
+/* Подпись в одну строку: не помещается три кнопки, третья уходит на следующий ряд. */
 .summary__tool {
   flex: 1 1 160px;
   padding: 0 var(--space-m);
+  white-space: nowrap;
 }
 
 /* Заливка сердечка появляется и уходит плавно, поэтому без отметки она прозрачная, а не none. */
@@ -429,6 +432,13 @@
   gap: var(--space-l);
   flex: 1 1 300px;
   min-width: 0;
+}
+
+/* Кнопка презентации во всю ширину. */
+@media (max-width: 768px) {
+  .sources__intro {
+    align-items: stretch;
+  }
 }
 
 .sources__list {

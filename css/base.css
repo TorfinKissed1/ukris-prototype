@@ -371,6 +371,11 @@ textarea {
     display: flex;
   }
 
+  /* Кнопки под секцией во всю ширину, одна под другой. */
+  .section__actions {
+    flex-direction: column;
+  }
+
   .section__action--mobile {
     display: inline-flex;
   }
@@ -403,5 +408,10 @@ textarea {
   :root {
     --fs-hero: 30px;
     --fs-h2: 24px;
+  }
+
+  /* Кнопки здесь во всю ширину, широкие поля по бокам только переносят подпись на вторую строку. */
+  .button {
+    padding: 0 var(--space-m);
   }
 }

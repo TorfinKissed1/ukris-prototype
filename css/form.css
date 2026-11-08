@@ -83,6 +83,11 @@
     padding: var(--space-l) var(--space-m);
     border-radius: var(--radius-m);
   }
+
+  /* Кнопка «Написать в Telegram» во всю ширину. */
+  .lead-form__intro {
+    align-items: stretch;
+  }
 }
 
 /* ============ form (раскладка полей заявки) ============ */
@@ -123,9 +128,9 @@
   min-width: 240px;
 }
 
-/* Форма подбора на телефоне: кнопка на всю ширину, согласие под ней. */
+/* На телефоне кнопка отправки во всю ширину, в форме подбора согласие под ней. */
 @media (max-width: 768px) {
-  .lead-form__submit {
+  .form__submit {
     flex: 1 1 100%;
     min-width: 0;
   }
@@ -401,9 +406,11 @@
   color: var(--color-text-muted);
 }
 
+/* Длинная подсказка в узком поле обрывается многоточием, а не на полуслове. */
 .field-box__input {
   width: 100%;
   padding: 0;
+  text-overflow: ellipsis;
   font-size: var(--fs-small);
   font-weight: 600;
   line-height: 1.4;

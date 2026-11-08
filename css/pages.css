@@ -325,4 +325,9 @@
   .not-found__code {
     font-size: 88px;
   }
+
+  .not-found__actions {
+    flex-direction: column;
+    align-self: stretch;
+  }
 }

@@ -187,6 +187,14 @@ function applyCatalogFilters() {
   // Тестовых объектов меньше страницы: листать нечего.
   document.querySelector('.pagination').hidden = true;
 
+  // Число на кнопке «Фильтры»: поиск по словам стоит в самой строке и не считается.
+  const filtersCount = CATALOG_FILTERS.filter((name) => name !== 'q' && filters[name]).length;
+  const filtersButton = document.querySelector('.quickbar__filters');
+  const filtersBadge = filtersButton.querySelector('.quickbar__count');
+  filtersBadge.textContent = filtersCount;
+  filtersBadge.hidden = !filtersCount;
+  filtersButton.setAttribute('aria-label', filtersCount ? `Фильтры, выбрано: ${filtersCount}` : 'Фильтры');
+
   syncCatalogFields(filters);
   buildCatalogChips(filters);
   syncCatalogSort(sort);

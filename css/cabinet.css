@@ -412,6 +412,10 @@
     padding: var(--space-l) var(--space-m);
   }
 
+  .cabinet__delete {
+    align-self: stretch;
+  }
+
   .auth__title,
   .cabinet__title {
     font-size: 24px;
