@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Пользователи - панель УКРИС</title>
+  <meta name="description" content="Пользователи личного кабинета.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../css/base.css?v=f1bd6761">
+  <link rel="stylesheet" href="../css/blocks.css?v=23670397">
+  <link rel="stylesheet" href="../css/form.css?v=ce530bca">
+  <link rel="stylesheet" href="../css/picker.css?v=0a0a7d32">
+  <link rel="stylesheet" href="../css/mobile.css?v=128d48c0">
+  <link rel="stylesheet" href="../css/catalog.css?v=e6803d8b">
+  <link rel="stylesheet" href="../css/cabinet.css?v=b98be6b5">
+  <link rel="stylesheet" href="../css/admin.css?v=7416128c">
+  <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
+  <script src="../js/mock-data.js?v=b95944d0" defer></script>
+  <script src="../js/shared.js?v=b2c83292" defer></script>
+  <script src="../js/picker.js?v=65b1f059" defer></script>
+  <script src="../js/sheets.js?v=b64c9f81" defer></script>
+  <script src="../js/swipe.js?v=8f6b7f82" defer></script>
+  <script src="../js/form-check.js?v=85ef2ca1" defer></script>
+  <script src="../js/admin.js?v=547d8ca6" defer></script>
+  <script src="../js/proto-nav.js?v=5cf4b371" defer></script>
+</head>
+<body class="admin-body">
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12 M4 13h3l3 3h4l3 -3h3"></path></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21l18 0 M9 8l1 0 M9 12l1 0 M9 16l1 0 M14 8l1 0 M14 12l1 0 M14 16l1 0 M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path></symbol>
+    <symbol id="i-books" viewBox="0 0 24 24"><path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14 M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14 M5 8h4 M9 16h4 M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041 M14 9l4 -1 M16 16l3.923 -.98"></path></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1 M12 7v10"></path></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0 M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2 M16 3.13a4 4 0 0 1 0 7.75 M21 21v-2a4 4 0 0 0 -3 -3.85"></path></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 9l1 0 M9 13l6 0 M9 17l6 0"></path></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065 M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2 M9 12h12l-3 -3 M18 15l3 -3"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6l16 0 M4 12l16 0 M4 18l16 0"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6l-12 12 M6 6l12 12"></path></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10"></path></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0 M21 21l-6 -6"></path></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5l0 14 M5 12l14 0"></path></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7l16 0 M10 11l0 6 M14 11l0 6 M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12 M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4 M13.5 6.5l4 4"></path></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0 M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873l-6.158 -3.245"></path></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2 M7 11l5 5l5 -5 M12 4l0 12"></path></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2 M7 9l5 -5l5 5 M12 4l0 12"></path></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M5 12l14 0 M5 12l6 6 M5 12l6 -6"></path></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12l14 0 M13 18l6 -6 M13 6l6 6"></path></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M10 14l11 -11 M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10 M3 7l9 6l9 -6"></path></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4 M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6 M11 13l9 -9 M15 4h5v5"></path></symbol>
+  </svg>
+
+  <header class="admin-bar">
+    <a class="admin-bar__logo" href="admin-leads.html"><img class="admin-bar__image" src="../img/logo.webp" alt="" width="48" height="48">УКРИС</a>
+    <a class="icon-button" href="#admin-menu" data-sheet-open="admin-menu" aria-haspopup="dialog" aria-label="Меню"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></a>
+  </header>
+
+  <div class="admin">
+    <aside class="admin__side">
+      <a class="admin__logo" href="admin-leads.html"><img class="admin__logo-image" src="../img/logo.webp" alt="" width="48" height="48">УКРИС</a>
+      <nav class="admin-nav" aria-label="Разделы панели">
+        <a class="admin-nav__link" href="admin-leads.html"><svg class="icon" aria-hidden="true"><use href="#i-inbox"></use></svg>Заявки<span class="admin-nav__count" aria-label="новых: 2">2</span></a>
+        <a class="admin-nav__link" href="admin-objects.html"><svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg>Объекты</a>
+        <a class="admin-nav__link" href="admin-references.html"><svg class="icon" aria-hidden="true"><use href="#i-books"></use></svg>Справочники</a>
+        <a class="admin-nav__link" href="admin-rates.html"><svg class="icon" aria-hidden="true"><use href="#i-coin"></use></svg>Курсы</a>
+        <a class="admin-nav__link admin-nav__link--current" aria-current="page" href="admin-users.html"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>Пользователи</a>
+        <a class="admin-nav__link" href="admin-docs.html"><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>Документы</a>
+        <a class="admin-nav__link" href="admin-settings.html"><svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg>Настройки</a>
+        <a class="admin-nav__link admin-nav__link--exit" href="admin-login.html"><svg class="icon" aria-hidden="true"><use href="#i-logout"></use></svg>Выйти</a>
+      </nav>
+    </aside>
+
+    <main class="admin__main">
+      <div class="admin-head">
+        <div class="admin-head__text">
+          <h1 class="admin-head__title">Пользователи</h1>
+          <p class="admin-head__count" data-admin-count>Найдено: 3</p>
+        </div>
+      </div>
+      <form class="admin-panel admin-filters" data-admin-filters action="#" method="get" aria-label="Поиск пользователей">
+        <label class="field admin-filters__item admin-filters__item--wide"><span class="field__label">Поиск</span><input class="field__control" type="search" name="q" placeholder="Имя, почта или контакт" autocomplete="off"></label>
+        <button class="button button--outline admin-filters__reset" type="button" data-filters-reset>Сбросить</button>
+      </form>
+      <section class="admin-panel" aria-label="Список пользователей">
+        <div class="admin-table-box" data-admin-list>
+          <table class="admin-table admin-table--main-first">
+            <colgroup class="admin-table__columns"><col><col class="admin-table__col--m"><col class="admin-table__col--s"><col class="admin-table__col--m"><col class="admin-table__col--s"></colgroup>
+            <thead class="admin-table__head"><tr><th class="admin-table__head-cell" scope="col">Пользователь</th><th class="admin-table__head-cell" scope="col">Контакт</th><th class="admin-table__head-cell" scope="col">Регистрация</th><th class="admin-table__head-cell" scope="col">Активность</th><th class="admin-table__head-cell" scope="col"><span class="visually-hidden">Действия</span></th></tr></thead>
+            <tbody><tr class="admin-table__row" id="user-1" data-admin-row data-text="Анна anna.k@example.com @anna_k, Telegram"><td class="admin-table__cell admin-table__cell--main"><span class="admin-table__line admin-table__line--strong">Анна</span><span class="admin-table__line admin-table__line--muted">anna.k@example.com</span></td><td class="admin-table__cell"><span class="admin-table__line">@anna_k, Telegram</span></td><td class="admin-table__cell"><span class="admin-table__line">12.10.2026</span></td><td class="admin-table__cell"><span class="admin-table__line">Заявок: 3</span><span class="admin-table__line admin-table__line--muted">Избранное: 3, сравнение: 3</span></td><td class="admin-table__cell admin-table__cell--actions"><div class="admin-table__actions"><button class="admin-small admin-small--danger" type="button" data-user-delete aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>Удалить</button></div></td></tr><tr class="admin-table__row" id="user-2" data-admin-row data-text="Сергей sergey.vasilievich.konstantinov@corporate-mail.example.com +7 (925) 123-45-67, телефон"><td class="admin-table__cell admin-table__cell--main"><span class="admin-table__line admin-table__line--strong">Сергей</span><span class="admin-table__line admin-table__line--muted">sergey.vasilievich.konstantinov@corporate-mail.example.com</span></td><td class="admin-table__cell"><span class="admin-table__line">+7 (925) 123-45-67, телефон</span></td><td class="admin-table__cell"><span class="admin-table__line">08.10.2026</span></td><td class="admin-table__cell"><span class="admin-table__line">Заявок: 1</span><span class="admin-table__line admin-table__line--muted">Избранное: 5, сравнение: 2</span></td><td class="admin-table__cell admin-table__cell--actions"><div class="admin-table__actions"><button class="admin-small admin-small--danger" type="button" data-user-delete aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>Удалить</button></div></td></tr><tr class="admin-table__row" id="user-3" data-admin-row data-text="Без имени investor2026@example.com Контакт не указан"><td class="admin-table__cell admin-table__cell--main"><span class="admin-table__line admin-table__line--strong">Без имени</span><span class="admin-table__line admin-table__line--muted">investor2026@example.com</span></td><td class="admin-table__cell"><span class="admin-table__line">Контакт не указан</span></td><td class="admin-table__cell"><span class="admin-table__line">30.09.2026</span></td><td class="admin-table__cell"><span class="admin-table__line">Заявок: 0</span><span class="admin-table__line admin-table__line--muted">Избранное: 0, сравнение: 0</span></td><td class="admin-table__cell admin-table__cell--actions"><div class="admin-table__actions"><button class="admin-small admin-small--danger" type="button" data-user-delete aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>Удалить</button></div></td></tr></tbody>
+          </table>
+        </div>
+        <div class="empty" data-admin-empty hidden><p class="empty__text">Пользователи не найдены</p></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="sheet sheet--bottom" id="admin-menu" aria-labelledby="admin-menu-title">
+    <span class="sheet__grabber" aria-hidden="true"></span>
+    <div class="sheet__head"><h2 class="sheet__title" id="admin-menu-title" tabindex="-1">Меню</h2></div>
+    <ul class="sheet__options">
+      <li><a class="sheet__option" href="admin-leads.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-inbox"></use></svg>Заявки</a></li>
+      <li><a class="sheet__option" href="admin-objects.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-building"></use></svg>Объекты</a></li>
+      <li><a class="sheet__option" href="admin-references.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-books"></use></svg>Справочники</a></li>
+      <li><a class="sheet__option" href="admin-rates.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-coin"></use></svg>Курсы</a></li>
+      <li><a class="sheet__option sheet__option--current" aria-current="page" href="admin-users.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-users"></use></svg>Пользователи</a></li>
+      <li><a class="sheet__option" href="admin-docs.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-file"></use></svg>Документы</a></li>
+      <li><a class="sheet__option" href="admin-settings.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-settings"></use></svg>Настройки</a></li>
+      <li><a class="sheet__option" href="admin-login.html"><svg class="icon sheet__option-icon" aria-hidden="true"><use href="#i-logout"></use></svg>Выйти</a></li>
+    </ul>
+  </dialog>
+  <dialog class="sheet sheet--window sheet--compact" id="delete-user" aria-labelledby="delete-user-title">
+    <div class="modal">
+      <div class="modal__head">
+        <h2 class="modal__title sheet__title" id="delete-user-title" tabindex="-1">Удалить пользователя?</h2>
+        <a class="icon-button" href="#" data-sheet-close aria-label="Закрыть окно"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></a>
+      </div>
+      <p class="cabinet__note">Это приведёт к удалению аккаунта и данных, связанных с ним. Действие необратимо.</p>
+      <div class="confirm">
+        <button class="button button--danger confirm__button" type="button" data-user-delete-confirm>Удалить</button>
+        <a class="button button--outline confirm__button" href="#" data-sheet-close>Отмена</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

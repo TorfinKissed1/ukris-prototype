@@ -14,6 +14,16 @@ const PROTO_PAGES = [
   ['privacy.html', 'Политика'],
   ['consent.html', 'Согласие'],
   ['404.html', '404'],
+  ['admin-login.html', 'Панель: вход'],
+  ['admin-leads.html', 'Панель: заявки'],
+  ['admin-lead.html', 'Панель: заявка'],
+  ['admin-objects.html', 'Панель: объекты'],
+  ['admin-object.html', 'Панель: объект'],
+  ['admin-references.html', 'Панель: справочники'],
+  ['admin-rates.html', 'Панель: курсы'],
+  ['admin-users.html', 'Панель: пользователи'],
+  ['admin-docs.html', 'Панель: документы'],
+  ['admin-settings.html', 'Панель: настройки'],
 ];
 
 function buildProtoNav() {

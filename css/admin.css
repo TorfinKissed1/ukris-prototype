@@ -1,0 +1,873 @@
+/* Панель управления: боковое меню, разделы, списки и формы. Вход это экран auth из cabinet.css,
+   окна подтверждения это лист sheet--window из mobile.css с содержимым modal из catalog.css.
+   Списки никогда не листаются вбок: столбцы делят ширину поровну, длинный текст переносится,
+   а когда места мало, строка становится карточкой. */
+
+/* ============ admin-auth (вход в панель) ============ */
+.admin-auth {
+  --auth-offset: 0px;
+}
+
+.admin-auth__panel {
+  background: var(--color-bg);
+}
+
+.admin-auth__forgot {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============ admin (каркас) ============ */
+.admin-body {
+  --fs-body: 15px;
+  --fs-small: 14px;
+  --admin-side: 264px;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--color-paper);
+}
+
+.admin {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+.admin__side {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex: 0 0 var(--admin-side);
+  flex-direction: column;
+  gap: var(--space-l);
+  height: 100dvh;
+  padding: var(--space-l) var(--space-m);
+  overflow-y: auto;
+  color: var(--color-text-on-dark);
+  background: var(--color-ink);
+}
+
+.admin__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 var(--space-s);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.admin__logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-round);
+}
+
+.admin__main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-l);
+  min-width: 0;
+  padding: var(--space-l) var(--space-xl) var(--space-xl);
+}
+
+/* ============ admin-nav (боковое меню) ============ */
+.admin-nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 var(--space-s);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-text-on-dark-muted);
+  border-radius: var(--radius-s);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.admin-nav__link--current {
+  color: var(--color-text-on-dark);
+  background: var(--color-border-on-dark);
+}
+
+.admin-nav__link--exit {
+  margin-top: auto;
+}
+
+.admin-nav__count {
+  min-width: 24px;
+  margin-left: auto;
+  padding: 0 6px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: var(--color-ink);
+  background: var(--color-accent);
+  border-radius: var(--radius-round);
+}
+
+/* ============ admin-bar (шапка на телефоне и планшете) ============ */
+.admin-bar {
+  display: none;
+}
+
+/* ============ admin-head (заголовок раздела) ============ */
+.admin-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-m);
+}
+
+.admin-head__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.admin-head__back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-s);
+  min-height: 32px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+.admin-head__title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  overflow-wrap: anywhere;
+}
+
+.admin-head__count {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.admin-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+/* ============ admin-panel (белая панель с содержимым) ============ */
+.admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  min-width: 0;
+  padding: var(--space-l);
+  background: var(--color-bg);
+  border-radius: var(--radius-m);
+  scroll-margin-top: var(--space-m);
+}
+
+/* Панель сама является формой: поля идут строками, как в .form. */
+.admin-panel--form {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.admin-panel__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.admin-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-m);
+}
+
+/* ============ admin-filters (фильтры над списком) ============ */
+.admin-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-s);
+}
+
+.admin-filters__item {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.admin-filters__item--wide {
+  flex-basis: 220px;
+}
+
+.admin-filters__reset {
+  flex: none;
+}
+
+/* ============ admin-table (список) ============ */
+.admin-table-box {
+  container-type: inline-size;
+}
+
+.admin-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.admin-table__col--xs {
+  width: 10%;
+}
+
+.admin-table__col--s {
+  width: 14%;
+}
+
+.admin-table__col--m {
+  width: 19%;
+}
+
+/* Колонка со статусом: подпись в одну строку, самая длинная «Опубликован». */
+.admin-table__col--badge {
+  width: 150px;
+}
+
+.admin-table__head-cell {
+  padding: var(--space-s) 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table__head-cell:first-child,
+.admin-table__cell:first-child {
+  padding-left: 0;
+}
+
+.admin-table__head-cell:last-child,
+.admin-table__cell:last-child {
+  padding-right: 0;
+}
+
+.admin-table__cell {
+  padding: 14px 12px;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table__line {
+  display: block;
+}
+
+.admin-table__line--strong {
+  font-weight: 600;
+}
+
+.admin-table__line--muted {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.admin-table__link {
+  font-weight: 600;
+  color: var(--color-brand);
+  transition: color var(--transition);
+}
+
+.admin-table__object {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.admin-table__object-text {
+  min-width: 0;
+}
+
+.admin-table__image {
+  flex: none;
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-s);
+}
+
+.admin-table__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+}
+
+.admin-table__mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-accent-strong);
+}
+
+.admin-table__mark .icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-accent);
+  stroke: var(--color-accent-strong);
+}
+
+/* Когда столбцам тесно, строка становится карточкой. Считается по ширине списка, а не окна:
+   боковое меню забирает своё, и одной ширины окна для решения мало. */
+@container (max-width: 860px) {
+  .admin-table,
+  .admin-table tbody {
+    display: block;
+  }
+
+  .admin-table__columns {
+    display: none;
+  }
+
+  .admin-table__head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .admin-table__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-s) var(--space-m);
+    padding: var(--space-m) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .admin-table__cell {
+    flex: 1 1 40%;
+    order: 4;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .admin-table__cell--id {
+    flex: 1 1 0;
+    order: 1;
+  }
+
+  .admin-table__cell--status {
+    flex: none;
+    order: 2;
+  }
+
+  .admin-table__cell--main {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .admin-table__cell--actions {
+    flex-basis: 100%;
+    order: 5;
+  }
+
+  .admin-table__actions {
+    justify-content: flex-start;
+  }
+
+  .admin-table--main-first .admin-table__cell--main {
+    order: 1;
+  }
+
+  .admin-table--main-first .admin-table__cell--status {
+    order: 4;
+  }
+}
+
+/* ============ admin-badge (статус словом) ============ */
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--color-paper);
+  border: 1px solid transparent;
+  border-radius: var(--radius-round);
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+}
+
+.admin-badge--new {
+  color: var(--color-accent-strong);
+  border-color: var(--color-accent);
+}
+
+.admin-badge--work {
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+}
+
+.admin-badge--done {
+  color: var(--color-text-on-dark);
+  background: var(--color-brand);
+}
+
+.admin-badge--off {
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.admin-badge--error {
+  color: var(--color-error);
+  background: var(--color-bg);
+  border-color: var(--color-error);
+}
+
+/* ============ admin-small (маленькая кнопка в строке списка) ============ */
+.admin-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), opacity var(--transition);
+}
+
+.admin-small .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.admin-small--danger {
+  color: var(--color-error);
+}
+
+.admin-small:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============ admin-editor (форма с колонкой публикации) ============ */
+.admin-editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-l);
+}
+
+.admin-editor__main {
+  display: flex;
+  flex: 1 1 520px;
+  flex-direction: column;
+  gap: var(--space-l);
+  min-width: 0;
+}
+
+.admin-editor__aside {
+  position: sticky;
+  top: var(--space-l);
+  display: flex;
+  flex: 0 1 320px;
+  flex-direction: column;
+  gap: var(--space-l);
+  min-width: 0;
+}
+
+.admin-editor__submit {
+  width: 100%;
+}
+
+/* ============ admin-sections (переход к блокам формы) ============ */
+.admin-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.admin-sections__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-bg);
+  border-radius: var(--radius-round);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+/* ============ admin-info (сведения подпись-значение) ============ */
+.admin-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m) var(--space-l);
+}
+
+.admin-info__item {
+  flex: 1 1 200px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-info__item--wide {
+  flex-basis: 100%;
+}
+
+.admin-info__label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.admin-info__value {
+  font-weight: 500;
+}
+
+/* ============ admin-log (история и уведомления) ============ */
+.admin-log {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-log__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-s);
+  font-size: var(--fs-small);
+}
+
+.admin-log__time {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* ============ admin-reveal (поле, которое выезжает по выбору) ============ */
+.admin-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition);
+}
+
+.admin-reveal__inner {
+  overflow: hidden;
+  min-height: 0;
+  visibility: hidden;
+  transition: visibility var(--transition);
+}
+
+.admin-status:has(input[value="refused"]:checked) .admin-reveal {
+  grid-template-rows: 1fr;
+}
+
+.admin-status:has(input[value="refused"]:checked) .admin-reveal__inner {
+  visibility: visible;
+}
+
+/* ============ admin-gallery (фото объекта) ============ */
+.admin-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.admin-gallery__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.admin-gallery__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-s);
+}
+
+.admin-gallery__main {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  padding: 2px 8px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-ink);
+  background: var(--color-accent);
+  border-radius: var(--radius-round);
+}
+
+.admin-gallery__item:not(:first-child) .admin-gallery__main {
+  display: none;
+}
+
+.admin-gallery__tools {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.admin-gallery__tool {
+  flex: 1;
+  padding: 0;
+}
+
+.admin-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  min-height: 72px;
+  padding: var(--space-m);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-brand);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+/* Встроенный в браузер выбор даты выше обычного поля и сдвигал соседей в ряду на долю пикселя. */
+.admin-body input.field-box__input {
+  height: 20px;
+}
+
+/* Поле с файлом и многострочное поле того же вида, что и обычное: подпись внутри рамки. */
+.admin-file {
+  cursor: pointer;
+}
+
+.admin-file__text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.admin-area {
+  min-height: 72px;
+  resize: vertical;
+}
+
+/* ============ admin-repeat (повторяющиеся блоки: планировки, источники) ============ */
+.admin-repeat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.admin-repeat__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  padding: var(--space-m);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+}
+
+.admin-repeat__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  font-weight: 600;
+}
+
+.admin-add {
+  align-self: flex-start;
+}
+
+/* ============ admin-checks (чего не хватает для публикации) ============ */
+.admin-checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  font-size: var(--fs-small);
+}
+
+.admin-checks__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  overflow-wrap: anywhere;
+}
+
+.admin-checks__item .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-brand);
+}
+
+.admin-checks__item--miss {
+  color: var(--color-error);
+}
+
+.admin-checks__item--miss .icon {
+  color: var(--color-error);
+}
+
+.admin-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============ admin-inline (строка «поле и кнопка») ============ */
+.admin-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-s);
+}
+
+.admin-inline__field {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+@media (hover: hover) {
+  .admin-nav__link:hover {
+    color: var(--color-text-on-dark);
+    background: var(--color-border-on-dark);
+  }
+
+  .admin-head__back:hover,
+  .admin-table__link:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .admin-sections__link:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .admin-small:not(:disabled):hover,
+  .admin-upload:hover {
+    border-color: var(--color-brand);
+  }
+
+  .admin-small--danger:not(:disabled):hover {
+    border-color: var(--color-error);
+  }
+}
+
+@media (max-width: 1240px) {
+  .admin__main {
+    padding: var(--space-l);
+  }
+
+  .admin-editor__aside {
+    position: static;
+    flex: 1 1 100%;
+  }
+}
+
+/* До 1024 px бокового меню нет: сверху строка с логотипом, разделы в нижнем листе. */
+@media (max-width: 1024px) {
+  .admin {
+    flex-direction: column;
+  }
+
+  .admin__side {
+    display: none;
+  }
+
+  .admin-bar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    min-height: calc(60px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) var(--gutter) 0;
+    color: var(--color-text-on-dark);
+    background: var(--color-ink);
+  }
+
+  .admin-bar__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    font-weight: 700;
+  }
+
+  .admin-bar__image {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-round);
+  }
+
+  .admin-panel {
+    scroll-margin-top: calc(60px + env(safe-area-inset-top) + var(--space-m));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin__main {
+    gap: var(--space-m);
+    padding: var(--space-m) var(--gutter) var(--space-l);
+  }
+
+  .admin-panel {
+    padding: var(--space-m);
+  }
+
+  .admin-head__title {
+    font-size: 24px;
+  }
+
+  .admin-head__actions,
+  .admin-head__action,
+  .admin-add,
+  .admin-filters__reset,
+  .admin-inline__submit {
+    flex: 1 1 100%;
+    align-self: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-reveal {
+    transition: none;
+  }
+}
