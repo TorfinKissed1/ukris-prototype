@@ -89,7 +89,11 @@ html {
   scroll-margin-top: 96px;
 }
 
+/* Колонка на всю высоту окна: подвал короткой страницы прижат к низу (margin-top: auto у .footer). */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   margin: 0;
   font-family: var(--font-main);
   font-size: var(--fs-body);

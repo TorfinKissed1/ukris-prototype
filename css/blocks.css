@@ -475,6 +475,7 @@
 
 /* ============ footer ============ */
 .footer {
+  margin-top: auto;
   padding: var(--space-2xl) 0 var(--space-l);
   font-size: var(--fs-small);
   color: var(--color-text-on-dark-muted);
