@@ -372,6 +372,7 @@
 }
 
 .faq__item {
+  overflow: hidden;
   background: var(--color-bg);
   border-radius: var(--radius-m);
 }
@@ -386,7 +387,13 @@
   font-weight: 600;
   list-style: none;
   cursor: pointer;
+  border-radius: var(--radius-m);
   transition: color var(--transition);
+}
+
+/* Блок обрезает содержимое при движении, поэтому кольцо фокуса внутри кнопки. */
+.faq__question:focus-visible {
+  outline-offset: -2px;
 }
 
 @media (hover: hover) {
@@ -416,41 +423,15 @@
   transform: rotate(45deg);
 }
 
-/* Плавное раскрытие: браузеры без ::details-content просто открывают ответ сразу. */
-.faq__item::details-content {
-  block-size: 0;
-  overflow: hidden;
-  transition: block-size 0.3s ease, content-visibility 0.3s ease allow-discrete;
-}
-
-.faq__item[open]::details-content {
-  block-size: auto;
+/* Крестик поворачивается вместе с началом закрытия: атрибут open снимается только в конце движения. */
+.faq__item--closing[open] .faq__icon {
+  transform: none;
 }
 
 .faq__answer {
   max-width: 720px;
   padding: 0 var(--space-l) var(--space-l);
   color: var(--color-text-muted);
-}
-
-/* Safari не умеет плавно менять высоту до auto: там ответ хотя бы проявляется и съезжает на место. */
-@supports not (interpolate-size: allow-keywords) {
-  .faq__item[open] .faq__answer {
-    animation: faq-answer-in 0.3s ease;
-  }
-}
-
-@keyframes faq-answer-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .faq__answer {
-    animation: none !important;
-  }
 }
 
 /* ============ crumbs (хлебные крошки) ============ */
