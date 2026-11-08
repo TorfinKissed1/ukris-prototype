@@ -370,6 +370,8 @@ textarea {
     --fs-h2: 30px;
     --space-section: 72px;
     --header-height: 0px;
+    /* Строка поиска сверху: отступ 8, поле 44, отступ 8, рамка 1 и вырез экрана. */
+    --quickbar-height: calc(61px + env(safe-area-inset-top));
   }
 
   /* Место под нижнюю панель, чтобы она не закрывала конец страницы. */

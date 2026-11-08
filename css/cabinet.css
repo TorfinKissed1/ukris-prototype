@@ -332,9 +332,9 @@
 
 /* До 1024 px меню кабинета становится строкой кнопок, которая листается вбок внутри себя. */
 @media (max-width: 1024px) {
-  /* Вместо шапки сверху строка поиска (61 px), снизу нижняя панель. */
+  /* Вместо шапки сверху строка поиска, снизу нижняя панель. */
   .auth {
-    --auth-offset: calc(61px + var(--tabbar-height));
+    --auth-offset: calc(var(--quickbar-height) + var(--tabbar-height));
     padding: var(--space-l) var(--gutter);
   }
 

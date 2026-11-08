@@ -220,7 +220,6 @@
   .picker__panel {
     position: fixed;
     top: auto;
-    left: 0;
     right: 0;
     bottom: 0;
     z-index: calc(var(--z-modal) + 1);
@@ -286,7 +285,6 @@
   .picker__option {
     min-height: var(--control-height);
     padding: 0 var(--gutter);
-    font-size: var(--fs-small);
     border-radius: 0;
   }
 
