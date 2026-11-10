@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
   <link rel="stylesheet" href="../css/catalog.css?v=e6803d8b">
   <link rel="stylesheet" href="../css/pages.css?v=def27432">
-  <link rel="stylesheet" href="../css/object.css?v=6e520d57">
+  <link rel="stylesheet" href="../css/object.css?v=039b368e">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/mock-data.js?v=b95944d0" defer></script>
   <script src="../js/shared.js?v=b2c83292" defer></script>
@@ -154,10 +154,12 @@
 
         <section class="object__block" aria-labelledby="raspolozhenie-title">
           <h2 class="object__heading" id="raspolozhenie-title">Расположение</h2>
-          <p>Dubai Marina, Al Marsa Street. До набережной марины 5 минут пешком, до пляжа JBR 15 минут.</p>
+          <p>Dubai Marina, Al Marsa Street</p>
           <a class="object__map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Al+Marsa+Street+Dubai+Marina" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Открыть на карте</a>
           <h3 class="object__subheading">Рядом</h3>
           <ul class="ticks">
+            <li class="ticks__item"><svg class="icon ticks__icon" aria-hidden="true"><use href="#i-check"></use></svg>Набережная марины, 5 минут пешком</li>
+            <li class="ticks__item"><svg class="icon ticks__icon" aria-hidden="true"><use href="#i-check"></use></svg>Пляж JBR, 15 минут пешком</li>
             <li class="ticks__item"><svg class="icon ticks__icon" aria-hidden="true"><use href="#i-check"></use></svg>Метро DMCC, 8 минут пешком</li>
             <li class="ticks__item"><svg class="icon ticks__icon" aria-hidden="true"><use href="#i-check"></use></svg>Трамвай Dubai Tram, 5 минут пешком</li>
             <li class="ticks__item"><svg class="icon ticks__icon" aria-hidden="true"><use href="#i-check"></use></svg>Торговый центр Dubai Marina Mall, 10 минут</li>
@@ -169,21 +171,22 @@
       <div class="object__row">
         <section class="object__block" aria-labelledby="oplata-title">
           <h2 class="object__heading" id="oplata-title">Условия оплаты</h2>
-          <dl class="payment">
-            <div class="payment__item">
-              <dt class="payment__stage"><span class="payment__name">Первоначальный взнос</span><span class="payment__hint">При бронировании и подписании договора</span></dt>
+          <div class="payment">
+            <dl class="payment__item">
+              <dt class="payment__name">Первоначальный взнос</dt>
               <dd class="payment__share">20%</dd>
-            </div>
-            <div class="payment__item">
-              <dt class="payment__stage"><span class="payment__name">Во время строительства</span><span class="payment__hint">10 платежей по 5%, раз в квартал</span></dt>
-              <dd class="payment__share">50%</dd>
-            </div>
-            <div class="payment__item">
-              <dt class="payment__stage"><span class="payment__name">При передаче ключей</span><span class="payment__hint">IV квартал 2027</span></dt>
-              <dd class="payment__share">30%</dd>
-            </div>
-          </dl>
-          <p class="object__note">Рассрочка от застройщика без процентов и без проверки доходов. Отдельно оплачивается сбор Земельного департамента Дубая, 4% от цены.</p>
+            </dl>
+            <dl class="payment__terms">
+              <div class="payment__term">
+                <dt class="payment__name">Рассрочка</dt>
+                <dd>50% во время строительства, 10 платежей по 5% раз в квартал. 30% при передаче ключей.</dd>
+              </div>
+              <div class="payment__term">
+                <dt class="payment__name">Порядок оплаты</dt>
+                <dd>Бронирование 5% от цены, оплата в дирхамах на счёт проекта.</dd>
+              </div>
+            </dl>
+          </div>
         </section>
       </div>
 
@@ -237,7 +240,6 @@
         <div class="section__head">
           <div>
             <h2 class="section__title" id="invest-title">Инвестиционный комментарий</h2>
-            <p class="section__lead">Мнение редакции по данным на 03.11.2026. Это не прогноз роста цены и не обещание доходности.</p>
           </div>
         </div>
         <div class="invest__list">
@@ -282,13 +284,12 @@
       <section class="sources" aria-labelledby="istochniki-title">
         <div class="sources__intro">
           <h2 class="object__heading" id="istochniki-title">Презентация и источники</h2>
-          <a class="button button--outline" href="#"><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>Презентация проекта, PDF</a>
-          <p class="object__note">Последняя проверка данных: 03.11.2026</p>
+          <a class="button button--outline" href="#"><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>Презентация проекта</a>
         </div>
         <ul class="sources__list">
-          <li class="sources__item"><span>Прайс-лист и график платежей застройщика</span><span class="sources__date">получен 28.10.2026</span></li>
-          <li class="sources__item"><span>Презентация проекта от Crest Development</span><span class="sources__date">получена 28.10.2026</span></li>
-          <li class="sources__item"><span>Реестр проектов Земельного департамента Дубая</span><span class="sources__date">проверен 01.11.2026</span></li>
+          <li class="sources__item"><span>Прайс-лист и график платежей застройщика</span><span class="sources__date">проверено 03.11.2026</span></li>
+          <li class="sources__item"><span>Презентация проекта от Crest Development</span><span class="sources__date">проверено 28.10.2026</span></li>
+          <li class="sources__item"><span>Реестр проектов Земельного департамента Дубая</span><span class="sources__date">проверено 01.11.2026</span></li>
           <li class="sources__item"><span>Наличие планировок, ответ отдела продаж</span><span class="sources__date">проверено 03.11.2026</span></li>
         </ul>
       </section>

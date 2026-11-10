@@ -257,38 +257,41 @@
 }
 
 /* ============ payment (условия оплаты) ============
-   Этапы идут в ряд, доля сверху; на телефоне этапы встают друг под другом. */
+   Плитка взноса, доля сверху, рядом тексты рассрочки и порядка оплаты; на телефоне друг под другом. */
 .payment {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-m);
+  align-items: flex-start;
+  gap: var(--space-l);
 }
 
 .payment__item {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-end;
   gap: var(--space-s);
-  flex: 1 1 240px;
+  flex: 0 1 240px;
   min-width: 0;
   padding: var(--space-l);
   background: var(--color-paper);
   border-radius: var(--radius-l);
 }
 
-.payment__stage {
+.payment__terms {
   display: flex;
   flex-direction: column;
+  gap: var(--space-m);
+  flex: 1 1 320px;
   min-width: 0;
+}
+
+.payment__term {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .payment__name {
   font-weight: 600;
-}
-
-.payment__hint {
-  font-size: var(--fs-small);
-  color: var(--color-text-muted);
 }
 
 .payment__share {
