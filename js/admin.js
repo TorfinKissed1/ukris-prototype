@@ -3,6 +3,9 @@
 
 const ADMIN_SAVED_DURATION = 1600;
 const ADMIN_BADGE_BY_STATUS = { new: 'new', work: 'work', deal: 'done', refused: 'off' };
+// Код записи: приставка раздела и 6 знаков без похожих 0/O и 1/I/L, его диктуют по телефону.
+const ADMIN_CODE_ALPHABET = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
+const ADMIN_CODE_LENGTH = 6;
 
 function adminFilterValues(form) {
   return Object.fromEntries(new FormData(form).entries());
@@ -31,6 +34,17 @@ function applyAdminFilters(form) {
   box.hidden = found === 0;
   document.querySelector('[data-admin-empty]').hidden = found !== 0;
   fadeIn(found === 0 ? document.querySelector('[data-admin-empty]') : box);
+}
+
+// Ссылка «Заявок: 3» у пользователя открывает заявки с его кодом в поиске.
+function applyAdminQueryFromUrl() {
+  const form = document.querySelector('[data-admin-filters]');
+  const query = new URLSearchParams(window.location.search).get('q');
+  if (!form || !query) {
+    return;
+  }
+  form.elements.q.value = query;
+  applyAdminFilters(form);
 }
 
 function resetAdminFilters(form) {
@@ -76,16 +90,38 @@ function applyAdminLeadStatus(form) {
   fadeIn(entry);
 }
 
+// На сайте код выдаёт сервер при сохранении, здесь его изображает случайный.
+function adminRecordCode(prefix) {
+  let body = '';
+  for (let i = 0; i < ADMIN_CODE_LENGTH; i += 1) {
+    body += ADMIN_CODE_ALPHABET[Math.floor(Math.random() * ADMIN_CODE_ALPHABET.length)];
+  }
+  return prefix + body;
+}
+
+function adminThumbnail(file) {
+  const image = document.createElement('img');
+  image.className = 'admin-table__image';
+  image.src = URL.createObjectURL(file);
+  image.alt = '';
+  return image;
+}
+
 function addAdminReferenceRow(form) {
   const section = form.closest('[data-reference]');
   const row = section.querySelector('template').content.firstElementChild.cloneNode(true);
   row.querySelectorAll('[data-slot]').forEach((slot) => {
     const field = form.elements[slot.dataset.slot];
-    if (field.files) {
-      slot.textContent = field.files.length ? 'Загружено' : 'Нет';
-    } else {
+    if (!field.files) {
       slot.textContent = field.value;
+    } else if (field.files.length) {
+      slot.replaceWith(adminThumbnail(field.files[0]));
+    } else {
+      slot.textContent = 'Нет';
     }
+  });
+  row.querySelectorAll('[data-code]').forEach((slot) => {
+    slot.textContent = adminRecordCode(slot.dataset.code);
   });
   section.querySelector('tbody').prepend(row);
   form.reset();
@@ -230,3 +266,4 @@ document.addEventListener('click', (event) => {
 });
 
 refreshAdminChecks();
+applyAdminQueryFromUrl();
