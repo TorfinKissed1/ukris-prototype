@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../css/picker.css?v=0a0a7d32">
   <link rel="stylesheet" href="../css/mobile.css?v=128d48c0">
   <link rel="stylesheet" href="../css/search-sheet.css?v=f5066eb6">
-  <link rel="stylesheet" href="../css/catalog.css?v=e6803d8b">
+  <link rel="stylesheet" href="../css/catalog.css?v=542a4723">
   <link rel="stylesheet" href="../css/proto-nav.css?v=2debfa13">
   <script src="../js/mock-data.js?v=b95944d0" defer></script>
   <script src="../js/shared.js?v=b2c83292" defer></script>
@@ -97,7 +97,7 @@
       </nav>
       <div class="catalog__head">
         <h1 class="catalog__title">Новостройки в ОАЭ</h1>
-        <p class="catalog__count">Найдено 14 объектов</p>
+        <p class="catalog__count">Найдено 104 объекта</p>
       </div>
     </div>
     <div class="catalog__bar">
@@ -539,10 +539,13 @@
           </template>
 
           <nav class="pagination" aria-label="Страницы каталога">
-            <span class="pagination__link pagination__link--disabled" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>Назад</span>
+            <span class="pagination__link pagination__link--disabled pagination__step" aria-disabled="true" aria-label="Назад"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg><span class="pagination__text">Назад</span></span>
             <a class="pagination__link pagination__link--current" href="catalog.html?country=oae" aria-current="page">1</a>
             <a class="pagination__link" href="catalog.html?country=oae&amp;page=2">2</a>
-            <a class="pagination__link" href="catalog.html?country=oae&amp;page=2">Вперёд<svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="pagination__link" href="catalog.html?country=oae&amp;page=3">3</a>
+            <span class="pagination__gap" aria-hidden="true">…</span>
+            <a class="pagination__link" href="catalog.html?country=oae&amp;page=9">9</a>
+            <a class="pagination__link pagination__step" href="catalog.html?country=oae&amp;page=2" aria-label="Вперёд"><span class="pagination__text">Вперёд</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
           </nav>
       </div>
     </div>
@@ -763,7 +766,7 @@
       </div>
       <div class="sheet__foot">
         <a class="sheet__reset" href="catalog.html">Сбросить</a>
-        <button class="button button--accent sheet__submit" type="submit">Показать 14 объектов</button>
+        <button class="button button--accent sheet__submit" type="submit">Показать 104 объекта</button>
       </div>
     </form>
   </dialog>

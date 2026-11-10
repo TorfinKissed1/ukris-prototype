@@ -252,6 +252,33 @@
   opacity: 0.5;
 }
 
+.pagination__gap {
+  min-width: 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Семь кнопок по 44 px в строку телефона влезают только без подписей, а на самых узких и без стрелок. */
+@media (max-width: 480px) {
+  .pagination {
+    gap: var(--space-xs);
+  }
+
+  .pagination__step {
+    padding: 0;
+  }
+
+  .pagination__text {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .pagination__step {
+    display: none;
+  }
+}
+
 /* ============ empty ============ */
 .empty {
   display: flex;
